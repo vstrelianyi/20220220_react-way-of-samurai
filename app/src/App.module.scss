@@ -1,0 +1,23 @@
+.App {
+	height: 100vh;
+  display: grid;
+	grid-template-rows: auto 1fr;
+	grid-template-columns: 2fr 10fr;
+	grid-gap: 0px;
+	grid-template-areas: 
+		"header header"
+		"nav main";
+
+	:global{
+		.header{
+			grid-area: header;
+		}
+		.nav{
+			grid-area: nav;
+		}
+		.main{
+			grid-area: main;
+		}
+	}
+}
+

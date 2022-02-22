@@ -1,0 +1,10 @@
+.Header{
+	background-color: #F7F4F3;
+	display: flex;
+	:global{
+		img{
+			width: 100px;
+			object-fit: contain;
+		}
+	}
+}
