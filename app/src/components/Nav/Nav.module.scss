@@ -1,8 +1,16 @@
+@import '../../styles/_vars';
+
 .Nav{
 	background-color: #FAFAFA;
+	padding: 20px;
 	:global{
 		ul{
 			list-style-type: none;
+			li{
+				a.active{
+					color: $red;
+				}
+			}
 		}
 	}
 }

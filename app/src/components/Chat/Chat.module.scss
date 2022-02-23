@@ -1,0 +1,9 @@
+.Chat{
+	display: grid;
+	grid-template-columns: 2fr 10fr;
+	grid-gap: 20px;
+	flex-basis: 100%;
+	:global{
+		
+	}
+}

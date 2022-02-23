@@ -1,6 +1,9 @@
 import classNames from 'classnames/bind';
 import styles from './Nav.module.scss';
 
+// COMPONENTS
+import { NavLink } from 'react-router-dom';
+
 const Nav = () => {
 
   const classes = classNames( [
@@ -11,11 +14,11 @@ const Nav = () => {
   return (
     <nav className={ classes }>
       <ul>
-        <li><a href="/home">Profile</a></li>
-        <li><a href="/home">Messages</a></li>
-        <li><a href="/home">News</a></li>
-        <li><a href="/home">Music</a></li>
-        <li><a href="/home">Settings</a></li>
+        <li><NavLink  to="/profile" className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>Profile</NavLink ></li>
+        <li><NavLink  to="/chat" className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>Dialogs</NavLink ></li>
+        <li><NavLink  to="/news" className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>News</NavLink ></li>
+        <li><NavLink  nk to="/music" className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>Music</NavLink ></li>
+        <li><NavLink  to="/settings" className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>Settings</NavLink ></li>
       </ul>
     </nav>
   );
