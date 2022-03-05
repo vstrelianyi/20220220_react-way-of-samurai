@@ -7,12 +7,16 @@ const Dialogs = () => {
     'dialogs',
   ] );
 
+  const dialogs = [
+    { id: 0, name: 'Andrew', },
+    { id: 1, name: 'Alex', },
+    { id: 2, name: 'Sonya', },
+  ];
+
   return (
     <div className={ classes }>
       <div className="dialog">
-        <div className="dialog-item">Andrew</div>
-        <div className="dialog-item">Alex</div>
-        <div className="dialog-item">Sonya</div>
+        { dialogs.map( dialog => <div className="dialog-item" key={ dialog.id }>{ dialog.name }</div> ) }
       </div>
     </div>
   );

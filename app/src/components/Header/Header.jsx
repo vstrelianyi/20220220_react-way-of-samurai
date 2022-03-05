@@ -16,6 +16,7 @@ const Header = () => {
   return (
     <header className={ classes }>
       <Link to="/"><img src={ logo } alt="" /></Link>
+      <Link to="/">Samurai Chat</Link>
     </header>
   );
 };

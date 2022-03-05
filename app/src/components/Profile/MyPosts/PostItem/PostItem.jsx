@@ -1,14 +1,16 @@
 import classNames from 'classnames/bind';
 import styles from './PostItem.module.scss';
 
-const PostItem = () => {
+const PostItem = ( props ) => {
+
+  const { likesCount, message, } = props;
   const classes = classNames( [
     styles.PostItem,
     'post-item',
   ] );
 
   return (
-    <div className={ classes }>PostItem</div>
+    <div className={ classes }>{ message }</div>
   );
 };
 

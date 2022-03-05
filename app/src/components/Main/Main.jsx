@@ -23,6 +23,9 @@ const Main = () => {
         <Route path="/" element={ <h1>Home</h1> } />
         <Route path="/profile" element={ <Profile /> } />
         <Route path="/chat" element={ <Chat/> } />
+        <Route path="/news" element={ <h1>news</h1> } />
+        <Route path="/music" element={ <h1>music</h1> } />
+        <Route path="/settings" element={ <h1>settings</h1> } />
       </Routes>
     </main>
   );

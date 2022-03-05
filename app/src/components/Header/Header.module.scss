@@ -1,15 +1,19 @@
 .Header{
 	background-color: #F7F4F3;
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	:global{
 		a{
 			display: flex;
 			padding: 10px;
+			font-size: 22px;
+			font-weight: 700;
+			text-transform: uppercase;
 			img{
 				width: 60px;
 				object-fit: contain;
 			}
 		}
-		
 	}
 }

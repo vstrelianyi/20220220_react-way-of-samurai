@@ -11,14 +11,18 @@ const Nav = () => {
     'nav',
   ] );
 
+  const pages = [
+    { id: 0, url: '/profile', title: 'profile', },
+    { id: 1, url: '/chat', title: 'chat', },
+    { id: 2, url: '/news', title: 'news', },
+    { id: 3, url: '/music', title: 'music', },
+    { id: 4, url: '/settings', title: 'settings', },
+  ];
+
   return (
     <nav className={ classes }>
       <ul>
-        <li><NavLink  to="/profile" className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>Profile</NavLink ></li>
-        <li><NavLink  to="/chat" className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>Dialogs</NavLink ></li>
-        <li><NavLink  to="/news" className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>News</NavLink ></li>
-        <li><NavLink  nk to="/music" className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>Music</NavLink ></li>
-        <li><NavLink  to="/settings" className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>Settings</NavLink ></li>
+        { pages.map( page => <li key={ page.id }><NavLink  to={ page.url } className={ ( { isActive, } ) => ( isActive ? 'active' : null ) }>{ page.title }</NavLink ></li> ) }
       </ul>
     </nav>
   );

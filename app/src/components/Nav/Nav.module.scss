@@ -7,6 +7,9 @@
 		ul{
 			list-style-type: none;
 			li{
+				a{
+					text-transform: uppercase;
+				}
 				a.active{
 					color: $red;
 				}

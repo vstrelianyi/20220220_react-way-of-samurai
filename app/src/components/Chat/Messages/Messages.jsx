@@ -7,10 +7,14 @@ const Messages = () => {
     'messages',
   ] );
 
+  const messages = [
+    { id: 0, text: 'Hi', },
+    { id: 1, text: 'Hi there!', },
+  ];
+
   return (
     <div className={ classes }>
-      <div className="message-item">Hi</div>
-      <div className="message-item">Hi there!</div>
+      { messages.map( message => <div className="message-item" key={ message.id }>{ message.text }</div> ) }
     </div>
   );
 };
