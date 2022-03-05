@@ -2,7 +2,10 @@ import classNames from 'classnames/bind';
 import MyPosts from './MyPosts/MyPosts';
 import styles from './Profile.module.scss';
 
-const Profile = () => {
+const Profile = ( props ) => {
+
+  const { posts, } = props;
+
   const classes = classNames( [
     styles.Profile,
     'profile',
@@ -10,7 +13,7 @@ const Profile = () => {
 
   return (
     <div className={ classes }>
-      <MyPosts/>
+      <MyPosts posts={ posts }/>
     </div>
   );
 };

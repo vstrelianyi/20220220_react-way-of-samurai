@@ -4,7 +4,8 @@ import styles from './Chat.module.scss';
 import Messages from './Messages/Messages';
 import Dialogs from './Dialogs/Dialogs';
 
-const Chat = () => {
+const Chat = ( props ) => {
+  const { dialogs, messages, } = props;
   const classes = classNames( [
     styles.Chat,
     'chat',
@@ -12,8 +13,8 @@ const Chat = () => {
 
   return (
     <div className={ classes }>
-      <Dialogs/>
-      <Messages/>
+      <Dialogs dialogs={ dialogs }/>
+      <Messages messages={ messages }/>
     </div>
   );
 };

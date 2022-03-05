@@ -1,17 +1,13 @@
 import classNames from 'classnames/bind';
 import styles from './Dialogs.module.scss';
 
-const Dialogs = () => {
+const Dialogs = ( props ) => {
   const classes = classNames( [
     styles.Dialogs,
     'dialogs',
   ] );
 
-  const dialogs = [
-    { id: 0, name: 'Andrew', },
-    { id: 1, name: 'Alex', },
-    { id: 2, name: 'Sonya', },
-  ];
+  const { dialogs, } = props;
 
   return (
     <div className={ classes }>

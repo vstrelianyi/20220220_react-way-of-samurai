@@ -1,16 +1,14 @@
 import classNames from 'classnames/bind';
 import styles from './Messages.module.scss';
 
-const Messages = () => {
+const Messages = ( props ) => {
+
+  const { messages, } = props;
+
   const classes = classNames( [
     styles.Messages,
     'messages',
   ] );
-
-  const messages = [
-    { id: 0, text: 'Hi', },
-    { id: 1, text: 'Hi there!', },
-  ];
 
   return (
     <div className={ classes }>

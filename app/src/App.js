@@ -7,11 +7,18 @@ import { BrowserRouter } from 'react-router-dom';
 
 // COMPONENTS
 import Header from './components/Header/Header';
-import Main from './components/Main/Main';
 import Nav from './components/Nav/Nav';
+import Profile from './components/Profile/Profile';
+import Chat from './components/Chat/Chat';
 import { Helmet } from 'react-helmet';
 
-const App = () => {
+import {
+  Routes,
+  Route
+} from 'react-router-dom';
+
+const App = ( props ) => {
+  const { posts, dialogs, messages, } = props;
 
   const classes = classNames( [
     styles.App,
@@ -28,7 +35,16 @@ const App = () => {
         </Helmet>
         <Header/>
         <Nav/>
-        <Main/>
+        <main className="main">
+          <Routes>
+            <Route path="/" element={ <h1>Home</h1> } />
+            <Route path="/profile" element={ <Profile posts={ posts }/> } />
+            <Route path="/chat" element={ <Chat dialogs={ dialogs } messages={ messages }/> } />
+            <Route path="/news" element={ <h1>news</h1> } />
+            <Route path="/music" element={ <h1>music</h1> } />
+            <Route path="/settings" element={ <h1>settings</h1> } />
+          </Routes>
+        </main>
       </div>
     </BrowserRouter>
   );

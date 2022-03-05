@@ -1,7 +1,9 @@
 import classNames from 'classnames/bind';
 import styles from './Example.module.scss';
 
-const Example = () => {
+const Example = ( props ) => {
+  const { children, } = props;
+
   const classes = classNames( [
     styles.Example,
     'example',
