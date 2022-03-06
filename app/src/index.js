@@ -3,19 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 // STATE
-import state from './redux/state';
-const { profilePage, chatPage, } = state;
-import { addPost, updateNewPostText, subscribe } from './redux/state';
+import store from './redux/store';
 
 const render = () => {
   ReactDOM.render(
     <React.StrictMode>
-      <App profilePage={ profilePage } chatPage={ chatPage } addPost={ addPost } updateNewPostText={ updateNewPostText }/>
+      <App store={ store }/>
     </React.StrictMode>,
     document.getElementById( 'root' )
   );
 };
 
 render();
-
-subscribe( render );
+store.subscribe( render );
