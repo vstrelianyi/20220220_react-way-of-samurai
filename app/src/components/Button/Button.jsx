@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './Button.module.scss';
 
 const Button = ( props ) => {
-  const { children, } = props;
+  const { children, onClick, } = props;
 
   const classes = classNames( [
     styles.Button,
@@ -10,7 +10,7 @@ const Button = ( props ) => {
   ] );
 
   return (
-    <button className={ classes }>{ children }</button>
+    <button className={ classes } onClick={ onClick }>{ children }</button>
   );
 };
 
