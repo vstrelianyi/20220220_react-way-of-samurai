@@ -1,4 +1,4 @@
-import render from '../render';
+let rerender;
 
 const state = {
   profilePage: {
@@ -33,16 +33,22 @@ const addPost = () => {
     }
   );
   state.profilePage.newPostText = '';
-  render();
+  rerender();
 };
 
 const updateNewPostText = ( text ) => {
   state.profilePage.newPostText = text;
-  render();
+  rerender();
 };
 
+const subscribe = ( observer ) => {
+  rerender = observer;
+};
+
+window.state = state;
 export {
   addPost,
-  updateNewPostText
+  updateNewPostText,
+  subscribe
 };
 export default state;
