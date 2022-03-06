@@ -18,11 +18,9 @@ const MyPosts = ( props ) => {
 
   const textarea = React.createRef();
 
+  // HANDLERS
   const handleAddPostClick = () => {
-    const value = textarea.current.value;
-    console.log( value );
-    // addPost( { id: 10, message: value, likesCount: 0, } );
-    // console.log(  );
+    addPost();
   };
 
   const handleTextAreaChange = ( e ) => {
@@ -32,7 +30,7 @@ const MyPosts = ( props ) => {
 
   return (
     <div className={ classes }>
-      <TextArea className="test" id="test" ref={ textarea } onChange={ handleTextAreaChange }value={ newPostText }/>
+      <TextArea className="" id="" ref={ textarea } onChange={ handleTextAreaChange } value={ newPostText }/>
       <Button onClick={ handleAddPostClick }>Add Post</Button>
 
       <div className='posts-list'>

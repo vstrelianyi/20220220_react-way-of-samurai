@@ -4,7 +4,7 @@ import styles from './Profile.module.scss';
 
 const Profile = ( props ) => {
 
-  const { posts, addPost, updateNewPostText, } = props;
+  const { posts, addPost, newPostText, updateNewPostText, } = props;
 
   const classes = classNames( [
     styles.Profile,
@@ -13,7 +13,7 @@ const Profile = ( props ) => {
 
   return (
     <div className={ classes }>
-      <MyPosts posts={ posts } addPost={ addPost } updateNewPostText={ updateNewPostText }/>
+      <MyPosts posts={ posts } addPost={ addPost } newPostText={ newPostText } updateNewPostText={ updateNewPostText }/>
     </div>
   );
 };

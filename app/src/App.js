@@ -40,7 +40,7 @@ const App = ( props ) => {
           <main className="main">
             <Routes>
               <Route path="/" element={ <h1>Home</h1> } />
-              <Route path="/profile" element={ <Profile posts={ posts } addPost={ addPost } newPostText={ newPostText } updateNewPostText={ updateNewPostText }/> } />
+              <Route path="/profile" element={ <Profile posts={ posts } addPost={ addPost } newPostText={ newPostText } updateNewPostText={ updateNewPostText } /> } />
               <Route path="/chat" element={ <Chat dialogs={ dialogs } messages={ messages }/> } />
               <Route path="/news" element={ <h1>news</h1> } />
               <Route path="/music" element={ <h1>music</h1> } />

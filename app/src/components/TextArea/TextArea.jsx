@@ -4,7 +4,7 @@ import styles from './TextArea.module.scss';
 import React, { forwardRef } from 'react';
 
 const TextArea = ( props, ref ) => {
-  const { className, id, onChange, newPostText, } = props;
+  const { className, id, onChange, value, } = props;
 
   const classes = classNames( [
     styles.TextArea,
@@ -13,7 +13,15 @@ const TextArea = ( props, ref ) => {
   ] );
 
   return (
-    <textarea className={ classes } id={ id } cols="30" rows="10" ref={ ref } value={ newPostText } onChange={ onChange }></textarea>
+    <textarea
+      className={ classes }
+      id={ id ? id : null }
+      cols="30"
+      rows="10"
+      ref={ ref }
+      value={ value }
+      onChange={ onChange }
+    ></textarea>
   );
 };
 

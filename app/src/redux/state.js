@@ -1,3 +1,5 @@
+import render from '../render';
+
 const state = {
   profilePage: {
     posts: [
@@ -22,12 +24,21 @@ const state = {
 
 };
 
-const addPost = ( newPost ) => {
-  state.profilePage.posts.push( newPost );
+const addPost = () => {
+  state.profilePage.posts.push(
+    {
+      id: 10,
+      message: state.profilePage.newPostText,
+      likesCount: 12,
+    }
+  );
+  state.profilePage.newPostText = '';
+  render();
 };
 
 const updateNewPostText = ( text ) => {
   state.profilePage.newPostText = text;
+  render();
 };
 
 export {
