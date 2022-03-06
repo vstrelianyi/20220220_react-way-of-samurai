@@ -21,26 +21,39 @@ const store = {
       ],
     },
   },
+  _callSubscriber () {
+
+  },
   getState () {
     return this._state;
   },
-  addPost () {
-    this._state.profilePage.posts.push(
-      {
-        id: 10,
-        message: this._state.profilePage.newPostText,
-        likesCount: 12,
-      }
-    );
-    this._state.profilePage.newPostText = '';
-    this._render();
-  },
-  updateNewPostText  ( text ) {
-    this._state.profilePage.newPostText = text;
-    this._render();
-  },
   subscribe ( observer ) {
     this._render = observer;
+  },
+  dispatch ( action ) {
+    const { type, payload: { text, }, } = action;
+    switch ( action.type ){
+    case 'ADD_POST':{
+      this._state.profilePage.posts.push(
+        {
+          id: 10,
+          message: this._state.profilePage.newPostText,
+          likesCount: 12,
+        }
+      );
+      this._state.profilePage.newPostText = '';
+
+      break;
+    }
+    case 'UPDATE_NEW_POST_TEXT':{
+      this._state.profilePage.newPostText = text;
+      break;
+    }
+    default:{
+      break;
+    }
+    }
+    this._render();
   },
 };
 

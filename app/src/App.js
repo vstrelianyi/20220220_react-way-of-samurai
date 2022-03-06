@@ -29,10 +29,8 @@ const App = ( props ) => {
   const posts = store.getState().profilePage.posts;
   const dialogs = store.getState().chatPage.dialogs;
   const messages = store.getState().chatPage.messages;
-
   const newPostText = store.getState().profilePage.newPostText;
-  const addPost = store.addPost.bind( store );
-  const updateNewPostText = store.updateNewPostText.bind( store );
+  const dispatch = store.dispatch.bind( store );
 
   return (
     <HelmetProvider>
@@ -49,7 +47,7 @@ const App = ( props ) => {
             <Routes>
               <Route path="/" element={ <h1>Home</h1> } />
               <Route path="/profile" element={ (
-                <Profile posts={ posts } newPostText={ newPostText } addPost={ addPost } updateNewPostText={ updateNewPostText } />
+                <Profile posts={ posts } newPostText={ newPostText } dispatch={ dispatch }/>
               ) } />
               <Route path="/chat" element={ <Chat dialogs={ dialogs } messages={ messages }/> } />
               <Route path="/news" element={ <h1>news</h1> } />

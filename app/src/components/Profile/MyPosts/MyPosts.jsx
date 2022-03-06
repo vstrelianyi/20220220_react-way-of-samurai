@@ -9,7 +9,7 @@ import TextArea from '../../TextArea/TextArea';
 
 const MyPosts = ( props ) => {
 
-  const { posts, addPost, newPostText, updateNewPostText, } = props;
+  const { posts, newPostText, dispatch, } = props;
 
   const classes = classNames( [
     styles.MyPosts,
@@ -20,12 +20,11 @@ const MyPosts = ( props ) => {
 
   // HANDLERS
   const handleAddPostClick = () => {
-    addPost();
+    dispatch( { type: 'ADD_POST', payload: {}, } );
   };
-
   const handleTextAreaChange = ( e ) => {
     const value = e.target.value;
-    updateNewPostText( value );
+    dispatch( { type: 'UPDATE_NEW_POST_TEXT', payload: { text: value, }, } );
   };
 
   return (
