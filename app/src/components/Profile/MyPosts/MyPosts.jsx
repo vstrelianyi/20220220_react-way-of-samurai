@@ -7,6 +7,11 @@ import PostItem from './PostItem/PostItem';
 import Button from '../../Button/Button';
 import TextArea from '../../TextArea/TextArea';
 
+import {
+  addPostActionCreator,
+  updateNewPostTextActionCreator
+} from '../../../redux/store';
+
 const MyPosts = ( props ) => {
 
   const { posts, newPostText, dispatch, } = props;
@@ -20,11 +25,13 @@ const MyPosts = ( props ) => {
 
   // HANDLERS
   const handleAddPostClick = () => {
-    dispatch( { type: 'ADD_POST', payload: {}, } );
+    const action = addPostActionCreator() ;
+    dispatch( action );
   };
   const handleTextAreaChange = ( e ) => {
     const value = e.target.value;
-    dispatch( { type: 'UPDATE_NEW_POST_TEXT', payload: { text: value, }, } );
+    const action = updateNewPostTextActionCreator( value ) ;
+    dispatch( action );
   };
 
   return (

@@ -24,12 +24,6 @@ const App = ( props ) => {
     styles.App,
     'app',
   ] );
-  // addPost( { id: 10, message: 'sdt2223', likesCount: 0, } );
-
-  const posts = store.getState().profilePage.posts;
-  const dialogs = store.getState().chatPage.dialogs;
-  const messages = store.getState().chatPage.messages;
-  const newPostText = store.getState().profilePage.newPostText;
   const dispatch = store.dispatch.bind( store );
 
   return (
@@ -47,9 +41,11 @@ const App = ( props ) => {
             <Routes>
               <Route path="/" element={ <h1>Home</h1> } />
               <Route path="/profile" element={ (
-                <Profile posts={ posts } newPostText={ newPostText } dispatch={ dispatch }/>
+                <Profile store={ store } dispatch={ dispatch }/>
               ) } />
-              <Route path="/chat" element={ <Chat dialogs={ dialogs } messages={ messages }/> } />
+              <Route path="/chat" element={ (
+                <Chat store={ store } dispatch={ dispatch }/>
+              ) } />
               <Route path="/news" element={ <h1>news</h1> } />
               <Route path="/music" element={ <h1>music</h1> } />
               <Route path="/settings" element={ <h1>settings</h1> } />

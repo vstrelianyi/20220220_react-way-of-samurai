@@ -1,9 +1,24 @@
 .Chat{
 	display: grid;
 	grid-template-columns: 2fr 10fr;
+	grid-template-rows: 1fr auto;
+	grid-template-areas: 
+	"dialogs messages"
+	"empty input";
 	grid-gap: 20px;
 	flex-basis: 100%;
+	overflow-y: auto;
 	:global{
-		
+		.message-input{
+			margin-top: 50px;
+			margin-bottom: 10px;
+			grid-area: input;
+			display: flex;
+			.input{
+				flex: 1 0 auto;
+			}
+		}
 	}
+
+
 }

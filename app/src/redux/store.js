@@ -19,6 +19,7 @@ const store = {
         { id: 1, name: 'Alex', },
         { id: 2, name: 'Sonya', },
       ],
+      newMessageText: '',
     },
   },
   _callSubscriber () {
@@ -32,7 +33,7 @@ const store = {
   },
   dispatch ( action ) {
     const { type, payload: { text, }, } = action;
-    switch ( action.type ){
+    switch ( type ){
     case 'ADD_POST':{
       this._state.profilePage.posts.push(
         {
@@ -49,6 +50,20 @@ const store = {
       this._state.profilePage.newPostText = text;
       break;
     }
+    case 'ADD_MESSAGE':{
+      this._state.chatPage.messages.push(
+        {
+          id: 3,
+          text: this._state.chatPage.newMessageText,
+        }
+      );
+      this._state.chatPage.newMessageText = '';
+      break;
+    }
+    case 'UPDATE_NEW_MESSAGE_TEXT':{
+      this._state.chatPage.newMessageText = text;
+      break;
+    }
     default:{
       break;
     }
@@ -60,3 +75,37 @@ const store = {
 window.store = store;
 
 export default store;
+
+const addPostActionCreator = () => {
+  return {
+    type: 'ADD_POST',
+    payload: {},
+  };
+};
+
+const updateNewPostTextActionCreator = ( text ) => {
+  return {
+    type: 'UPDATE_NEW_POST_TEXT',
+    payload: { text: text, },
+  };
+};
+const updateNewMessageTextActionCreator = ( text ) => {
+  return {
+    type: 'UPDATE_NEW_MESSAGE_TEXT',
+    payload: { text: text, },
+  };
+};
+
+const addMessageActionCreator = () => {
+  return {
+    type: 'ADD_MESSAGE',
+    payload: {},
+  };
+};
+
+export {
+  addPostActionCreator,
+  updateNewPostTextActionCreator,
+  addMessageActionCreator,
+  updateNewMessageTextActionCreator
+};

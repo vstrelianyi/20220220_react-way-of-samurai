@@ -1,6 +1,8 @@
 @import '../../../styles/_vars';
 
 .Dialogs{
+	grid-area: dialogs;
+
 	@media( min-width: 576px){
 	}
 	@media( min-width: 768px){

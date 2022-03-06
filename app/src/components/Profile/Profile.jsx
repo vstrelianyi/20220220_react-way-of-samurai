@@ -4,7 +4,9 @@ import styles from './Profile.module.scss';
 
 const Profile = ( props ) => {
 
-  const { posts, newPostText, dispatch, } = props;
+  const { store, dispatch, } = props;
+  const posts = store.getState().profilePage.posts;
+  const newPostText = store.getState().profilePage.newPostText;
 
   const classes = classNames( [
     styles.Profile,
