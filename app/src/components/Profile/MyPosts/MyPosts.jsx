@@ -10,7 +10,7 @@ import TextArea from '../../TextArea/TextArea';
 import {
   addPostActionCreator,
   updateNewPostTextActionCreator
-} from '../../../redux/store';
+} from '../../../redux/profile-reducer';
 
 const MyPosts = ( props ) => {
 

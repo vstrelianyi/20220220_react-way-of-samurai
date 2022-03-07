@@ -12,7 +12,7 @@ import Input from '../Input/Input';
 import {
   updateNewMessageTextActionCreator,
   addMessageActionCreator
-} from '../../redux/store';
+} from '../../redux/chat-reducer';
 import Button from '../Button/Button';
 
 const Chat = ( props ) => {
