@@ -7,11 +7,6 @@ import PostItem from './PostItem/PostItem';
 import Button from '../../Button/Button';
 import TextArea from '../../TextArea/TextArea';
 
-import {
-  addPostActionCreator,
-  updateNewPostTextActionCreator
-} from '../../../redux/profile-reducer';
-
 const MyPosts = ( props ) => {
 
   const { posts, newPostText, postTextChange,	addPostClick, } = props;

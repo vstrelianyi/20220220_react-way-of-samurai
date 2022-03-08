@@ -1,11 +1,21 @@
 import Dialogs from './Dialogs';
 
-const DialogsContainer = ( props ) => {
-  const { store, } = props;
-  const dialogs = store.getState().chatPage.dialogs;
-  const messages =  store.getState().chatPage.messages;
+// REDUX
+import { connect } from 'react-redux';
 
-  return <Dialogs dialogs={ dialogs } messages={ messages }/>;
+const mapStateToProps = ( state ) => {
+  return {
+    dialogs: state.chatPage.dialogs,
+  };
 };
+const mapDispatchToProps = () => {
+  return {
+    updateNewMessageBody: () => {
+
+    },
+  };
+};
+
+const DialogsContainer = connect( mapStateToProps, mapDispatchToProps )( Dialogs );
 
 export default DialogsContainer;

@@ -1,27 +1,32 @@
 import MessageInput from './MessageInput';
 
+// REDUX
+import { connect } from 'react-redux';
+
 import {
   updateNewMessageTextActionCreator,
   addMessageActionCreator
 } from '../../../redux/chat-reducer';
 
-const MessageInputContainer = ( props ) => {
-  const { store, } = props;
-
-  const newMessageText =  store.getState().chatPage.newMessageText;
-
-  const sendMessageClick = () => {
-    if ( !newMessageText ) return;
-
-    const action = addMessageActionCreator() ;
-    store.dispatch( action );
+const mapStateToProps = ( state ) => {
+  return {
+    newMessageText: state.chatPage.newMessageText,
   };
-  const inputChange = ( value ) => {
-    const action = updateNewMessageTextActionCreator( value ) ;
-    store.dispatch( action );
-  };
-
-  return <MessageInput newMessageText={ newMessageText } sendMessageClick={ sendMessageClick } inputChange={ inputChange }/>;
 };
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+    sendMessageClick: () => {
+      // if ( !newMessageText ) return;
+      const action = addMessageActionCreator() ;
+      dispatch( action );
+    },
+    inputChange: ( value ) => {
+      const action = updateNewMessageTextActionCreator( value ) ;
+      dispatch( action );
+    },
+  };
+};
+
+const MessageInputContainer = connect( mapStateToProps, mapDispatchToProps )( MessageInput );
 
 export default MessageInputContainer;

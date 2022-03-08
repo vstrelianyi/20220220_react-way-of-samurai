@@ -1,15 +1,20 @@
-import classNames from 'classnames/bind';
-import styles from './Messages.module.scss';
-
 import Messages from '../Messages/Messages';
 
-const MessagesContainer = ( props ) => {
+// REDUX
+import { connect } from 'react-redux';
 
-  const { store, } = props;
-
-  const messages = store.getState().chatPage.messages;
-
-  return <Messages messages={ messages }/>;
+const mapStateToProps = ( state ) => {
+  return {
+    messages: state.chatPage.messages,
+  };
 };
+
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+
+  };
+};
+
+const MessagesContainer = connect( mapStateToProps, mapDispatchToProps )( Messages );
 
 export default MessagesContainer;

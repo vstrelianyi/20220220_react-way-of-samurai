@@ -25,8 +25,8 @@ const store = {
       newMessageText: '',
     },
   },
-  _callSubscriber () {
-    this._render();
+  _callSubscriber ( state ) {
+    this._render( state );
   },
   getState () {
     return this._state;

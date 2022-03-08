@@ -5,7 +5,7 @@ import App from './App';
 // STATE
 // import store from './redux/store';
 import store from './redux/redux-store';
-import { Provider } from './store-context';
+import { Provider } from 'react-redux';
 
 const state = store.getState();
 const dispatch = store.dispatch;

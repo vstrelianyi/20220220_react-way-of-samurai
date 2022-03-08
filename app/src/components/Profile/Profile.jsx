@@ -1,5 +1,3 @@
-import StoreContext from '../../store-context';
-
 import classNames from 'classnames/bind';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
 import styles from './Profile.module.scss';
@@ -12,12 +10,7 @@ const Profile = ( props ) => {
 
   return (
     <div className={ classes }>
-      <StoreContext.Consumer>{
-        store => (
-          <MyPostsContainer store={ store }/>
-        )
-      }
-      </StoreContext.Consumer>
+      <MyPostsContainer/>
     </div>
   );
 };
