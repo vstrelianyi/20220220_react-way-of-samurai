@@ -1,5 +1,19 @@
-const chatReducer = ( state, action ) => {
-  const { type, payload: { text, }, } = action;
+const initialState = {
+  messages: [
+    { id: 0, text: 'Hi', },
+    { id: 1, text: 'Hi there!', },
+  ],
+
+  dialogs: [
+    { id: 0, name: 'Andrew', },
+    { id: 1, name: 'Alex', },
+    { id: 2, name: 'Sonya', },
+  ],
+  newMessageText: '',
+};
+
+const chatReducer = ( state = initialState, action ) => {
+  const { type, } = action;
 
   switch ( type ){
   case 'ADD_MESSAGE':{
@@ -13,6 +27,7 @@ const chatReducer = ( state, action ) => {
     break;
   }
   case 'UPDATE_NEW_MESSAGE_TEXT':{
+    const { payload: { text, }, } = action;
     state.newMessageText = text;
     break;
   }

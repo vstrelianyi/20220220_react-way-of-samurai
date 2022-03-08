@@ -14,7 +14,7 @@ import {
 
 const MyPosts = ( props ) => {
 
-  const { posts, newPostText, dispatch, } = props;
+  const { posts, newPostText, postTextChange,	addPostClick, } = props;
 
   const classes = classNames( [
     styles.MyPosts,
@@ -25,18 +25,15 @@ const MyPosts = ( props ) => {
 
   // HANDLERS
   const handleAddPostClick = () => {
-    const action = addPostActionCreator() ;
-    dispatch( action );
+    addPostClick();
   };
-  const handleTextAreaChange = ( e ) => {
-    const value = e.target.value;
-    const action = updateNewPostTextActionCreator( value ) ;
-    dispatch( action );
+  const handlePostTextChange = ( value ) => {
+    postTextChange( value );
   };
 
   return (
     <div className={ classes }>
-      <TextArea className="" id="" ref={ textarea } onChange={ handleTextAreaChange } value={ newPostText }/>
+      <TextArea className="" id="" ref={ textarea } onChange={ handlePostTextChange } value={ newPostText }/>
       <Button onClick={ handleAddPostClick }>Add Post</Button>
 
       <div className='posts-list'>

@@ -18,13 +18,13 @@ import {
 } from 'react-router-dom';
 
 const App = ( props ) => {
-  const { store, } = props;
+  const { state, dispatch, store, } = props;
 
   const classes = classNames( [
     styles.App,
     'app',
   ] );
-  const dispatch = store.dispatch.bind( store );
+  // const dispatch = store.dispatch.bind( store );
 
   return (
     <HelmetProvider>
@@ -41,10 +41,10 @@ const App = ( props ) => {
             <Routes>
               <Route path="/" element={ <h1>Home</h1> } />
               <Route path="/profile" element={ (
-                <Profile store={ store } dispatch={ dispatch }/>
+                <Profile state={ state } dispatch={ dispatch } store={ store }/>
               ) } />
               <Route path="/chat" element={ (
-                <Chat store={ store } dispatch={ dispatch }/>
+                <Chat state={ state } dispatch={ dispatch } store={ store }/>
               ) } />
               <Route path="/news" element={ <h1>news</h1> } />
               <Route path="/music" element={ <h1>music</h1> } />

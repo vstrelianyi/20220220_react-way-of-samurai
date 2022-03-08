@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
 import styles from './TextArea.module.scss';
 
-import React, { forwardRef } from 'react';
+import React from 'react';
+import { forwardRef } from 'react';
 
 const TextArea = ( props, ref ) => {
   const { className, id, onChange, value, } = props;
@@ -12,15 +13,21 @@ const TextArea = ( props, ref ) => {
     'textarea',
   ] );
 
+  // HANDLERS
+  const handleOnChange = ( e ) => {
+    const value = e.target.value;
+    onChange( value );
+  };
+
   return (
     <textarea
       className={ classes }
       id={ id ? id : null }
       cols="30"
       rows="10"
-      ref={ ref }
+      // ref={ ref }
       value={ value }
-      onChange={ onChange }
+      onChange={ handleOnChange }
     ></textarea>
   );
 };

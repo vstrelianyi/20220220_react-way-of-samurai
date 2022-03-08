@@ -1,5 +1,13 @@
-const profileReducer = ( state, action ) => {
-  const { type, payload: { text, }, } = action;
+const initialState = {
+  posts: [
+    { id: 0, message: 'I\'m from Kyiv, It my post', likesCount: 12, },
+    { id: 1, message: 'Its my first post', likesCount: 10, },
+  ],
+  newPostText: '',
+};
+
+const profileReducer = ( state = initialState, action ) => {
+  const { type, } = action;
 
   switch ( type ){
   case 'ADD_POST':{
@@ -15,6 +23,7 @@ const profileReducer = ( state, action ) => {
     break;
   }
   case 'UPDATE_NEW_POST_TEXT':{
+    const { payload: { text, }, } = action;
     state.newPostText = text;
     break;
   }

@@ -1,9 +1,9 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import classNames from 'classnames/bind';
 import styles from './Input.module.scss';
 
-const Input = ( props, ref ) => {
+const Input = ( props ) => {
   const { className, id, onChange, value, } = props;
 
   const classes = classNames( [
@@ -12,15 +12,19 @@ const Input = ( props, ref ) => {
     'input',
   ] );
 
+  const handleInputChange = ( e ) => {
+    const value = e.target.value;
+    onChange( value );
+  };
+
   return (
     <input
       className={ classes }
       id={ id ? id : null }
-      ref={ ref }
       value={ value }
-      onChange={ onChange }
+      onChange={ handleInputChange }
     />
   );
 };
 
-export default forwardRef( Input );
+export default Input;

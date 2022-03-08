@@ -9,16 +9,5 @@
 	flex-basis: 100%;
 	overflow-y: auto;
 	:global{
-		.message-input{
-			margin-top: 50px;
-			margin-bottom: 10px;
-			grid-area: input;
-			display: flex;
-			.input{
-				flex: 1 0 auto;
-			}
-		}
 	}
-
-
 }

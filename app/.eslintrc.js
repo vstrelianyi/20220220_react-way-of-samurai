@@ -26,6 +26,7 @@ module.exports = {
   ],
   rules: {
     // 'no-unused-vars': 'warn',
+    'no-debugger': 0,
     'no-unused-vars': 0,
     'no-useless-escape': 0,
     'react/react-in-jsx-scope': 'off',

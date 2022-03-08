@@ -5,48 +5,23 @@ import classNames from 'classnames/bind';
 import styles from './Chat.module.scss';
 
 // COMPONENTS
-import Messages from './Messages/Messages';
-import Dialogs from './Dialogs/Dialogs';
-import Input from '../Input/Input';
-
-import {
-  updateNewMessageTextActionCreator,
-  addMessageActionCreator
-} from '../../redux/chat-reducer';
-import Button from '../Button/Button';
+import MessagesContainer from './Messages/MessagesContainer';
+import DialogsContainer from './Dialogs/DialogsContainer';
+import MessageInputContainer from './MessageInput/MessageInputContainer';
 
 const Chat = ( props ) => {
-  const { store, dispatch, } = props;
-  const dialogs = store.getState().chatPage.dialogs;
-  const messages = store.getState().chatPage.messages;
-  const newMessageText = store.getState().chatPage.newMessageText;
+  const { store, state, dispatch, } = props;
 
   const classes = classNames( [
     styles.Chat,
     'chat',
   ] );
 
-  const input = React.createRef();
-
-  // HANDLERS
-  const handleSendMessageClick = () => {
-    const action = addMessageActionCreator() ;
-    dispatch( action );
-  };
-  const handleInputChange = ( e ) => {
-    const value = e.target.value;
-    const action = updateNewMessageTextActionCreator( value ) ;
-    dispatch( action );
-  };
-
   return (
     <div className={ classes }>
-      <Dialogs dialogs={ dialogs }/>
-      <Messages messages={ messages }/>
-      <div className="message-input">
-        <Input className="" id="" ref={ input } onChange={ handleInputChange } value={ newMessageText }/>
-        <Button onClick={ handleSendMessageClick }>Send Message</Button>
-      </div>
+      <DialogsContainer store={ store }/>
+      <MessagesContainer store={ store }/>
+      <MessageInputContainer store={ store }/>
     </div>
   );
 };

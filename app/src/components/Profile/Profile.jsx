@@ -1,12 +1,10 @@
 import classNames from 'classnames/bind';
-import MyPosts from './MyPosts/MyPosts';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 import styles from './Profile.module.scss';
 
 const Profile = ( props ) => {
 
-  const { store, dispatch, } = props;
-  const posts = store.getState().profilePage.posts;
-  const newPostText = store.getState().profilePage.newPostText;
+  const { store, state, dispatch, } = props;
 
   const classes = classNames( [
     styles.Profile,
@@ -15,7 +13,7 @@ const Profile = ( props ) => {
 
   return (
     <div className={ classes }>
-      <MyPosts posts={ posts } newPostText={ newPostText } dispatch={ dispatch }/>
+      <MyPostsContainer store={ store }/>
     </div>
   );
 };
