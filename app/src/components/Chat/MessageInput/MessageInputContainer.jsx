@@ -1,5 +1,3 @@
-import classNames from 'classnames/bind';
-
 import MessageInput from './MessageInput';
 
 import {
@@ -13,6 +11,8 @@ const MessageInputContainer = ( props ) => {
   const newMessageText =  store.getState().chatPage.newMessageText;
 
   const sendMessageClick = () => {
+    if ( !newMessageText ) return;
+
     const action = addMessageActionCreator() ;
     store.dispatch( action );
   };
@@ -21,7 +21,7 @@ const MessageInputContainer = ( props ) => {
     store.dispatch( action );
   };
 
-  return <MessageInput sendMessageClick={ sendMessageClick }inputChange={ inputChange }/>;
+  return <MessageInput newMessageText={ newMessageText } sendMessageClick={ sendMessageClick } inputChange={ inputChange }/>;
 };
 
 export default MessageInputContainer;

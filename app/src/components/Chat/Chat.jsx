@@ -1,4 +1,5 @@
 import React from 'react';
+import StoreContext from '../../store-context';
 
 // STYLES
 import classNames from 'classnames/bind';
@@ -10,8 +11,6 @@ import DialogsContainer from './Dialogs/DialogsContainer';
 import MessageInputContainer from './MessageInput/MessageInputContainer';
 
 const Chat = ( props ) => {
-  const { store, state, dispatch, } = props;
-
   const classes = classNames( [
     styles.Chat,
     'chat',
@@ -19,9 +18,15 @@ const Chat = ( props ) => {
 
   return (
     <div className={ classes }>
-      <DialogsContainer store={ store }/>
-      <MessagesContainer store={ store }/>
-      <MessageInputContainer store={ store }/>
+      <StoreContext.Consumer>{
+        store => (
+          <>
+            <DialogsContainer store={ store }/>
+            <MessagesContainer store={ store }/>
+            <MessageInputContainer store={ store }/>
+          </>
+        )	}
+      </StoreContext.Consumer>
     </div>
   );
 };

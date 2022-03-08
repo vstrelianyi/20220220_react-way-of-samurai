@@ -18,7 +18,7 @@ import {
 } from 'react-router-dom';
 
 const App = ( props ) => {
-  const { state, dispatch, store, } = props;
+  const { children, } = props;
 
   const classes = classNames( [
     styles.App,
@@ -29,6 +29,7 @@ const App = ( props ) => {
   return (
     <HelmetProvider>
       <BrowserRouter>
+
         <div className={ classes }>
           <Helmet>
             <meta charSet="utf-8" />
@@ -41,10 +42,10 @@ const App = ( props ) => {
             <Routes>
               <Route path="/" element={ <h1>Home</h1> } />
               <Route path="/profile" element={ (
-                <Profile state={ state } dispatch={ dispatch } store={ store }/>
+                <Profile/>
               ) } />
               <Route path="/chat" element={ (
-                <Chat state={ state } dispatch={ dispatch } store={ store }/>
+                <Chat/>
               ) } />
               <Route path="/news" element={ <h1>news</h1> } />
               <Route path="/music" element={ <h1>music</h1> } />

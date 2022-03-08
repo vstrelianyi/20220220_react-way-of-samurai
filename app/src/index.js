@@ -5,6 +5,7 @@ import App from './App';
 // STATE
 // import store from './redux/store';
 import store from './redux/redux-store';
+import { Provider } from './store-context';
 
 const state = store.getState();
 const dispatch = store.dispatch;
@@ -12,7 +13,9 @@ const dispatch = store.dispatch;
 const render = ( state ) => {
   ReactDOM.render(
     <React.StrictMode>
-      <App state={ state } dispatch={ dispatch } store={ store }/>
+      <Provider store={ store }>
+        <App/>
+      </Provider>
     </React.StrictMode>,
     document.getElementById( 'root' )
   );

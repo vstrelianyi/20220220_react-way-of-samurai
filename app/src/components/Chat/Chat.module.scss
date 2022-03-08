@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: 2fr 10fr;
 	grid-template-rows: 1fr auto;
-	grid-template-areas: 
+	grid-template-areas:
 	"dialogs messages"
 	"empty input";
 	grid-gap: 20px;
