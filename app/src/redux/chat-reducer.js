@@ -17,26 +17,30 @@ const chatReducer = ( state = initialState, action ) => {
 
   switch ( type ){
   case 'ADD_MESSAGE':{
-    state.messages.push(
+    const stateCopy = { ...state, };
+    stateCopy.messages = [ ...state.messages, ];
+    if ( !stateCopy.newMessageText ) return stateCopy;
+    stateCopy.messages.push(
       {
         id: 3,
-        text: state.newMessageText,
+        text: stateCopy.newMessageText,
       }
     );
-    state.newMessageText = '';
-    break;
+    stateCopy.newMessageText = '';
+
+    return stateCopy;
   }
   case 'UPDATE_NEW_MESSAGE_TEXT':{
+    const stateCopy = { ...state, };
     const { payload: { text, }, } = action;
-    state.newMessageText = text;
-    break;
+    stateCopy.newMessageText = text;
+
+    return stateCopy;
   }
   default:{
-    break;
+    return state;
   }
   }
-
-  return state;
 };
 
 export default chatReducer;
