@@ -4,14 +4,16 @@ import styles from './UsersList.module.scss';
 import UserItem from './UserItem/UserItem';
 
 const UsersList = ( props ) => {
-  const { users, followUser, unFollowUser, } = props;
+  const { users, setUsers, followUser, unFollowUser, } = props;
 
   const classes = classNames( [
     styles.UsersList,
     'UsersList',
   ] );
 
-  console.log( users );
+  if ( users.length < 3 ){
+    setUsers( [ { id: 1, name: 'Kitana', status: '', location: { city: 'Kyiv', country: 'Ukraine', }, isFollowed: false, image: '', description: '', }, ] );
+  }
 
   return (
     <div className={ classes }>

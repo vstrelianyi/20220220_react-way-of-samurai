@@ -3,6 +3,9 @@
 .UserItem{
 	display: flex;
 	width: 100%;
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: rgba( 0, 0,0, 0.5 );
 
 	@media( min-width: 576px){
 	}
@@ -15,8 +18,8 @@
 	:global{
 		.col{
 			display: flex;
-			justify-content: center;
 			flex-direction: column;
+			justify-content: space-between;
 			align-items: center;
 			&:nth-child(2){
 				flex: 1 1 auto;
@@ -27,13 +30,21 @@
 				padding-left: 20px;
 				display: flex;
 				flex-direction: column;
+				height: 100%;
 				justify-content: space-between;
 			}
 			.right{
 				display: flex;
 				flex-direction: column;
+				height: 100%;
 				justify-content: space-between;
 			}
+		}
+		picture{
+			width: 100px;
+		}
+		.data-field:not(:last-of-type){
+			margin-bottom: 5px;
 		}
 	}
 }

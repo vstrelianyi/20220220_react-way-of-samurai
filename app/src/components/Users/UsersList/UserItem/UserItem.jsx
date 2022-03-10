@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import Button from '../../../Button/Button';
+import DataField from '../../../DataField/DataField';
 import styles from './UserItem.module.scss';
 
 const UserItem = ( props ) => {
@@ -8,6 +9,7 @@ const UserItem = ( props ) => {
   const classes = classNames( [
     styles.UserItem,
     'user-item',
+    'bordered',
   ] );
 
   return (
@@ -18,17 +20,17 @@ const UserItem = ( props ) => {
           <source srcSet={ user.image } type="image/webp" />
           <img src={ user.image } alt="" />
         </picture>
-        <Button>Follow</Button>
+        { user.isFollowed ? <Button>Unfollow</Button> : <Button>Follow</Button> }
       </div>
 
       <div className="col">
         <div className="left">
-          <span className="name">{ user.name }</span>
-          <span className="country">{ user.description }</span>
+          <DataField label="name:" value={ user.name }/>
+          <DataField label="description:" value={ user.description }/>
         </div>
         <div className="right">
-          <span className="country">{ user.location.country }</span>
-          <span className="city">{ user.location.city }</span>
+          <DataField label="country:" value={ user.location.country }/>
+          <DataField label="city:" value={ user.location.city }/>
         </div>
       </div>
 
