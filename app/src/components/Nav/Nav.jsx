@@ -16,7 +16,8 @@ const Nav = () => {
     { id: 1, url: '/chat', title: 'chat', },
     { id: 2, url: '/news', title: 'news', },
     { id: 3, url: '/music', title: 'music', },
-    { id: 4, url: '/settings', title: 'settings', },
+    { id: 4, url: '/users', title: 'users', },
+    { id: 5, url: '/settings', title: 'settings', },
   ];
 
   return (

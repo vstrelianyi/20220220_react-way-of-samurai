@@ -16,6 +16,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
+import Users from './components/Users/Users';
 
 const App = ( props ) => {
   const { children, } = props;
@@ -41,14 +42,11 @@ const App = ( props ) => {
           <main className="main">
             <Routes>
               <Route path="/" element={ <h1>Home</h1> } />
-              <Route path="/profile" element={ (
-                <Profile/>
-              ) } />
-              <Route path="/chat" element={ (
-                <Chat/>
-              ) } />
+              <Route path="/profile" element={ <Profile/> } />
+              <Route path="/chat" element={ <Chat/> } />
               <Route path="/news" element={ <h1>news</h1> } />
               <Route path="/music" element={ <h1>music</h1> } />
+              <Route path="/users" element={ <Users/> } />
               <Route path="/settings" element={ <h1>settings</h1> } />
             </Routes>
           </main>

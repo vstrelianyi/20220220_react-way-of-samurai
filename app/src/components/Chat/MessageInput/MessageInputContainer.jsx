@@ -4,8 +4,8 @@ import MessageInput from './MessageInput';
 import { connect } from 'react-redux';
 
 import {
-  updateNewMessageTextActionCreator,
-  addMessageActionCreator
+  updateNewMessageTextAС,
+  addMessageAС
 } from '../../../redux/chat-reducer';
 
 const mapStateToProps = ( state ) => {
@@ -16,12 +16,12 @@ const mapStateToProps = ( state ) => {
 const mapDispatchToProps = ( dispatch ) => {
   return {
     inputChange: ( value ) => {
-      const action = updateNewMessageTextActionCreator( value ) ;
+      const action = updateNewMessageTextAС( value ) ;
       dispatch( action );
     },
     sendMessageClick: ( newMessageText ) => {
       if ( !newMessageText ) return;
-      const action = addMessageActionCreator( newMessageText ) ;
+      const action = addMessageAС( newMessageText ) ;
       dispatch( action );
     },
   };

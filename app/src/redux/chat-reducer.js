@@ -5,9 +5,9 @@ const initialState = {
   ],
 
   dialogs: [
-    { id: 0, name: 'Andrew', },
-    { id: 1, name: 'Alex', },
-    { id: 2, name: 'Sonya', },
+    { id: 0, name: 'Shao Kahn', },
+    { id: 1, name: 'Kung Lao', },
+    { id: 2, name: 'Sonya Blade', },
   ],
   newMessageText: '',
 };
@@ -43,14 +43,14 @@ const chatReducer = ( state = initialState, action ) => {
 
 export default chatReducer;
 
-const updateNewMessageTextActionCreator = ( text ) => {
+const updateNewMessageTextAС = ( text ) => {
   return {
     type: 'UPDATE_NEW_MESSAGE_TEXT',
     payload: { text: text, },
   };
 };
 
-const addMessageActionCreator = ( text ) => {
+const addMessageAС = ( text ) => {
   return {
     type: 'SEND_MESSAGE',
     payload: { text: text, },
@@ -58,6 +58,6 @@ const addMessageActionCreator = ( text ) => {
 };
 
 export {
-  addMessageActionCreator,
-  updateNewMessageTextActionCreator
+  addMessageAС,
+  updateNewMessageTextAС
 };

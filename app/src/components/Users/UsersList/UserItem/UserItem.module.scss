@@ -1,0 +1,39 @@
+@import '../../../../styles/_vars';
+
+.UserItem{
+	display: flex;
+	width: 100%;
+
+	@media( min-width: 576px){
+	}
+	@media( min-width: 768px){
+	}
+	@media( min-width: 992px){
+	}
+
+	
+	:global{
+		.col{
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			&:nth-child(2){
+				flex: 1 1 auto;
+				justify-content: space-between;
+				flex-direction: row;
+			}
+			.left{
+				padding-left: 20px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			.right{
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+		}
+	}
+}

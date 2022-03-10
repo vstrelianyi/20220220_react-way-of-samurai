@@ -36,13 +36,13 @@ const profileReducer = ( state = initialState, action ) => {
 
 export default profileReducer;
 
-const updateNewPostTextActionCreator = ( text ) => {
+const updateNewPostTextAC = ( text ) => {
   return {
     type: 'UPDATE_NEW_POST_TEXT',
     payload: { text: text, },
   };
 };
-const addPostActionCreator = ( text ) => {
+const addPostAС = ( text ) => {
   console.log( text );
 
   return {
@@ -52,6 +52,6 @@ const addPostActionCreator = ( text ) => {
 };
 
 export {
-  addPostActionCreator,
-  updateNewPostTextActionCreator
+  addPostAС,
+  updateNewPostTextAC
 };
