@@ -16,24 +16,22 @@ const chatReducer = ( state = initialState, action ) => {
   const { type, } = action;
 
   switch ( type ){
-  case 'ADD_MESSAGE':{
-    const stateCopy = { ...state, };
-    stateCopy.messages = [ ...state.messages, ];
-    if ( !stateCopy.newMessageText ) return stateCopy;
-    stateCopy.messages.push(
-      {
-        id: 3,
-        text: stateCopy.newMessageText,
-      }
-    );
-    stateCopy.newMessageText = '';
+  case 'UPDATE_NEW_MESSAGE_TEXT':{
+    const { payload: { text, }, } = action;
+    const stateCopy = {
+      ...state,
+      newMessageText: text,
+    };
 
     return stateCopy;
   }
-  case 'UPDATE_NEW_MESSAGE_TEXT':{
-    const stateCopy = { ...state, };
+  case 'SEND_MESSAGE':{
     const { payload: { text, }, } = action;
-    stateCopy.newMessageText = text;
+    const stateCopy = {
+      ...state,
+      messages: [ ...state.messages, { id: 3, text: text, }, ],
+      newMessageText: '',
+    };
 
     return stateCopy;
   }
@@ -52,10 +50,10 @@ const updateNewMessageTextActionCreator = ( text ) => {
   };
 };
 
-const addMessageActionCreator = () => {
+const addMessageActionCreator = ( text ) => {
   return {
-    type: 'ADD_MESSAGE',
-    payload: {},
+    type: 'SEND_MESSAGE',
+    payload: { text: text, },
   };
 };
 

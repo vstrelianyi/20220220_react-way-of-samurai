@@ -2,10 +2,9 @@ import classNames from 'classnames/bind';
 import styles from './TextArea.module.scss';
 
 import React from 'react';
-import { forwardRef } from 'react';
 
-const TextArea = ( props, ref ) => {
-  const { className, id, onChange, value, } = props;
+const TextArea = ( props ) => {
+  const { className, id, onChange, value, onKeyUp, } = props;
 
   const classes = classNames( [
     styles.TextArea,
@@ -18,6 +17,9 @@ const TextArea = ( props, ref ) => {
     const value = e.target.value;
     onChange( value );
   };
+  const handleKeyPress = ( e ) => {
+    onKeyUp( e );
+  };
 
   return (
     <textarea
@@ -25,11 +27,11 @@ const TextArea = ( props, ref ) => {
       id={ id ? id : null }
       cols="30"
       rows="10"
-      // ref={ ref }
       value={ value }
       onChange={ handleOnChange }
+      onKeyUp={ handleKeyPress }
     ></textarea>
   );
 };
 
-export default forwardRef( TextArea );
+export default TextArea;

@@ -13,16 +13,21 @@ const MessageInput = ( props ) => {
   ] );
 
   // HANDLERS
-  const handleSendMessageClick = () => {
-    sendMessageClick() ;
-  };
   const handleInputChange = ( value ) => {
     inputChange( value ) ;
+  };
+  const handleKeyPress = ( e ) => {
+    if ( e.key === 'Enter' ){
+      sendMessageClick( newMessageText ) ;
+    }
+  };
+  const handleSendMessageClick = () => {
+    sendMessageClick( newMessageText ) ;
   };
 
   return (
     <div className={ classes }>
-      <Input className="" id="" onChange={ handleInputChange } value={ newMessageText }/>
+      <Input className="" id="" onChange={ handleInputChange } onKeyUp={ handleKeyPress } value={ newMessageText }/>
       <Button onClick={ handleSendMessageClick }>Send Message</Button>
     </div>
   );

@@ -8,26 +8,23 @@ const initialState = {
 
 const profileReducer = ( state = initialState, action ) => {
   const { type, } = action;
-
   switch ( type ){
-  case 'ADD_POST':{
-    const stateCopy = { ...state, };
-    stateCopy.posts = [ ...state.posts, ];
-    stateCopy.posts.push(
-      {
-        id: 10,
-        message: stateCopy.newPostText,
-        likesCount: 12,
-      }
-    );
-    stateCopy.newPostText = '';
+  case 'UPDATE_NEW_POST_TEXT':{
+    const { payload: { text, }, } = action;
+    const stateCopy = {
+      ...state,
+      newPostText: text,
+    };
 
     return stateCopy;
   }
-  case 'UPDATE_NEW_POST_TEXT':{
-    const stateCopy = { ...state, };
+  case 'ADD_POST':{
     const { payload: { text, }, } = action;
-    stateCopy.newPostText = text;
+    const stateCopy = {
+      ...state,
+      posts: [ ...state.posts, { id: 10, message: text, likesCount: 12, }, ],
+      newPostText: '',
+    };
 
     return stateCopy;
   }
@@ -39,16 +36,17 @@ const profileReducer = ( state = initialState, action ) => {
 
 export default profileReducer;
 
-const addPostActionCreator = () => {
-  return {
-    type: 'ADD_POST',
-    payload: {},
-  };
-};
-
 const updateNewPostTextActionCreator = ( text ) => {
   return {
     type: 'UPDATE_NEW_POST_TEXT',
+    payload: { text: text, },
+  };
+};
+const addPostActionCreator = ( text ) => {
+  console.log( text );
+
+  return {
+    type: 'ADD_POST',
     payload: { text: text, },
   };
 };

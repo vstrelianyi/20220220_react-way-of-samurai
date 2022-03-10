@@ -15,13 +15,13 @@ const mapStateToProps = ( state ) => {
 };
 const mapDispatchToProps = ( dispatch ) => {
   return {
-    sendMessageClick: () => {
-      // if ( !newMessageText ) return;
-      const action = addMessageActionCreator() ;
-      dispatch( action );
-    },
     inputChange: ( value ) => {
       const action = updateNewMessageTextActionCreator( value ) ;
+      dispatch( action );
+    },
+    sendMessageClick: ( newMessageText ) => {
+      if ( !newMessageText ) return;
+      const action = addMessageActionCreator( newMessageText ) ;
       dispatch( action );
     },
   };

@@ -20,8 +20,9 @@ const mapDispatchToProps = ( dispatch ) => {
       const action = updateNewPostTextActionCreator( value ) ;
       dispatch( action );
     },
-    addPostClick: () => {
-      const action = addPostActionCreator();
+    addPostClick: ( newPostText ) => {
+      if ( !newPostText ) return;
+      const action = addPostActionCreator( newPostText );
       dispatch( action );
     },
   };

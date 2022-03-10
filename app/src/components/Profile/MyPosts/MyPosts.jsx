@@ -1,5 +1,3 @@
-import React from 'react';
-
 import classNames from 'classnames/bind';
 import styles from './MyPosts.module.scss';
 import PostItem from './PostItem/PostItem';
@@ -16,19 +14,22 @@ const MyPosts = ( props ) => {
     'example',
   ] );
 
-  const textarea = React.createRef();
-
   // HANDLERS
-  const handleAddPostClick = () => {
-    addPostClick();
-  };
   const handlePostTextChange = ( value ) => {
     postTextChange( value );
+  };
+  const handleKeyPress = ( e ) => {
+    if ( e.key === 'Enter' ){
+      addPostClick( newPostText ) ;
+    }
+  };
+  const handleAddPostClick = () => {
+    addPostClick( newPostText );
   };
 
   return (
     <div className={ classes }>
-      <TextArea className="" id="" ref={ textarea } onChange={ handlePostTextChange } value={ newPostText }/>
+      <TextArea className="" id="" value={ newPostText } onChange={ handlePostTextChange } onKeyUp={ handleKeyPress }/>
       <Button onClick={ handleAddPostClick }>Add Post</Button>
 
       <div className='posts-list'>

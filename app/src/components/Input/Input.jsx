@@ -4,7 +4,7 @@ import classNames from 'classnames/bind';
 import styles from './Input.module.scss';
 
 const Input = ( props ) => {
-  const { className, id, onChange, value, } = props;
+  const { className, id, onChange, onKeyUp, value, } = props;
 
   const classes = classNames( [
     styles.Input,
@@ -17,12 +17,17 @@ const Input = ( props ) => {
     onChange( value );
   };
 
+  const handleKeyPress = ( e ) => {
+    onKeyUp( e );
+  };
+
   return (
     <input
       className={ classes }
       id={ id ? id : null }
       value={ value }
       onChange={ handleInputChange }
+      onKeyUp= { handleKeyPress }
     />
   );
 };
