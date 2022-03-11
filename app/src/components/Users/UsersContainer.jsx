@@ -4,6 +4,7 @@ import {
   setUsersAC
 } from '../../redux/users-reducer';
 import UsersList from './UsersList/UsersList';
+import UsersListC from './UsersList/UsersListC';
 
 // REDUX
 import { connect } from 'react-redux';
@@ -31,6 +32,6 @@ const mapDispatchToProps = ( dispatch ) => {
   };
 };
 
-const UsersContainer = connect( mapStateToProps, mapDispatchToProps )( UsersList );
+const UsersContainer = connect( mapStateToProps, mapDispatchToProps )( UsersListC );
 
 export default UsersContainer;

@@ -4,6 +4,7 @@ import styles from './UsersList.module.scss';
 import UserItem from './UserItem/UserItem';
 
 import axios from 'axios';
+import Button from '../../Button/Button';
 
 const UsersList = ( props ) => {
   const { users, setUsers, followUser, unFollowUser, } = props;
@@ -13,13 +14,13 @@ const UsersList = ( props ) => {
     'UsersList',
   ] );
 
-  if ( users.length < 10 ){
+  const getUsers = () => {
     axios.get( 'https://social-network.samuraijs.com/api/1.0/users' )
       .then( res => {
         const items = res.data.items;
         setUsers( items );
       } );
-  }
+  };
 
   // if ( users.length < 3 ){
   //   setUsers( [ { id: 1, name: 'Kitana', status: '', location: { city: 'Kyiv', country: 'Ukraine', }, isFollowed: false, image: '', description: '', }, ] );
@@ -28,6 +29,7 @@ const UsersList = ( props ) => {
   return (
     <div className={ classes }>
       { users && users.map ( user => <UserItem key={ user.id } user={ user }/> )  }
+      <Button onClick={ getUsers }>Get Users</Button>
     </div>
   );
 };
