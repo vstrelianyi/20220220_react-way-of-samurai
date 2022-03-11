@@ -9,8 +9,7 @@ import Button from '../../Button/Button';
 import React from 'react';
 
 class UsersListС extends React.Component {
-  constructor () {
-    super();
+  componentDidMount () {
     this.getUsers();
   }
 
@@ -18,7 +17,6 @@ class UsersListС extends React.Component {
     axios.get( 'https://social-network.samuraijs.com/api/1.0/users' )
       .then( res => {
         const items = res.data.items;
-        console.log( this );
         this.props.setUsers( items );
       } );
   }
@@ -32,7 +30,7 @@ class UsersListС extends React.Component {
     return (
       <div className={ classes }>
         { this.props.users &&  this.props.users.map ( user => <UserItem key={ user.id } user={ user }/> )  }
-        <Button onClick={ this.getUsers }>Get Users</Button>
+        <Button onClick={ this.getUsers.bind( this ) }>Get Users</Button>
       </div>
     );
   }
