@@ -17,20 +17,20 @@ const UserItem = ( props ) => {
 
       <div className="col">
         <picture>
-          <source srcSet={ user.image } type="image/webp" />
-          <img src={ user.image } alt="" />
+          <source srcSet={ user?.image } type="image/webp" />
+          <img src={ user?.image } alt="" />
         </picture>
-        { user.isFollowed ? <Button>Unfollow</Button> : <Button>Follow</Button> }
+        { user?.isFollowed ? <Button>Unfollow</Button> : <Button>Follow</Button> }
       </div>
 
       <div className="col">
         <div className="left">
-          <DataField label="name:" value={ user.name }/>
-          <DataField label="description:" value={ user.description }/>
+          <DataField label="name:" value={ user?.name }/>
+          <DataField label="description:" value={ user?.description }/>
         </div>
         <div className="right">
-          <DataField label="country:" value={ user.location.country }/>
-          <DataField label="city:" value={ user.location.city }/>
+          <DataField label="country:" value={ user?.location?.country }/>
+          <DataField label="city:" value={ user?.location?.city }/>
         </div>
       </div>
 
