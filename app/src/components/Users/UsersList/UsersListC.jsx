@@ -8,6 +8,9 @@ import Button from '../../Button/Button';
 
 import React from 'react';
 import Pagination from '../../Pagination/Pagination';
+import LoaderBox from '../../LoaderBox/LoaderBox';
+import LoaderDots from '../../LoaderDots/LoaderDots';
+import LoaderSpinner from '../../LoaderSpinner/LoaderSpinner';
 
 class UsersListС extends React.Component {
   componentDidMount () {
@@ -23,6 +26,7 @@ class UsersListС extends React.Component {
   }
 
   onPageChanged ( page ) {
+    this.props.toggleIsLoadingAC( !this.props.isLoading );
     this.props.setCurrentPage( page );
     axios.get( `https://social-network.samuraijs.com/api/1.0/users?page=${ page }&count=${ this.props.pageSize }` )
       .then( res => {
@@ -30,6 +34,7 @@ class UsersListС extends React.Component {
         console.log( items, totalCount );
         this.props.setUsers( items );
         this.props.setTotalUsersCount( totalCount );
+        this.props.toggleIsLoadingAC( !this.props.isLoading );
       } );
   }
 
@@ -42,11 +47,15 @@ class UsersListС extends React.Component {
     const pagesCount = Math.ceil( this.props.totalUsersCount / this.props.pageSize );
 
     return (
-      <div className={ classes }>
+      <>
         <Pagination pagesCount={ pagesCount } currentPage={ this.props.currentPage } onPageChanged={ this.onPageChanged.bind( this ) }/>
-        { this.props.users &&  this.props.users.map ( user => <UserItem key={ user.id } user={ user }/> )  }
+        { this.props.isLoading ? <LoaderSpinner isLoading={ this.props.isLoading }/> : (
+          <div className={ classes }>
+            { this.props.users &&  this.props.users.map ( user => <UserItem key={ user.id } user={ user }/> )  }
+          </div>
+        ) }
         <Button onClick={ this.getUsers.bind( this ) }>Get Users</Button>
-      </div>
+      </>
     );
   }
 }

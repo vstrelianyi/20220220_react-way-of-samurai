@@ -3,7 +3,8 @@ import {
   unFollowAC,
   setUsersAC,
   setCurrentPageAC,
-  setTotalUsersCountAC
+  setTotalUsersCountAC,
+  toggleIsLoadingAC
 } from '../../redux/users-reducer';
 
 // COMPONENTS
@@ -19,6 +20,7 @@ const mapStateToProps = ( state ) => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
+    isLoading: state.usersPage.isLoading,
   };
 };
 
@@ -42,6 +44,10 @@ const mapDispatchToProps = ( dispatch ) => {
     },
     setTotalUsersCount: ( totalUsers ) => {
       const action = setTotalUsersCountAC( totalUsers ) ;
+      dispatch( action );
+    },
+    toggleIsLoadingAC: ( isLoading ) => {
+      const action = toggleIsLoadingAC( isLoading ) ;
       dispatch( action );
     },
   };

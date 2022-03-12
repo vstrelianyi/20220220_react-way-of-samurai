@@ -9,9 +9,10 @@ const initialState = {
     { id: 0, name: 'Shao Kahn', status: '', location: { city: 'Kyiv', country: 'Ukraine', }, isFollowed: true, image: shao, description: '', },
     { id: 1, name: 'Sonya Blade', status: '', location: { city: 'Kyiv', country: 'Ukraine', }, isFollowed: false, image: sonya, description: '', },
   ],
-  pageSize: 100,
+  pageSize: 5,
   totalUsersCount: 10,
   currentPage: 1,
+  isLoading: false,
 };
 
 const usersReducer = ( state = initialState, action ) => {
@@ -72,6 +73,14 @@ const usersReducer = ( state = initialState, action ) => {
       totalUsersCount: totalUsers,
     };
   }
+  case 'TOGGLE_IS_LOADING':{
+    const { payload: { isLoading, }, } = action;
+
+    return {
+      ...state,
+      isLoading: isLoading,
+    };
+  }
 
   default:{
     return state;
@@ -112,11 +121,18 @@ const setTotalUsersCountAC = ( totalUsers  ) => {
     payload: { totalUsers, },
   };
 };
+const toggleIsLoadingAC = ( isLoading  ) => {
+  return {
+    type: 'TOGGLE_IS_LOADING',
+    payload: { isLoading, },
+  };
+};
 
 export {
   followAC,
   unFollowAC,
   setUsersAC,
   setCurrentPageAC,
-  setTotalUsersCountAC
+  setTotalUsersCountAC,
+  toggleIsLoadingAC
 };
