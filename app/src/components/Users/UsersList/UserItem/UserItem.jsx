@@ -4,13 +4,17 @@ import DataField from '../../../DataField/DataField';
 import styles from './UserItem.module.scss';
 
 const UserItem = ( props ) => {
-  const { user, } = props;
+  const { user, toggleIsFollowed, } = props;
 
   const classes = classNames( [
     styles.UserItem,
     'user-item',
     'bordered',
   ] );
+
+  const handleFollowClick = () => {
+    toggleIsFollowed( user.id, user?.isFollowed );
+  };
 
   return (
     <div className={ classes }>
@@ -20,7 +24,7 @@ const UserItem = ( props ) => {
           <source srcSet={ user?.image } type="image/webp" />
           <img src={ user?.image } alt="" />
         </picture>
-        { user?.isFollowed ? <Button>Unfollow</Button> : <Button>Follow</Button> }
+        {  <Button onClick={ handleFollowClick }>{ user?.isFollowed ? 'Unfollow' : 'Follow' }</Button> }
       </div>
 
       <div className="col">

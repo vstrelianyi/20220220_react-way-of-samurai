@@ -8,8 +8,8 @@ import Button from '../../Button/Button';
 
 import React from 'react';
 import Pagination from '../../Pagination/Pagination';
-import LoaderBox from '../../LoaderBox/LoaderBox';
-import LoaderDots from '../../LoaderDots/LoaderDots';
+// import LoaderBox from '../../LoaderBox/LoaderBox';
+// import LoaderDots from '../../LoaderDots/LoaderDots';
 import LoaderSpinner from '../../LoaderSpinner/LoaderSpinner';
 
 class UsersListС extends React.Component {
@@ -38,6 +38,16 @@ class UsersListС extends React.Component {
       } );
   }
 
+  toggleIsFollowed ( userId, isFollowed ) {
+    console.log( userId, isFollowed );
+    if ( isFollowed ){
+      this.props.unFollowUser( userId );
+    }
+    else {
+      this.props.followUser( userId );
+    }
+  }
+
   render () {
     const classes = classNames( [
       styles.UsersList,
@@ -51,7 +61,7 @@ class UsersListС extends React.Component {
         <Pagination pagesCount={ pagesCount } currentPage={ this.props.currentPage } onPageChanged={ this.onPageChanged.bind( this ) }/>
         { this.props.isLoading ? <LoaderSpinner isLoading={ this.props.isLoading }/> : (
           <div className={ classes }>
-            { this.props.users &&  this.props.users.map ( user => <UserItem key={ user.id } user={ user }/> )  }
+            { this.props.users &&  this.props.users.map ( user => <UserItem key={ user.id } user={ user } toggleIsFollowed={ this.toggleIsFollowed.bind( this ) }/> )  }
           </div>
         ) }
         <Button onClick={ this.getUsers.bind( this ) }>Get Users</Button>

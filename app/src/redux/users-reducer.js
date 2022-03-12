@@ -18,28 +18,28 @@ const initialState = {
 const usersReducer = ( state = initialState, action ) => {
   const { type, } = action;
   switch ( type ){
-  case 'FOLLOW':{
+  case 'FOLLOW_USER':{
     const { payload: { userId, }, } = action;
 
     return {
       ...state,
       users: state.users.map( user => {
         if ( user.id === userId ){
-          return { ...user, followed: true, };
+          return { ...user, isFollowed: true, };
         }
 
         return user;
       } ),
     };
   }
-  case 'UNFOLLOW':{
+  case 'UNFOLLOW_USER':{
     const { payload: { userId, }, } = action;
 
     return {
       ...state,
       users: state.users.map( user => {
         if ( user.id === userId ){
-          return { ...user, followed: false, };
+          return { ...user, isFollowed: false, };
         }
 
         return user;
@@ -91,37 +91,37 @@ const usersReducer = ( state = initialState, action ) => {
 export default usersReducer;
 
 // ACTION CREATORS
-const followAC = ( userId ) => {
+const followUser = ( userId ) => {
   return {
-    type: 'FOLLOW',
+    type: 'FOLLOW_USER',
     payload: { userId, },
   };
 };
-const unFollowAC = ( userId ) => {
+const unFollowUser = ( userId ) => {
   return {
-    type: 'UNFOLLOW',
+    type: 'UNFOLLOW_USER',
     payload: { userId, },
   };
 };
-const setUsersAC = ( users ) => {
+const setUsers = ( users ) => {
   return {
     type: 'SET_USERS',
     payload: { users, },
   };
 };
-const setCurrentPageAC = ( currentPage ) => {
+const setCurrentPage = ( currentPage ) => {
   return {
     type: 'SET_CURRENT_PAGE',
     payload: { currentPage, },
   };
 };
-const setTotalUsersCountAC = ( totalUsers  ) => {
+const setTotalUsersCount = ( totalUsers  ) => {
   return {
     type: 'SET_TOTAL_USERS_COUNT',
     payload: { totalUsers, },
   };
 };
-const toggleIsLoadingAC = ( isLoading  ) => {
+const toggleIsLoading = ( isLoading  ) => {
   return {
     type: 'TOGGLE_IS_LOADING',
     payload: { isLoading, },
@@ -129,10 +129,10 @@ const toggleIsLoadingAC = ( isLoading  ) => {
 };
 
 export {
-  followAC,
-  unFollowAC,
-  setUsersAC,
-  setCurrentPageAC,
-  setTotalUsersCountAC,
-  toggleIsLoadingAC
+  followUser,
+  unFollowUser,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleIsLoading
 };

@@ -1,10 +1,10 @@
 import {
-  followAC,
-  unFollowAC,
-  setUsersAC,
-  setCurrentPageAC,
-  setTotalUsersCountAC,
-  toggleIsLoadingAC
+  followUser,
+  unFollowUser,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleIsLoading
 } from '../../redux/users-reducer';
 
 // COMPONENTS
@@ -24,35 +24,13 @@ const mapStateToProps = ( state ) => {
   };
 };
 
-const mapDispatchToProps = ( dispatch ) => {
-  return {
-    followUser: ( value ) => {
-      const action = followAC( value ) ;
-      dispatch( action );
-    },
-    unFollowUser: ( value ) => {
-      const action = unFollowAC( value ) ;
-      dispatch( action );
-    },
-    setUsers: ( users ) => {
-      const action = setUsersAC( users ) ;
-      dispatch( action );
-    },
-    setCurrentPage: ( page ) => {
-      const action = setCurrentPageAC( page ) ;
-      dispatch( action );
-    },
-    setTotalUsersCount: ( totalUsers ) => {
-      const action = setTotalUsersCountAC( totalUsers ) ;
-      dispatch( action );
-    },
-    toggleIsLoadingAC: ( isLoading ) => {
-      const action = toggleIsLoadingAC( isLoading ) ;
-      dispatch( action );
-    },
-  };
-};
-
-const UsersContainer = connect( mapStateToProps, mapDispatchToProps )( UsersListC );
+const UsersContainer = connect( mapStateToProps, {
+  followUser,
+  unFollowUser,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount,
+  toggleIsLoading,
+} )( UsersListC );
 
 export default UsersContainer;

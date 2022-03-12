@@ -1,6 +1,6 @@
 import {
-  addPostAС,
-  updateNewPostTextAC
+  addPost,
+  updateNewPostText
 } from '../../../redux/profile-reducer';
 import MyPosts from './MyPosts';
 
@@ -17,12 +17,12 @@ const mapStateToProps = ( state ) => {
 const mapDispatchToProps = ( dispatch ) => {
   return {
     postTextChange: ( value ) => {
-      const action = updateNewPostTextAC( value ) ;
+      const action = updateNewPostText( value ) ;
       dispatch( action );
     },
     addPostClick: ( newPostText ) => {
       if ( !newPostText ) return;
-      const action = addPostAС( newPostText );
+      const action = addPost( newPostText );
       dispatch( action );
     },
   };

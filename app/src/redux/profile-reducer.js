@@ -37,13 +37,13 @@ const profileReducer = ( state = initialState, action ) => {
 export default profileReducer;
 
 // ACTION CREATORS
-const updateNewPostTextAC = ( text ) => {
+const updateNewPostText = ( text ) => {
   return {
     type: 'UPDATE_NEW_POST_TEXT',
     payload: { text: text, },
   };
 };
-const addPostAС = ( text ) => {
+const addPost = ( text ) => {
   console.log( text );
 
   return {
@@ -53,6 +53,6 @@ const addPostAС = ( text ) => {
 };
 
 export {
-  addPostAС,
-  updateNewPostTextAC
+  updateNewPostText,
+  addPost
 };

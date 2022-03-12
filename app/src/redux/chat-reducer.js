@@ -44,14 +44,14 @@ const chatReducer = ( state = initialState, action ) => {
 export default chatReducer;
 
 // ACTION CREATORS
-const updateNewMessageTextAС = ( text ) => {
+const updateNewMessageText = ( text ) => {
   return {
     type: 'UPDATE_NEW_MESSAGE_TEXT',
     payload: { text: text, },
   };
 };
 
-const addMessageAС = ( text ) => {
+const addMessage = ( text ) => {
   return {
     type: 'SEND_MESSAGE',
     payload: { text: text, },
@@ -59,6 +59,6 @@ const addMessageAС = ( text ) => {
 };
 
 export {
-  addMessageAС,
-  updateNewMessageTextAС
+  addMessage,
+  updateNewMessageText
 };
