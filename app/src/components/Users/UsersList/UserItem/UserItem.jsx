@@ -1,7 +1,10 @@
 import classNames from 'classnames/bind';
+import styles from './UserItem.module.scss';
+
+// COMPONENTS
 import Button from '../../../Button/Button';
 import DataField from '../../../DataField/DataField';
-import styles from './UserItem.module.scss';
+import { NavLink } from 'react-router-dom';
 
 const UserItem = ( props ) => {
   const { user, toggleIsFollowed, } = props;
@@ -20,11 +23,14 @@ const UserItem = ( props ) => {
     <div className={ classes }>
 
       <div className="col">
-        <picture>
-          <source srcSet={ user?.image } type="image/webp" />
-          <img src={ user?.image } alt="" />
-        </picture>
+        <NavLink to={ `/profile/${ user?.id }` }>
+          <picture>
+            <source srcSet={ user?.image } type="image/webp" />
+            <img src={ user?.image } alt="" />
+          </picture>
+        </NavLink>
         {  <Button onClick={ handleFollowClick }>{ user?.isFollowed ? 'Unfollow' : 'Follow' }</Button> }
+
       </div>
 
       <div className="col">

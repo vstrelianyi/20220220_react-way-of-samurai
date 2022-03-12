@@ -4,6 +4,7 @@ const initialState = {
     { id: 1, message: 'Its my first post', likesCount: 10, },
   ],
   newPostText: '',
+  profile: null,
 };
 
 const profileReducer = ( state = initialState, action ) => {
@@ -28,6 +29,15 @@ const profileReducer = ( state = initialState, action ) => {
 
     return stateCopy;
   }
+  case 'SET_USER_PROFILE':{
+    const { payload: { profile, }, } = action;
+    const stateCopy = {
+      ...state,
+      profile,
+    };
+
+    return stateCopy;
+  }
   default:{
     return state;
   }
@@ -40,19 +50,24 @@ export default profileReducer;
 const updateNewPostText = ( text ) => {
   return {
     type: 'UPDATE_NEW_POST_TEXT',
-    payload: { text: text, },
+    payload: { text, },
   };
 };
 const addPost = ( text ) => {
-  console.log( text );
-
   return {
     type: 'ADD_POST',
-    payload: { text: text, },
+    payload: { text, },
+  };
+};
+const setUserProfile = ( profile ) => {
+  return {
+    type: 'SET_USER_PROFILE',
+    payload: { profile, },
   };
 };
 
 export {
   updateNewPostText,
-  addPost
+  addPost,
+  setUserProfile
 };

@@ -11,7 +11,7 @@ const MyPosts = ( props ) => {
 
   const classes = classNames( [
     styles.MyPosts,
-    'example',
+    'my-posts',
   ] );
 
   // HANDLERS
