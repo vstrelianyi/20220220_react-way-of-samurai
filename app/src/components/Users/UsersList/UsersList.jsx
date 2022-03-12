@@ -7,7 +7,7 @@ import axios from 'axios';
 import Button from '../../Button/Button';
 
 const UsersList = ( props ) => {
-  const { users, setUsers, followUser, unFollowUser, } = props;
+  const { users, pageSize, totalUsersCount, setUsers, followUser, unFollowUser, } = props;
 
   const classes = classNames( [
     styles.UsersList,

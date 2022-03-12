@@ -43,6 +43,7 @@ const chatReducer = ( state = initialState, action ) => {
 
 export default chatReducer;
 
+// ACTION CREATORS
 const updateNewMessageTextAС = ( text ) => {
   return {
     type: 'UPDATE_NEW_MESSAGE_TEXT',

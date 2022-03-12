@@ -9,6 +9,9 @@ const initialState = {
     { id: 0, name: 'Shao Kahn', status: '', location: { city: 'Kyiv', country: 'Ukraine', }, isFollowed: true, image: shao, description: '', },
     { id: 1, name: 'Sonya Blade', status: '', location: { city: 'Kyiv', country: 'Ukraine', }, isFollowed: false, image: sonya, description: '', },
   ],
+  pageSize: 100,
+  totalUsersCount: 10,
+  currentPage: 1,
 };
 
 const usersReducer = ( state = initialState, action ) => {
@@ -47,9 +50,29 @@ const usersReducer = ( state = initialState, action ) => {
 
     return {
       ...state,
-      users: [ ...state.users, ...users, ],
+      users: [
+        // ...state.users,
+        ...users,
+      ],
     };
   }
+  case 'SET_CURRENT_PAGE':{
+    const { payload: { currentPage, }, } = action;
+
+    return {
+      ...state,
+      currentPage: currentPage,
+    };
+  }
+  case 'SET_TOTAL_USERS_COUNT':{
+    const { payload: { totalUsers, }, } = action;
+
+    return {
+      ...state,
+      totalUsersCount: totalUsers,
+    };
+  }
+
   default:{
     return state;
   }
@@ -58,6 +81,7 @@ const usersReducer = ( state = initialState, action ) => {
 
 export default usersReducer;
 
+// ACTION CREATORS
 const followAC = ( userId ) => {
   return {
     type: 'FOLLOW',
@@ -76,9 +100,23 @@ const setUsersAC = ( users ) => {
     payload: { users, },
   };
 };
+const setCurrentPageAC = ( currentPage ) => {
+  return {
+    type: 'SET_CURRENT_PAGE',
+    payload: { currentPage, },
+  };
+};
+const setTotalUsersCountAC = ( totalUsers  ) => {
+  return {
+    type: 'SET_TOTAL_USERS_COUNT',
+    payload: { totalUsers, },
+  };
+};
 
 export {
   followAC,
   unFollowAC,
-  setUsersAC
+  setUsersAC,
+  setCurrentPageAC,
+  setTotalUsersCountAC
 };

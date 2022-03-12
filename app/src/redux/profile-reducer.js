@@ -36,6 +36,7 @@ const profileReducer = ( state = initialState, action ) => {
 
 export default profileReducer;
 
+// ACTION CREATORS
 const updateNewPostTextAC = ( text ) => {
   return {
     type: 'UPDATE_NEW_POST_TEXT',

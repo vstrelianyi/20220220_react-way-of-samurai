@@ -1,0 +1,31 @@
+@import '../../styles/_vars';
+
+.Pagination{
+	display: flex;
+	justify-content: center;
+	padding: 10px 0;
+
+	@media( min-width: 576px){
+	}
+	@media( min-width: 768px){
+	}
+	@media( min-width: 992px){
+	}
+
+	:global{
+		li{
+			margin: 0 5px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0;
+			&.current{
+				background-color: $green-dark;
+			}
+			button{
+				height: 40px;
+				width: 40px;
+			}
+		}
+	}
+}
