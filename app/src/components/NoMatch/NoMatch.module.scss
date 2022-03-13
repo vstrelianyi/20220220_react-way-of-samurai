@@ -1,8 +1,8 @@
-@import '../../../styles/_vars';
+@import '../../styles/_vars';
 
-.UsersList{
+.NoMatch{
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
 
 	@media( min-width: 576px){
 	}
@@ -11,8 +11,9 @@
 	@media( min-width: 992px){
 	}
 
-	
 	:global{
-		
+		h1{
+			text-align: center;
+		}
 	}
 }

@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+// import { Outlet } from 'react-router-dom';
 import styles from './Users.module.scss';
 import UsersContainer from './UsersContainer';
 
@@ -11,6 +12,7 @@ const Users = ( props ) => {
   return (
     <div className={ classes }>
       <UsersContainer/>
+      { /* <Outlet/> */ }
     </div>
   );
 };

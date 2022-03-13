@@ -1,13 +1,13 @@
 import classNames from 'classnames/bind';
 import DataField from '../../DataField/DataField';
-import styles from './ProfileInfoC.module.scss';
+import styles from './ProfileInfoClass.module.scss';
 
 import React from 'react';
 
 import axios from 'axios';
-import LoaderSpinner from '../../LoaderSpinner/LoaderSpinner';
+import LoaderSpinner from '../../Loaders/LoaderSpinner/LoaderSpinner';
 
-class ProfileInfoC extends React.Component {
+class ProfileInfoClass extends React.Component {
 
   componentDidMount () {
     axios.get( 'https://social-network.samuraijs.com/api/1.0/profile/2' )
@@ -19,11 +19,11 @@ class ProfileInfoC extends React.Component {
 
   render () {
     const classes = classNames( [
-      styles.ProfileInfoC,
+      styles.ProfileInfoClass,
       'profile-info',
     ] );
 
-    console.log( this.props?.profile );
+    console.log( this.props );
 
     if ( !this.props?.profile ){
       return <LoaderSpinner isLoading={ true }/>;
@@ -43,4 +43,4 @@ class ProfileInfoC extends React.Component {
 
 }
 
-export default ProfileInfoC;
+export default ProfileInfoClass;

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import styles from './UsersList.module.scss';
+import styles from './UsersListClass.module.scss';
 
 import UserItem from './UserItem/UserItem';
 
@@ -10,9 +10,9 @@ import React from 'react';
 import Pagination from '../../Pagination/Pagination';
 // import LoaderBox from '../../LoaderBox/LoaderBox';
 // import LoaderDots from '../../LoaderDots/LoaderDots';
-import LoaderSpinner from '../../LoaderSpinner/LoaderSpinner';
+import LoaderSpinner from '../../Loaders/LoaderSpinner/LoaderSpinner';
 
-class UsersListС extends React.Component {
+class UsersListClass extends React.Component {
   componentDidMount () {
     // this.getUsers();
   }
@@ -39,7 +39,6 @@ class UsersListС extends React.Component {
   }
 
   toggleIsFollowed ( userId, isFollowed ) {
-    console.log( userId, isFollowed );
     if ( isFollowed ){
       this.props.unFollowUser( userId );
     }
@@ -50,8 +49,8 @@ class UsersListС extends React.Component {
 
   render () {
     const classes = classNames( [
-      styles.UsersList,
-      'UsersList',
+      styles.UsersListClass,
+      'users-list',
     ] );
 
     const pagesCount = Math.ceil( this.props.totalUsersCount / this.props.pageSize );
@@ -70,4 +69,4 @@ class UsersListС extends React.Component {
   }
 }
 
-export default UsersListС;
+export default UsersListClass;

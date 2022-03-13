@@ -17,6 +17,8 @@ import {
   Route
 } from 'react-router-dom';
 import Users from './components/Users/Users';
+import SingleUserContainer from './components/Users/SingleUserClass/SingleUserContainer';
+import NoMatch from './components/NoMatch/NoMatch';
 
 const App = ( props ) => {
   const { children, } = props;
@@ -30,7 +32,6 @@ const App = ( props ) => {
   return (
     <HelmetProvider>
       <BrowserRouter>
-
         <div className={ classes }>
           <Helmet>
             <meta charSet="utf-8" />
@@ -46,8 +47,13 @@ const App = ( props ) => {
               <Route path="/chat" element={ <Chat/> } />
               <Route path="/news" element={ <h1>news</h1> } />
               <Route path="/music" element={ <h1>music</h1> } />
+              { /* <Route path="/users" element={ <Users/> } >
+                <Route path=":userId" element={ <SingleUser/> } />
+              </Route> */ }
               <Route path="/users" element={ <Users/> } />
+              <Route path="/users/:userId" element={ <SingleUserContainer/> } ></Route>
               <Route path="/settings" element={ <h1>settings</h1> } />
+              <Route path="*" element={ <NoMatch/> } />
             </Routes>
           </main>
         </div>

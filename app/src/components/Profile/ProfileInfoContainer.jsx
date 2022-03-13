@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {
   setUserProfile
 } from '../../redux/profile-reducer';
-import ProfileInfoC from './ProfileInfoC/ProfileInfoC';
+import ProfileInfoClass from './ProfileInfoClass/ProfileInfoClass';
 
 const mapStateToProps = ( state ) => {
   return {
@@ -12,6 +12,4 @@ const mapStateToProps = ( state ) => {
   };
 };
 
-export default connect( mapStateToProps, {
-  setUserProfile,
-} )( ProfileInfoC );
+export default connect( mapStateToProps, { setUserProfile, } )( ProfileInfoClass );

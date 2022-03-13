@@ -1,7 +1,9 @@
 import classNames from 'classnames/bind';
 import MyPostsContainer from './MyPosts/MyPostsContainer';
-import ProfileContainer from './ProfileContainer';
+import ProfileInfoContainer from './ProfileInfoContainer';
 import styles from './Profile.module.scss';
+
+import { useParams } from 'react-router-dom';
 
 const Profile = ( props ) => {
   const classes = classNames( [
@@ -9,9 +11,12 @@ const Profile = ( props ) => {
     'profile',
   ] );
 
+  const params = useParams();
+  console.log( params );
+
   return (
     <div className={ classes }>
-      <ProfileContainer/>
+      <ProfileInfoContainer/>
       <MyPostsContainer/>
     </div>
   );

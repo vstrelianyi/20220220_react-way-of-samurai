@@ -8,8 +8,7 @@ import {
 } from '../../redux/users-reducer';
 
 // COMPONENTS
-// import UsersList from './UsersList/UsersList';
-import UsersListC from './UsersList/UsersListC';
+import UsersListClass from './UsersList/UsersListClass';
 
 // REDUX
 import { connect } from 'react-redux';
@@ -31,6 +30,6 @@ const UsersContainer = connect( mapStateToProps, {
   setCurrentPage,
   setTotalUsersCount,
   toggleIsLoading,
-} )( UsersListC );
+} )( UsersListClass );
 
 export default UsersContainer;
