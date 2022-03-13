@@ -8,7 +8,7 @@ class LoginCointainerClass extends React.Component {
   render () {
     const classes = classNames( [
       styles.Example,
-      'example',
+      'login-container',
     ] );
 
     return <Login/>;
