@@ -6,7 +6,7 @@ import './styles/_globals.scss';
 import { BrowserRouter } from 'react-router-dom';
 
 // COMPONENTS
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
 import Chat from './components/Chat/Chat';
@@ -38,7 +38,7 @@ const App = ( props ) => {
             <title>Samurai chat</title>
             <link rel="canonical" href="http://mysite.com/example" />
           </Helmet>
-          <Header/>
+          <HeaderContainer/>
           <Nav/>
           <main className="main">
             <Routes>

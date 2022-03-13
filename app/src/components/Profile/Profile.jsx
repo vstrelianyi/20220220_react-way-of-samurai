@@ -10,9 +10,7 @@ const Profile = ( props ) => {
     styles.Profile,
     'profile',
   ] );
-
   const params = useParams();
-  console.log( params );
 
   return (
     <div className={ classes }>

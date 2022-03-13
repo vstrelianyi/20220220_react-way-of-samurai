@@ -6,6 +6,9 @@ import Button from '../../../Button/Button';
 import DataField from '../../../DataField/DataField';
 import { Link } from 'react-router-dom';
 
+// IMAGES
+import image_default from '../../../../images/users/default.png';
+
 const UserItem = ( props ) => {
   const { user, toggleIsFollowed, } = props;
 
@@ -19,14 +22,16 @@ const UserItem = ( props ) => {
     toggleIsFollowed( user.id, user?.isFollowed );
   };
 
+  const userImage = user?.image ? user?.image : image_default;
+
   return (
     <div className={ classes }>
 
       <div className="col">
         <Link to={ `/users/${ user?.id }` }>
           <picture>
-            <source srcSet={ user?.image } type="image/webp" />
-            <img src={ user?.image } alt="" />
+            <source srcSet={ userImage } type="image/webp" />
+            <img src={ userImage } alt="" />
           </picture>
         </Link>
         {  <Button onClick={ handleFollowClick }>{ user?.isFollowed ? 'Unfollow' : 'Follow' }</Button> }

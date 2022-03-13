@@ -5,13 +5,25 @@ import LoaderSpinner from '../../Loaders/LoaderSpinner/LoaderSpinner';
 
 import classNames from 'classnames';
 import styles from './SingleUserClass.module.scss';
+import DataField from '../../DataField/DataField';
+
+// IMAGES
+import image_default from '../../../images/users/default.png';
 
 class SingleUserClass extends React.Component {
+  constructor ( props ) {
+    super( props );
+    this.state = {
+      profile: null,
+    };
+  }
+
   componentDidMount () {
     axios.get( `https://social-network.samuraijs.com/api/1.0/profile/${ this.props.userId }` )
       .then( res => {
         const profile = res.data;
-        console.log( profile );
+        this.setState( { profile, } );
+        // console.log( 'this.profile', this.profile );
         // this.props.setUserProfile( profile );
       } );
   }
@@ -22,12 +34,20 @@ class SingleUserClass extends React.Component {
       'single-user',
     ] );
 
-    if ( !this.props.userId ){
+    if ( !this.state.profile ){
       return <LoaderSpinner isLoading={ true }/>;
     }
 
+    const userImage = this.profile?.photos?.small ? this.profile?.photos?.small : image_default;
+
     return (
-      <div className={ classes }>{ this.props.userId }</div>
+      <div className={ classes }>
+        <picture>
+          <source srcSet={ userImage } type="image/webp" />
+          <img src={ userImage } alt="" />
+        </picture>
+        <DataField  label="name: " value={ this.state.profile?.fullName }/>
+      </div>
     );
   }
 

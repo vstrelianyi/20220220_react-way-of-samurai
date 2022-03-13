@@ -23,8 +23,6 @@ class ProfileInfoClass extends React.Component {
       'profile-info',
     ] );
 
-    console.log( this.props );
-
     if ( !this.props?.profile ){
       return <LoaderSpinner isLoading={ true }/>;
     }
