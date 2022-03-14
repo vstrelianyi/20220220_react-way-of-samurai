@@ -13,6 +13,7 @@ const initialState = {
   totalUsersCount: 10,
   currentPage: 1,
   isLoading: false,
+  isButtonsDisabled: [ 0, 1, ],
 };
 
 const usersReducer = ( state = initialState, action ) => {
@@ -81,6 +82,16 @@ const usersReducer = ( state = initialState, action ) => {
       isLoading: isLoading,
     };
   }
+  case 'TOGGLE_IS_BUTTONS_DISABLED':{
+    const { payload: { isLoading, userId, }, } = action;
+
+    return {
+      ...state,
+      isButtonsDisabled: isLoading ?
+        [ state.isButtonsDisabled.filter( id => id != userId ), ] :
+        state.isButtonsDisabled.filter( id => id != userId ),
+    };
+  }
 
   default:{
     return state;
@@ -127,6 +138,12 @@ const toggleIsLoading = ( isLoading  ) => {
     payload: { isLoading, },
   };
 };
+const toggleIsButtonsDisabled = ( isLoading, userId ) => {
+  return {
+    type: 'TOGGLE_IS_BUTTONS_DISABLED',
+    payload: { isLoading, userId, },
+  };
+};
 
 export {
   followUser,
@@ -134,5 +151,6 @@ export {
   setUsers,
   setCurrentPage,
   setTotalUsersCount,
-  toggleIsLoading
+  toggleIsLoading,
+  toggleIsButtonsDisabled
 };

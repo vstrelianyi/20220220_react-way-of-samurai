@@ -10,8 +10,7 @@ import { Link } from 'react-router-dom';
 import image_default from '../../../../images/users/default.png';
 
 const UserItem = ( props ) => {
-  const { user, toggleIsFollowed, } = props;
-
+  const { user, toggleIsFollowed, isButtonsDisabled, } = props;
   const classes = classNames( [
     styles.UserItem,
     'user-item',
@@ -34,7 +33,7 @@ const UserItem = ( props ) => {
             <img src={ userImage } alt="" />
           </picture>
         </Link>
-        {  <Button onClick={ handleFollowClick }>{ user?.isFollowed ? 'Unfollow' : 'Follow' }</Button> }
+        {  <Button onClick={ handleFollowClick } isDisabled={ isButtonsDisabled.some( id => id === user.id ) }>{ user?.isFollowed ? 'Unfollow' : 'Follow' }</Button> }
       </div>
 
       <div className="col">

@@ -1,8 +1,10 @@
 @import '../../../styles/_vars';
 
-.UsersListClass{
+.ProfileInfo{
 	display: flex;
 	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: 20px;
 
 	@media( min-width: 576px){
 	}
@@ -13,6 +15,11 @@
 
 	
 	:global{
-		
+		picture{
+			margin-bottom: 20px;
+			img{
+				width: 100px;
+			}
+		}
 	}
 }

@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 // import { Outlet } from 'react-router-dom';
 import styles from './Users.module.scss';
-import UsersContainer from './UsersContainer';
+import UsersListContainer from './UsersList/UsersListContainer';
 
 const Users = ( props ) => {
   const classes = classNames( [
@@ -11,7 +11,7 @@ const Users = ( props ) => {
 
   return (
     <div className={ classes }>
-      <UsersContainer/>
+      <UsersListContainer/>
       { /* <Outlet/> */ }
     </div>
   );

@@ -10,6 +10,10 @@
 		background-color: $green-dark;
 		border: 1px solid $green-dark;
 	}
+	&:disabled{
+		opacity: 0.4;
+		cursor: not-allowed
+	}
 
 	@media( min-width: 576px){
 	}
@@ -20,6 +24,5 @@
 
 	
 	:global{
-		
 	}
 }

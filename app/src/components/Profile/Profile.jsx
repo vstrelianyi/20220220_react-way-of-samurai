@@ -1,16 +1,19 @@
+// STYLES
 import classNames from 'classnames/bind';
-import MyPostsContainer from './MyPosts/MyPostsContainer';
-import ProfileInfoContainer from './ProfileInfoContainer';
 import styles from './Profile.module.scss';
 
-import { useParams } from 'react-router-dom';
+// COMPONENTS
+import MyPostsContainer from './MyPosts/MyPostsContainer';
+import ProfileInfoContainer from './ProfileInfo/ProfileInfoContainer';
+
+// import { useParams } from 'react-router-dom';
 
 const Profile = ( props ) => {
   const classes = classNames( [
     styles.Profile,
     'profile',
   ] );
-  const params = useParams();
+  // const params = useParams();
 
   return (
     <div className={ classes }>

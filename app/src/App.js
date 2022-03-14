@@ -17,7 +17,7 @@ import {
   Route
 } from 'react-router-dom';
 import Users from './components/Users/Users';
-import SingleUserContainer from './components/Users/SingleUserClass/SingleUserContainer';
+import SingleUserContainer from './components/Users/SingleUser/SingleUserContainer';
 import NoMatch from './components/NoMatch/NoMatch';
 
 const App = ( props ) => {
@@ -51,7 +51,7 @@ const App = ( props ) => {
                 <Route path=":userId" element={ <SingleUser/> } />
               </Route> */ }
               <Route path="/users" element={ <Users/> } />
-              <Route path="/users/:userId" element={ <SingleUserContainer/> } ></Route>
+              <Route path="/users/:userId" element={ <SingleUserContainer/> } />
               <Route path="/settings" element={ <h1>settings</h1> } />
               <Route path="*" element={ <NoMatch/> } />
             </Routes>

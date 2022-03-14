@@ -1,14 +1,11 @@
+import { useParams } from 'react-router-dom';
+
 import React from 'react';
 
 import axios from 'axios';
 import LoaderSpinner from '../../Loaders/LoaderSpinner/LoaderSpinner';
 
-import classNames from 'classnames';
-import styles from './SingleUserClass.module.scss';
-import DataField from '../../DataField/DataField';
-
-// IMAGES
-import image_default from '../../../images/users/default.png';
+import SingleUser from './SingleUser';
 
 class SingleUserClass extends React.Component {
   constructor ( props ) {
@@ -29,28 +26,21 @@ class SingleUserClass extends React.Component {
   }
 
   render () {
-    const classes = classNames( [
-      styles.SingleUserClass,
-      'single-user',
-    ] );
-
     if ( !this.state.profile ){
       return <LoaderSpinner isLoading={ true }/>;
     }
 
-    const userImage = this.profile?.photos?.small ? this.profile?.photos?.small : image_default;
-
-    return (
-      <div className={ classes }>
-        <picture>
-          <source srcSet={ userImage } type="image/webp" />
-          <img src={ userImage } alt="" />
-        </picture>
-        <DataField  label="name: " value={ this.state.profile?.fullName }/>
-      </div>
-    );
+    return <SingleUser profile={ this.state.profile }/>;
   }
 
 }
 
-export default SingleUserClass;
+const SingleUserContainer = () => {
+  const { userId, } = useParams();
+
+  return (
+    <SingleUserClass userId={ userId }/>
+  );
+};
+
+export default SingleUserContainer;
