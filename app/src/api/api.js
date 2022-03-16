@@ -13,7 +13,46 @@ const instance = axios.create(
 const usersAPI = {
   getUsers ( currentPage, pageSize ) {
     return instance.get( `users?page=${ currentPage }&count=${ pageSize }` )
-      .then( res => res.data );
+      .then( res => {
+        return res.data;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+
+  getUser ( userId ) {
+    return instance.get( `profile/${ userId }` )
+      .then( res => {
+        return res.data;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+
+  follow ( userId ) {
+    return instance.post( `follow/${ userId }` )
+      .then( res => {
+        const { resultCode, } = res.data;
+
+        return resultCode;
+      } )
+      .catch( error => {
+        console.log( 'API.follow', error );
+      } );
+  },
+
+  unfollow ( userId ) {
+    return instance.delete( `follow/${ userId }` )
+      .then( res => {
+        const { resultCode, } = res.data;
+
+        return resultCode;
+      } )
+      .catch( error => {
+        console.log( 'API.unfollow', error );
+      } );
   },
 };
 

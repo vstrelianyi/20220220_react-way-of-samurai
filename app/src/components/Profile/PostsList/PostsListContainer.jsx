@@ -2,7 +2,7 @@ import {
   addPost,
   updateNewPostText
 } from '../../../redux/profile-reducer';
-import MyPosts from './MyPosts';
+import PostsList from './PostsList';
 
 // REDUX
 import { connect } from 'react-redux';
@@ -28,6 +28,6 @@ const mapDispatchToProps = ( dispatch ) => {
   };
 };
 
-const MyPostsContainer = connect( mapStateToProps, mapDispatchToProps )( MyPosts );
+const PostsListContainer = connect( mapStateToProps, mapDispatchToProps )( PostsList );
 
-export default MyPostsContainer;
+export default PostsListContainer;

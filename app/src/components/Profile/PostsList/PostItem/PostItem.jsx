@@ -7,6 +7,7 @@ const PostItem = ( props ) => {
   const classes = classNames( [
     styles.PostItem,
     'post-item',
+    'badge',
   ] );
 
   return (

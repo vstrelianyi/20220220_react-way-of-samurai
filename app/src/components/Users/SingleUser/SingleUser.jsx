@@ -1,10 +1,12 @@
 // STYLES
 import classNames from 'classnames';
 import styles from './SingleUser.module.scss';
-import DataField from '../../DataField/DataField';
 
 // IMAGES
 import image_default from '../../../images/users/default.png';
+
+// COMPONENTS
+import DataField from '../../DataField/DataField';
 
 const SingleUser = ( props ) => {
   const { profile, } = props;

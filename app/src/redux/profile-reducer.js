@@ -1,3 +1,6 @@
+// DAL
+import { usersAPI } from '../api/api';
+
 const initialState = {
   posts: [
     { id: 0, message: 'I\'m from Kyiv, It my post', likesCount: 12, },
@@ -66,8 +69,25 @@ const setUserProfile = ( profile ) => {
   };
 };
 
+// THUNKS
+const getUserProfileThunkCreator = ( userId ) => {
+  return ( dispatch ) => {
+    dispatch( setUserProfile( null ) );
+    usersAPI.getUser( userId )
+      .then( data => {
+        const profile = data;
+        console.log( profile );
+        dispatch( setUserProfile( profile ) );
+      } )
+      .catch( error => {
+        console.log( error );
+        dispatch( setUserProfile( undefined ) );
+      } );
+  };
+};
+
 export {
   updateNewPostText,
   addPost,
-  setUserProfile
+  getUserProfileThunkCreator
 };

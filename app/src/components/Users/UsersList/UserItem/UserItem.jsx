@@ -1,3 +1,4 @@
+// STYLES
 import classNames from 'classnames/bind';
 import styles from './UserItem.module.scss';
 
@@ -18,7 +19,7 @@ const UserItem = ( props ) => {
   ] );
 
   const handleFollowClick = () => {
-    toggleIsFollowed( user.id, user?.isFollowed );
+    toggleIsFollowed( user.id, user?.followed );
   };
 
   const userImage = user?.image ? user?.image : image_default;
@@ -33,7 +34,7 @@ const UserItem = ( props ) => {
             <img src={ userImage } alt="" />
           </picture>
         </Link>
-        {  <Button onClick={ handleFollowClick } isDisabled={ isButtonsDisabled.some( id => id === user.id ) }>{ user?.isFollowed ? 'Unfollow' : 'Follow' }</Button> }
+        <Button onClick={ handleFollowClick } isDisabled={ isButtonsDisabled.some( id => id === user?.id ) }>{ user?.followed ? 'Unfollow' : 'Follow' }</Button>
       </div>
 
       <div className="col">

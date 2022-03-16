@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './Profile.module.scss';
 
 // COMPONENTS
-import MyPostsContainer from './MyPosts/MyPostsContainer';
+import PostsListContainer from './PostsList/PostsListContainer';
 import ProfileInfoContainer from './ProfileInfo/ProfileInfoContainer';
 
 // import { useParams } from 'react-router-dom';
@@ -18,7 +18,7 @@ const Profile = ( props ) => {
   return (
     <div className={ classes }>
       <ProfileInfoContainer/>
-      <MyPostsContainer/>
+      <PostsListContainer/>
     </div>
   );
 };

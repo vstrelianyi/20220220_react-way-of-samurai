@@ -1,46 +1,52 @@
+// REACT
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import React from 'react';
+// REDUX
+import { connect } from 'react-redux';
+import {
+  getUserThunkCreator
+} from '../../../redux/users-reducer';
 
-import axios from 'axios';
+// COMPONENTS
 import LoaderSpinner from '../../Loaders/LoaderSpinner/LoaderSpinner';
-
 import SingleUser from './SingleUser';
 
 class SingleUserClass extends React.Component {
   constructor ( props ) {
     super( props );
     this.state = {
-      profile: null,
     };
   }
 
   componentDidMount () {
-    axios.get( `https://social-network.samuraijs.com/api/1.0/profile/${ this.props.userId }` )
-      .then( res => {
-        const profile = res.data;
-        this.setState( { profile, } );
-        // console.log( 'this.profile', this.profile );
-        // this.props.setUserProfile( profile );
-      } );
+    this.props.getUser( this.props.userId );
   }
 
   render () {
-    if ( !this.state.profile ){
+    if ( this.props.profile === null ){
       return <LoaderSpinner isLoading={ true }/>;
     }
+    if ( this.props.profile === undefined ){
+      return <p>No user found</p>;
+    }
 
-    return <SingleUser profile={ this.state.profile }/>;
+    return <SingleUser profile={ this.props.profile }/>;
   }
-
 }
 
-const SingleUserContainer = () => {
+const SingleUserContainer = ( props ) => {
   const { userId, } = useParams();
 
   return (
-    <SingleUserClass userId={ userId }/>
+    <SingleUserClass { ...props } userId={ userId }/>
   );
 };
 
-export default SingleUserContainer;
+const mapStateToProps = ( state ) => {
+  return {
+    profile: state.usersPage.userProfile,
+  };
+};
+
+export default connect( mapStateToProps, { getUser: getUserThunkCreator, } )( SingleUserContainer );

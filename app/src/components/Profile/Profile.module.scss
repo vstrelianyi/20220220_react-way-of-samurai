@@ -1,3 +1,11 @@
-.example{
-	background-color: green;
+.Profile{
+
+	@media( min-width: 576px){
+	}
+	@media( min-width: 768px){
+	}
+	@media( min-width: 992px){
+	}
+	:global{
+	}
 }

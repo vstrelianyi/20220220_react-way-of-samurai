@@ -1,16 +1,17 @@
+// STYLES
 import classNames from 'classnames/bind';
-import styles from './MyPosts.module.scss';
-import PostItem from './PostItem/PostItem';
+import styles from './PostsList.module.scss';
 
+// COMPONENTS
+import PostItem from './PostItem/PostItem';
 import Button from '../../Button/Button';
 import TextArea from '../../TextArea/TextArea';
 
-const MyPosts = ( props ) => {
-
+const PostsList = ( props ) => {
   const { posts, newPostText, postTextChange,	addPostClick, } = props;
 
   const classes = classNames( [
-    styles.MyPosts,
+    styles.PostsList,
     'my-posts',
   ] );
 
@@ -39,4 +40,4 @@ const MyPosts = ( props ) => {
   );
 };
 
-export default MyPosts;
+export default PostsList;

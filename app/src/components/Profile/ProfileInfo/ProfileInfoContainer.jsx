@@ -3,11 +3,8 @@ import React from 'react';
 // REDUX
 import { connect } from 'react-redux';
 import {
-  setUserProfile
+  getUserProfileThunkCreator
 } from '../../../redux/profile-reducer';
-
-// DAL
-import axios from 'axios';
 
 // COMPONENTS
 import LoaderSpinner from '../../Loaders/LoaderSpinner/LoaderSpinner';
@@ -16,15 +13,10 @@ import ProfileInfo from './ProfileInfo';
 class ProfileInfoClass extends React.Component {
 
   componentDidMount () {
-    axios.get( 'https://social-network.samuraijs.com/api/1.0/profile/2' )
-      .then( res => {
-        const profile = res.data;
-        this.props.setUserProfile( profile );
-      } );
+    this.props.getUserProfile( 6629 );
   }
 
   render () {
-
     if ( !this.props?.profile ){
       return <LoaderSpinner isLoading={ true }/>;
     }
@@ -41,4 +33,4 @@ const mapStateToProps = ( state ) => {
   };
 };
 
-export default connect( mapStateToProps, { setUserProfile, } )( ProfileInfoClass );
+export default connect( mapStateToProps, { getUserProfile: getUserProfileThunkCreator, } )( ProfileInfoClass );

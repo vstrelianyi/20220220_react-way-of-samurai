@@ -1,14 +1,10 @@
-
 // REDUX
 import { connect } from 'react-redux';
 import {
-  followUser,
-  unFollowUser,
-  setUsers,
   setCurrentPage,
-  setTotalUsersCount,
-  toggleIsLoading,
-  toggleIsButtonsDisabled
+  getUsersThunkCreator,
+  followUserThunkCreator,
+  unFollowUserThunkCreator
 } from '../../../redux/users-reducer';
 
 // COMPONENTS
@@ -18,70 +14,29 @@ import LoaderSpinner from '../../Loaders/LoaderSpinner/LoaderSpinner';
 import Button from '../../Button/Button';
 import UsersList from './UsersList';
 
-// DAL
-import axios from 'axios';
-import { usersAPI } from '../../../api/api';
-
 class UsersListClass extends React.Component {
   componentDidMount () {
-    // this.getUsers();
-    console.log( this.props );
-  }
-
-  onGetUsersButtonClick ( ) {
-    usersAPI.getUsers( this.props.currentPage, this.props.pageSize )
-      .then( data => {
-        const items = data.items;
-        this.props.setUsers( items );
-      } );
+    this.props.getUsers( this.props.currentPage, this.props.pageSize );
   }
 
   onPageChanged ( page ) {
-    this.props.toggleIsLoading( !this.props.isLoading );
-    this.props.setCurrentPage( page );
-
-    usersAPI.getUsers( page, this.props.pageSize )
-      .then( data => {
-        const { items, totalCount, } = data;
-        console.log( items, totalCount );
-        this.props.setUsers( items );
-        this.props.setTotalUsersCount( totalCount );
-        this.props.toggleIsLoading( !this.props.isLoading );
-      } );
+    this.props.getUsers( page, this.props.pageSize );
   }
 
-  toggleIsFollowed ( userId, isFollowed ) {
-    this.props.toggleIsButtonsDisabled( true, userId );
-    if ( isFollowed ){
+  onGetUsersButtonClick ( ) {
+
+  }
+
+  toggleIsFollowed ( userId, followed ) {
+    if ( followed ){
       this.props.unFollowUser( userId );
-      axios.delete( `https://social-network.samuraijs.com/api/1.0/follow/${ userId }`, {
-        withCredentials: true,
-        headers: {
-          'API-KEY': 'bfafa524-74eb-4f38-9d5f-3510957232c7',
-        },
-      } )
-        .then( res => {
-          const resultCode = res.data;
-          this.props.toggleIsButtonsDisabled( false, userId );
-        } );
     }
     else {
       this.props.followUser( userId );
-      axios.post( `https://social-network.samuraijs.com/api/1.0/follow/${ userId }`, {
-        withCredentials: true,
-        headers: {
-          'API-KEY': 'bfafa524-74eb-4f38-9d5f-3510957232c7',
-        },
-      } )
-        .then( res => {
-          const resultCode = res.data;
-          this.props.toggleIsButtonsDisabled( false, userId );
-        } );
     }
   }
 
   render () {
-
     const pagesCount = Math.ceil( this.props.totalUsersCount / this.props.pageSize );
 
     return (
@@ -109,13 +64,10 @@ const mapStateToProps = ( state ) => {
 };
 
 const UsersListContainer = connect( mapStateToProps, {
-  followUser,
-  unFollowUser,
-  setUsers,
   setCurrentPage,
-  setTotalUsersCount,
-  toggleIsLoading,
-  toggleIsButtonsDisabled,
+  getUsers: getUsersThunkCreator,
+  followUser: followUserThunkCreator,
+  unFollowUser: unFollowUserThunkCreator,
 } )( UsersListClass );
 
 export default UsersListContainer;
