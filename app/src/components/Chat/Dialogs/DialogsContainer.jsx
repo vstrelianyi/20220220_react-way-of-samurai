@@ -1,4 +1,6 @@
+// COMPONENTS
 import Dialogs from './Dialogs';
+import withAuthRedirect from '../../../hoc/withAuthRedirect';
 
 // REDUX
 import { connect } from 'react-redux';
@@ -17,6 +19,4 @@ const mapDispatchToProps = () => {
   };
 };
 
-const DialogsContainer = connect( mapStateToProps, mapDispatchToProps )( Dialogs );
-
-export default DialogsContainer;
+export default connect( mapStateToProps, mapDispatchToProps )( withAuthRedirect( Dialogs ) );

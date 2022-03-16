@@ -5,13 +5,13 @@ import styles from './UsersList.module.scss';
 // COMPONENTS
 import UserItem from './UserItem/UserItem';
 
-const classes = classNames( [
-  styles.UsersList,
-  'users-list',
-] );
-
 const UsersList = ( props ) => {
   const { users, toggleIsFollowed, isButtonsDisabled, } = props;
+
+  const classes = classNames( [
+    styles.UsersList,
+    'users-list',
+  ] );
 
   return (
     <div className={ classes }>

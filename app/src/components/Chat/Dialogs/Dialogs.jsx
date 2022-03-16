@@ -2,7 +2,6 @@ import classNames from 'classnames/bind';
 import styles from './Dialogs.module.scss';
 
 // COMPONENTS
-import { Navigate } from 'react-router-dom';
 
 const Dialogs = ( props ) => {
   const classes = classNames( [
@@ -10,11 +9,7 @@ const Dialogs = ( props ) => {
     'dialogs',
   ] );
 
-  const { dialogs, isAuth, } = props;
-
-  if ( !isAuth ){
-    return <Navigate to="/login"/>;
-  }
+  const { dialogs, } = props;
 
   return (
     <div className={ classes }>

@@ -8,8 +8,7 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../images/logo.png';
 
 const Header = ( props ) => {
-  const { userId,	email, login,	isAuth, } = props;
-  console.log( props );
+  const { id,	email, login,	isAuth, } = props;
   const classes = classNames( [
     styles.Header,
     'header',

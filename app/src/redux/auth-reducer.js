@@ -42,9 +42,9 @@ const getAuthMeThunkCreator = () => {
   return ( dispatch ) => {
     authAPI.me()
       .then( data => {
-        const { userId, email, login, } = data;
-        if ( userId ){
-          dispatch( setAuthUserData( userId, email, login ) );
+        const { id, email, login, } = data;
+        if ( id ){
+          dispatch( setAuthUserData( id, email, login ) );
         }
       } )
       .catch( error => {
