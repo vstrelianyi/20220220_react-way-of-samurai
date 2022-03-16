@@ -7,7 +7,9 @@ import { Link, NavLink } from 'react-router-dom';
 // IMAGES
 import logo from '../../images/logo.png';
 
-const Header = () => {
+const Header = ( props ) => {
+  const { userId,	email, login,	isAuth, } = props;
+  console.log( props );
   const classes = classNames( [
     styles.Header,
     'header',
@@ -15,12 +17,11 @@ const Header = () => {
 
   return (
     <header className={ classes }>
-      <Link to="/"><img src={ logo } alt="" /></Link>
+      <Link to="/" className="brand"><img src={ logo } alt="" />Samurai Chat</Link>
 
       <div className="login-block">
-        <NavLink to={ '/login' }>Login</NavLink>
+        { !isAuth ? <NavLink to={ '/login' }>Login</NavLink> : <span>{ email }</span> }
       </div>
-      <Link to="/">Samurai Chat</Link>
     </header>
   );
 };

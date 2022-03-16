@@ -1,3 +1,6 @@
+// DAL
+import { authAPI } from '../api/api';
+
 const initialState = {
   userId: null,
   email: null,
@@ -34,6 +37,21 @@ const setAuthUserData = ( userId, email, login ) => {
   };
 };
 
+// THUNKS
+const getAuthMeThunkCreator = () => {
+  return ( dispatch ) => {
+    authAPI.me()
+      .then( data => {
+        const { userId, email, login, } = data;
+        dispatch( setAuthUserData( userId, email, login ) );
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  };
+};
+
 export {
-  setAuthUserData
+  setAuthUserData,
+  getAuthMeThunkCreator
 };

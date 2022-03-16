@@ -1,11 +1,16 @@
+@import '../../styles/_vars';
+
 .Header{
 	background-color: #F7F4F3;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	:global{
-		a{
+		//brand
+		a.brand{
 			display: flex;
+			justify-content: center;
+			align-items: center;
 			padding: 10px;
 			font-size: 22px;
 			font-weight: 700;
@@ -13,7 +18,18 @@
 			img{
 				width: 60px;
 				object-fit: contain;
+				margin-right: 20px;
 			}
+			&:hover{
+				color:$green-dark;
+			}
+		}
+		//login
+		.login-block{
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			padding: 10px;
 		}
 	}
 }

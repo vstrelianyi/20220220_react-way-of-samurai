@@ -56,6 +56,19 @@ const usersAPI = {
   },
 };
 
+const authAPI = {
+  me () {
+    return instance.get( 'auth/me' )
+      .then( res => {
+        return res.data.data;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+};
+
 export {
-  usersAPI
+  usersAPI,
+  authAPI
 };
