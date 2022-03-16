@@ -1,12 +1,14 @@
+// STYLES
+
 import classNames from 'classnames/bind';
-import styles from './Example.module.scss';
+import styles from './Login.module.scss';
 
 const Login = ( props ) => {
   const { children, } = props;
 
   const classes = classNames( [
-    styles.Example,
-    'example',
+    styles.Login,
+    'login',
   ] );
 
   return (

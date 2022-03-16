@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 const mapStateToProps = ( state ) => {
   return {
     dialogs: state.chatPage.dialogs,
+    isAuth: state.auth.isAuth,
   };
 };
 const mapDispatchToProps = () => {

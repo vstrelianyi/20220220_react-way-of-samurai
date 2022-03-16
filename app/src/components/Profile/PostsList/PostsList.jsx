@@ -8,7 +8,7 @@ import Button from '../../Button/Button';
 import TextArea from '../../TextArea/TextArea';
 
 const PostsList = ( props ) => {
-  const { posts, newPostText, postTextChange,	addPostClick, } = props;
+  const { posts, newPostText, updateNewPostText,	addPost, } = props;
 
   const classes = classNames( [
     styles.PostsList,
@@ -17,15 +17,15 @@ const PostsList = ( props ) => {
 
   // HANDLERS
   const handlePostTextChange = ( value ) => {
-    postTextChange( value );
+    updateNewPostText( value );
   };
   const handleKeyPress = ( e ) => {
     if ( e.key === 'Enter' ){
-      addPostClick( newPostText ) ;
+      addPost( newPostText ) ;
     }
   };
   const handleAddPostClick = () => {
-    addPostClick( newPostText );
+    addPost( newPostText );
   };
 
   return (

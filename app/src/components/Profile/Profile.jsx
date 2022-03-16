@@ -3,22 +3,23 @@ import classNames from 'classnames/bind';
 import styles from './Profile.module.scss';
 
 // COMPONENTS
-import PostsListContainer from './PostsList/PostsListContainer';
-import ProfileInfoContainer from './ProfileInfo/ProfileInfoContainer';
+import PostsList from './PostsList/PostsList';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 // import { useParams } from 'react-router-dom';
 
 const Profile = ( props ) => {
+  const { profile, posts, newPostText, updateNewPostText, addPost, } = props;
+
   const classes = classNames( [
     styles.Profile,
     'profile',
   ] );
-  // const params = useParams();
 
   return (
     <div className={ classes }>
-      <ProfileInfoContainer/>
-      <PostsListContainer/>
+      <ProfileInfo profile={ profile }/>
+      <PostsList posts={ posts } newPostText={ newPostText }  updateNewPostText={ updateNewPostText } addPost={ addPost }/>
     </div>
   );
 };

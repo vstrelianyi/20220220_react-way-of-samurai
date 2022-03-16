@@ -8,8 +8,9 @@ import { BrowserRouter } from 'react-router-dom';
 // COMPONENTS
 import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import Chat from './components/Chat/Chat';
+import Login from './components/Login/Login';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import {
@@ -43,7 +44,7 @@ const App = ( props ) => {
           <main className="main">
             <Routes>
               <Route path="/" element={ <h1>Home</h1> } />
-              <Route path="/profile" element={ <Profile/> } />
+              <Route path="/profile" element={ <ProfileContainer/> } />
               <Route path="/chat" element={ <Chat/> } />
               <Route path="/news" element={ <h1>news</h1> } />
               <Route path="/music" element={ <h1>music</h1> } />
@@ -53,6 +54,7 @@ const App = ( props ) => {
               <Route path="/users" element={ <Users/> } />
               <Route path="/users/:userId" element={ <SingleUserContainer/> } />
               <Route path="/settings" element={ <h1>settings</h1> } />
+              <Route path="/login" element={ <Login/> } />
               <Route path="*" element={ <NoMatch/> } />
             </Routes>
           </main>

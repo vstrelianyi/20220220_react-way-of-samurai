@@ -76,7 +76,6 @@ const getUserProfileThunkCreator = ( userId ) => {
     usersAPI.getUser( userId )
       .then( data => {
         const profile = data;
-        console.log( profile );
         dispatch( setUserProfile( profile ) );
       } )
       .catch( error => {
