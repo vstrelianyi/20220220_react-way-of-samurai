@@ -10,7 +10,7 @@ import ProfileStatus from './ProfileStatus/ProfileStatus';
 // import { useParams } from 'react-router-dom';
 
 const Profile = ( props ) => {
-  const { profile, posts, newPostText, updateNewPostText, addPost, } = props;
+  const { profile, status, setUserStatus, posts, newPostText, updateNewPostText, addPost, } = props;
 
   const classes = classNames( [
     styles.Profile,
@@ -19,9 +19,9 @@ const Profile = ( props ) => {
 
   return (
     <div className={ classes }>
-      <ProfileStatus/>
+      <ProfileStatus status={ status } setUserStatus={ setUserStatus }/>
       <ProfileInfo profile={ profile }/>
-      <PostsList posts={ posts } newPostText={ newPostText }  updateNewPostText={ updateNewPostText } addPost={ addPost }/>
+      <PostsList posts={ posts } newPostText={ newPostText } updateNewPostText={ updateNewPostText } addPost={ addPost }/>
     </div>
   );
 };

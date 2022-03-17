@@ -68,7 +68,38 @@ const authAPI = {
   },
 };
 
+const profileAPI = {
+  getProfile ( userId ) {
+    return instance.get( `profile/${ userId }` )
+      .then( res => {
+        return res.data;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+  getStatus ( userId ) {
+    return instance.get( `profile/status/${ userId }` )
+      .then( res => {
+        return res.data;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+  updateStatus ( status ) {
+    return instance.put( 'profile/status', { status: status, } )
+      .then( res => {
+        return res.data;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+};
+
 export {
   usersAPI,
-  authAPI
+  authAPI,
+  profileAPI
 };

@@ -10,7 +10,7 @@ class ProfileStatus extends React.Component {
 
     this.state = {
       editMode: false,
-      status: 'fuck putin',
+      status: this.props.status,
     };
 
     this.input = React.createRef( null );
@@ -22,12 +22,7 @@ class ProfileStatus extends React.Component {
 
   deactivateEditMode () {
     this.setState( { editMode: false, } );
-  }
-
-  componentDidUpdate () {
-    if ( this.state.editMode ){
-      this.input.current.focus();
-    }
+    this.props.setUserStatus( this.state.status );
   }
 
   handleInputChange ( e ) {
@@ -38,6 +33,13 @@ class ProfileStatus extends React.Component {
   handleKeyPress ( e ) {
     if ( e.key === 'Enter' ){
       this.setState( { editMode: false, } );
+      this.props.setUserStatus( this.state.status );
+    }
+  }
+
+  componentDidUpdate () {
+    if ( this.state.editMode ){
+      this.input.current.focus();
     }
   }
 
@@ -57,7 +59,7 @@ class ProfileStatus extends React.Component {
             onBlur={ this.deactivateEditMode.bind( this ) }
             onKeyPress={ this.handleKeyPress.bind( this ) }
           /> :
-          <span onDoubleClick={ this.activateEditMode.bind( this ) }>{ this.state.status }</span>
+          <span onDoubleClick={ this.activateEditMode.bind( this ) }>{ this.props.status }</span>
         }
       </div>
     );

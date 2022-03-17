@@ -1,5 +1,5 @@
 // DAL
-import { usersAPI } from '../api/api';
+import { usersAPI, profileAPI } from '../api/api';
 
 const initialState = {
   posts: [
@@ -8,6 +8,7 @@ const initialState = {
   ],
   newPostText: '',
   profile: null,
+  status: '',
 };
 
 const profileReducer = ( state = initialState, action ) => {
@@ -15,31 +16,36 @@ const profileReducer = ( state = initialState, action ) => {
   switch ( type ){
   case 'UPDATE_NEW_POST_TEXT':{
     const { payload: { text, }, } = action;
-    const stateCopy = {
+
+    return {
       ...state,
       newPostText: text,
     };
-
-    return stateCopy;
   }
   case 'ADD_POST':{
     const { payload: { text, }, } = action;
-    const stateCopy = {
+
+    return {
       ...state,
       posts: [ ...state.posts, { id: 10, message: text, likesCount: 12, }, ],
       newPostText: '',
     };
-
-    return stateCopy;
   }
   case 'SET_USER_PROFILE':{
     const { payload: { profile, }, } = action;
-    const stateCopy = {
+
+    return {
       ...state,
       profile,
     };
+  }
+  case 'SET_USER_STATUS':{
+    const { payload: { status, }, } = action;
 
-    return stateCopy;
+    return {
+      ...state,
+      status: status,
+    };
   }
   default:{
     return state;
@@ -68,6 +74,12 @@ const setUserProfile = ( profile ) => {
     payload: { profile, },
   };
 };
+const setUserStatus = ( status ) => {
+  return {
+    type: 'SET_USER_STATUS',
+    payload: { status, },
+  };
+};
 
 // THUNKS
 const getUserProfileThunkCreator = ( userId ) => {
@@ -85,8 +97,38 @@ const getUserProfileThunkCreator = ( userId ) => {
   };
 };
 
+const getUserStatusThunkCreator = ( userId ) => {
+  return ( dispatch ) => {
+    profileAPI.getStatus( userId )
+      .then( data => {
+        const status = data;
+        dispatch( setUserStatus( status ) );
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  };
+};
+
+const setUserStatusThunkCreator = ( status ) => {
+  return ( dispatch ) => {
+    profileAPI.updateStatus( status )
+      .then( data => {
+        const { resultCode, } = data;
+        if ( resultCode === 0 ){
+          dispatch( setUserStatus( status ) );
+        }
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  };
+};
+
 export {
   updateNewPostText,
   addPost,
-  getUserProfileThunkCreator
+  getUserProfileThunkCreator,
+  getUserStatusThunkCreator,
+  setUserStatusThunkCreator
 };

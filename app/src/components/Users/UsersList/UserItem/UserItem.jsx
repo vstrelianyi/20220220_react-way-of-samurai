@@ -21,7 +21,7 @@ const UserItem = ( props ) => {
   const handleFollowClick = () => {
     toggleIsFollowed( user.id, user?.followed );
   };
-
+  // console.log( user );
   const userImage = user?.image ? user?.image : image_default;
 
   return (
@@ -41,6 +41,7 @@ const UserItem = ( props ) => {
         <div className="left">
           <DataField label="name:" value={ user?.name }/>
           <DataField label="description:" value={ user?.description }/>
+          <DataField label="status:" value={ user?.status }/>
         </div>
         <div className="right">
           <DataField label="country:" value={ user?.location?.country }/>

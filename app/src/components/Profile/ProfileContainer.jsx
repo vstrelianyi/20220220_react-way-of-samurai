@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import {
   getUserProfileThunkCreator,
+  getUserStatusThunkCreator,
+  setUserStatusThunkCreator,
   updateNewPostText,
   addPost
 } from '../../redux/profile-reducer';
@@ -20,6 +22,7 @@ class ProfileClass extends React.Component {
 
   componentDidMount () {
     this.props.getUserProfile( 6629 );
+    this.props.getUserStatus( 6629 );
   }
 
   render () {
@@ -37,10 +40,11 @@ const mapStateToProps = ( state ) => {
     profile: state.profilePage.profile,
     posts: state.profilePage.posts,
     newPostText: state.profilePage.newPostText,
+    status: state.profilePage.status,
   };
 };
 
 export default compose(
-  connect( mapStateToProps, { getUserProfile: getUserProfileThunkCreator, updateNewPostText, addPost, } ),
+  connect( mapStateToProps, { getUserProfile: getUserProfileThunkCreator, setUserStatus: setUserStatusThunkCreator, getUserStatus: getUserStatusThunkCreator, updateNewPostText, addPost, } ),
   withAuthRedirect
 )( ProfileClass );
