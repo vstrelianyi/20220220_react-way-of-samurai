@@ -2,6 +2,7 @@ import React from 'react';
 
 // REDUX
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import {
   getUserProfileThunkCreator,
   updateNewPostText,
@@ -38,4 +39,7 @@ const mapStateToProps = ( state ) => {
   };
 };
 
-export default connect( mapStateToProps, { getUserProfile: getUserProfileThunkCreator, updateNewPostText, addPost, } )( withAuthRedirect( ProfileClass ) );
+export default compose(
+  connect( mapStateToProps, { getUserProfile: getUserProfileThunkCreator, updateNewPostText, addPost, } ),
+  withAuthRedirect
+)( ProfileClass );

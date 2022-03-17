@@ -4,6 +4,7 @@ import withAuthRedirect from '../../../hoc/withAuthRedirect';
 
 // REDUX
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 const mapStateToProps = ( state ) => {
   return {
@@ -19,4 +20,7 @@ const mapDispatchToProps = () => {
   };
 };
 
-export default connect( mapStateToProps, mapDispatchToProps )( withAuthRedirect( Dialogs ) );
+export default compose(
+  connect( mapStateToProps, mapDispatchToProps ),
+  withAuthRedirect
+)( Dialogs );

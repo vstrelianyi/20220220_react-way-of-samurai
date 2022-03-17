@@ -10,9 +10,9 @@ import {
 
 // COMPONENTS
 import LoaderSpinner from '../../Loaders/LoaderSpinner/LoaderSpinner';
-import SingleUser from './SingleUser';
+import User from './User';
 
-class SingleUserClass extends React.Component {
+class UserClass extends React.Component {
   constructor ( props ) {
     super( props );
     this.state = {
@@ -31,15 +31,15 @@ class SingleUserClass extends React.Component {
       return <p>No user found</p>;
     }
 
-    return <SingleUser profile={ this.props.profile }/>;
+    return <User profile={ this.props.profile }/>;
   }
 }
 
-const SingleUserContainer = ( props ) => {
+const UserContainer = ( props ) => {
   const { userId, } = useParams();
 
   return (
-    <SingleUserClass { ...props } userId={ userId }/>
+    <UserClass { ...props } userId={ userId }/>
   );
 };
 
@@ -49,4 +49,4 @@ const mapStateToProps = ( state ) => {
   };
 };
 
-export default connect( mapStateToProps, { getUser: getUserThunkCreator, } )( SingleUserContainer );
+export default connect( mapStateToProps, { getUser: getUserThunkCreator, } )( UserContainer );

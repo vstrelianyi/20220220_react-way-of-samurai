@@ -1,6 +1,6 @@
 // STYLES
 import classNames from 'classnames';
-import styles from './SingleUser.module.scss';
+import styles from './User.module.scss';
 
 // IMAGES
 import image_default from '../../../images/users/default.png';
@@ -8,11 +8,11 @@ import image_default from '../../../images/users/default.png';
 // COMPONENTS
 import DataField from '../../DataField/DataField';
 
-const SingleUser = ( props ) => {
+const User = ( props ) => {
   const { profile, } = props;
 
   const classes = classNames( [
-    styles.SingleUser,
+    styles.User,
     'single-user',
   ] );
 
@@ -29,4 +29,4 @@ const SingleUser = ( props ) => {
   );
 };
 
-export default SingleUser;
+export default User;
