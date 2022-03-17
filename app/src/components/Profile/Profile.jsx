@@ -5,6 +5,7 @@ import styles from './Profile.module.scss';
 // COMPONENTS
 import PostsList from './PostsList/PostsList';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 // import { useParams } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ const Profile = ( props ) => {
 
   return (
     <div className={ classes }>
+      <ProfileStatus/>
       <ProfileInfo profile={ profile }/>
       <PostsList posts={ posts } newPostText={ newPostText }  updateNewPostText={ updateNewPostText } addPost={ addPost }/>
     </div>

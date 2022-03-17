@@ -1,10 +1,13 @@
 import React from 'react';
 
+// STYLES
 import classNames from 'classnames/bind';
 import styles from './Input.module.scss';
 
+import { useRef  } from 'react';
+
 const Input = ( props ) => {
-  const { className, id, onChange, onKeyUp, value, } = props;
+  const { className, id, onChange, onKeyUp, onBlur, value, name, label, } = props;
 
   const classes = classNames( [
     styles.Input,
@@ -21,14 +24,23 @@ const Input = ( props ) => {
     onKeyUp( e );
   };
 
+  const handleOnBlur = ( e ) => {
+    console.log( 'handleOnBlur' );
+    onBlur( e );
+  };
+
   return (
-    <input
-      className={ classes }
-      id={ id ? id : null }
-      value={ value }
-      onChange={ handleInputChange }
-      onKeyUp= { handleKeyPress }
-    />
+    <label className={ classes } htmlFor={ id }>
+      { label && <span>{ label }</span> }
+      <input
+        id={ id ? id : null }
+        value={ value }
+        name={ name ? name : null }
+        onChange={ handleInputChange }
+        onKeyUp= { handleKeyPress }
+        onBlur={ handleOnBlur }
+      />
+    </label>
   );
 };
 

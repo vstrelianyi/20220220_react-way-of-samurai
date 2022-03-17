@@ -1,8 +1,7 @@
 @import '../../styles/_vars';
 
 .Login{
-	background-color: green;
-
+	
 	@media( min-width: 576px){
 	}
 	@media( min-width: 768px){
@@ -12,6 +11,8 @@
 
 	
 	:global{
-		
+		.button{
+			margin-top: 20px;
+		}
 	}
 }

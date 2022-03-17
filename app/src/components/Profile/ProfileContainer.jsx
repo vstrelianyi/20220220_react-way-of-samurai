@@ -13,6 +13,7 @@ import {
 import LoaderSpinner from '../Loaders/LoaderSpinner/LoaderSpinner';
 import Profile from './Profile';
 
+// HOC
 import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 class ProfileClass extends React.Component {
