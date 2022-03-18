@@ -4,10 +4,8 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './Input.module.scss';
 
-import { useRef  } from 'react';
-
 const Input = ( props ) => {
-  const { className, id, onChange, onKeyUp, onBlur, value, name, label, } = props;
+  const { type, className, id, onChange, onKeyUp, onBlur, value, name, label, } = props;
 
   const classes = classNames( [
     styles.Input,
@@ -33,6 +31,7 @@ const Input = ( props ) => {
     <label className={ classes } htmlFor={ id }>
       { label && <span>{ label }</span> }
       <input
+        type={ type }
         id={ id ? id : null }
         value={ value }
         name={ name ? name : null }

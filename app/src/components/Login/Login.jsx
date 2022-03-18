@@ -1,8 +1,8 @@
 // STYLES
 
 import classNames from 'classnames/bind';
-import Button from '../Button/Button';
-import Input from '../Input/Input';
+import FormLogin from '../Forms/FormLogin';
+
 import styles from './Login.module.scss';
 
 const Login = ( props ) => {
@@ -15,9 +15,7 @@ const Login = ( props ) => {
 
   return (
     <div className={ classes }>
-      <Input id="name" label="name:"/>
-      <Input id="password" label="password:"/>
-      <Button>Login</Button>
+      <FormLogin/>
     </div>
   );
 };
