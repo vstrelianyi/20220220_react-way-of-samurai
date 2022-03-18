@@ -20,5 +20,8 @@
 				width: 100px;
 			}
 		}
+		.data-field:not(:last-of-type){
+			margin-bottom: 20px;
+		}
 	}
 }

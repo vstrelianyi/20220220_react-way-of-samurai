@@ -8,7 +8,7 @@ const initialState = {
   ],
   newPostText: '',
   profile: null,
-  status: '',
+  status: 'empty status',
 };
 
 const profileReducer = ( state = initialState, action ) => {

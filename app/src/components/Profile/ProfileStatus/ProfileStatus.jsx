@@ -37,10 +37,14 @@ class ProfileStatus extends React.Component {
     }
   }
 
-  componentDidUpdate () {
+  componentDidUpdate ( prevProps, prevState ) {
+    console.log( 'componentDidUpdate', prevProps, prevState );
     if ( this.state.editMode ){
       this.input.current.focus();
     }
+    // if ( this.props.status !== this.state.status ){
+    //   this.setState( { status: this.props.status, } );
+    // }
   }
 
   render () {
@@ -59,7 +63,7 @@ class ProfileStatus extends React.Component {
             onBlur={ this.deactivateEditMode.bind( this ) }
             onKeyPress={ this.handleKeyPress.bind( this ) }
           /> :
-          <span onDoubleClick={ this.activateEditMode.bind( this ) }>{ this.props.status }</span>
+          <span onDoubleClick={ this.activateEditMode.bind( this ) }>{ this.state.status }</span>
         }
       </div>
     );

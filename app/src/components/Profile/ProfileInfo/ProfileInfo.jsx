@@ -16,6 +16,7 @@ const ProfileInfo = ( props ) => {
         <img src={ props?.profile?.photos?.small } alt="" />
       </picture>
       <DataField label="name: " value={ profile?.fullName }/>
+      <DataField label="id: " value={ profile?.userId }/>
     </div>
   );
 };
