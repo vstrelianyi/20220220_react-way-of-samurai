@@ -1,12 +1,12 @@
 // STYLES
-
 import classNames from 'classnames/bind';
-import FormLogin from '../Forms/FormLogin';
-
 import styles from './Login.module.scss';
 
+// COMPONENTS
+import FormLogin from 'components/Forms/FormLogin/FormLogin';
+
 const Login = ( props ) => {
-  const { children, } = props;
+  const { isAuth, loginUser, } = props;
 
   const classes = classNames( [
     styles.Login,
@@ -15,7 +15,8 @@ const Login = ( props ) => {
 
   return (
     <div className={ classes }>
-      <FormLogin/>
+      <FormLogin loginUser={ loginUser }/>
+      { isAuth ? 'authorized' : 'not-authtorized' }
     </div>
   );
 };

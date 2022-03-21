@@ -4,7 +4,7 @@
 	grid-template-rows: 1fr auto;
 	grid-template-areas:
 	"dialogs messages"
-	"empty input";
+	"input input";
 	grid-gap: 20px;
 	flex-basis: 100%;
 	overflow-y: auto;

@@ -66,6 +66,15 @@ const authAPI = {
         console.log( error );
       } );
   },
+  login ( data ) {
+    return instance.post( 'auth/login', data )
+      .then( res => {
+        return res.data;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
 };
 
 const profileAPI = {

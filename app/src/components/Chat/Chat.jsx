@@ -5,11 +5,13 @@ import classNames from 'classnames/bind';
 import styles from './Chat.module.scss';
 
 // COMPONENTS
-import MessagesContainer from './Messages/MessagesContainer';
+import MessageList from './MessageList/MessageList';
 import DialogsContainer from './Dialogs/DialogsContainer';
-import MessageInputContainer from './MessageInput/MessageInputContainer';
+import MessageInput from './MessageInput/MessageInput';
 
 const Chat = ( props ) => {
+  const { dialogs, messages, addMessage, } = props;
+
   const classes = classNames( [
     styles.Chat,
     'chat',
@@ -17,9 +19,9 @@ const Chat = ( props ) => {
 
   return (
     <div className={ classes }>
-      <DialogsContainer/>
-      <MessagesContainer/>
-      <MessageInputContainer/>
+      <DialogsContainer dialogs={ dialogs }/>
+      <MessageList messages={ messages }/>
+      <MessageInput addMessage={ addMessage }/>
     </div>
   );
 };

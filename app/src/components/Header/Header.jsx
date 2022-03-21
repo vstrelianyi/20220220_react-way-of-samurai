@@ -5,7 +5,7 @@ import styles from './Header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 
 // IMAGES
-import logo from '../../images/logo.png';
+import logo from 'images/logo.png';
 
 const Header = ( props ) => {
   const { id,	email, login,	isAuth, } = props;

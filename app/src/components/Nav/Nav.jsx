@@ -18,6 +18,7 @@ const Nav = () => {
     { id: 3, url: '/music', title: 'music', },
     { id: 4, url: '/users', title: 'users', },
     { id: 5, url: '/settings', title: 'settings', },
+    { id: 6, url: '/login', title: 'login', },
   ];
 
   return (

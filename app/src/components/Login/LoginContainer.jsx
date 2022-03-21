@@ -1,13 +1,31 @@
+import React from 'react';
+
+// REDUX
+import { connect } from 'react-redux';
+
+// DAL
+import {
+  loginUserThunkCreator
+} from 'redux/auth-reducer';
+
 // COMPONENTS
 import Login from './Login';
 
-import React from 'react';
+class LoginContainer extends React.Component {
+  constructor ( props ) {
+    super( props );
+  }
 
-class LoginCointainer extends React.Component {
   render () {
-    return <Login/>;
+    return <Login isAuth={ this.props.isAuth } loginUser={ this.props.loginUser }/>;
   }
 
 }
 
-export default LoginCointainer;
+const mapStateToProps = ( state ) => {
+  return {
+    isAuth: state.auth.isAuth,
+  };
+};
+
+export default connect( mapStateToProps, { loginUser: loginUserThunkCreator, } )( LoginContainer );

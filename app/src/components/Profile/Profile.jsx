@@ -6,11 +6,12 @@ import styles from './Profile.module.scss';
 import PostsList from './PostsList/PostsList';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
+import FormAddPost from 'components/Forms/FormAddPost/FormAddPost';
 
 // import { useParams } from 'react-router-dom';
 
 const Profile = ( props ) => {
-  const { profile, status, setUserStatus, posts, newPostText, updateNewPostText, addPost, } = props;
+  const { profile, status, setUserStatus, posts, addPost, } = props;
 
   const classes = classNames( [
     styles.Profile,
@@ -21,7 +22,8 @@ const Profile = ( props ) => {
     <div className={ classes }>
       <ProfileStatus status={ status } setUserStatus={ setUserStatus }/>
       <ProfileInfo profile={ profile }/>
-      <PostsList posts={ posts } newPostText={ newPostText } updateNewPostText={ updateNewPostText } addPost={ addPost }/>
+      <FormAddPost addPost={ addPost }/>
+      <PostsList posts={ posts }/>
     </div>
   );
 };

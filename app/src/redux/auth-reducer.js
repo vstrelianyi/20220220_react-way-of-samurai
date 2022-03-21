@@ -5,7 +5,7 @@ const initialState = {
   userId: null,
   email: null,
   login: null,
-  isAuth: false,
+  isAuth: true,
 };
 
 const authReducer = ( state = initialState, action ) => {
@@ -17,6 +17,13 @@ const authReducer = ( state = initialState, action ) => {
     return {
       ...state,
       userId, email, login,
+    };
+  }
+  case 'LOGIN_USER':{
+    const { payload: { data: { resultCode, data: { userId, }, }, }, } = action;
+
+    return {
+      ...state,
       isAuth: true,
     };
   }
@@ -37,6 +44,13 @@ const setAuthUserData = ( userId, email, login ) => {
   };
 };
 
+const loginUser = ( userId ) => {
+  return {
+    type: 'LOGIN_USER',
+    payload: { userId, },
+  };
+};
+
 // THUNKS
 const getAuthMeThunkCreator = () => {
   return ( dispatch ) => {
@@ -48,12 +62,28 @@ const getAuthMeThunkCreator = () => {
         }
       } )
       .catch( error => {
-        console.log( error );
+        console.log( 'getAuthMeThunkCreator', error );
+      } );
+  };
+};
+
+const loginUserThunkCreator = ( data ) => {
+  return ( dispatch ) => {
+    authAPI.login( data )
+      .then( data => {
+        console.log( data );
+        // const { data: { resultCode, data: { userId, }, },  } = data;
+        // console.log( resultCode, userId );
+        dispatch( loginUser( data ) );
+      } )
+      .catch( error => {
+        console.log( 'loginUserThunkCreator', error );
       } );
   };
 };
 
 export {
   setAuthUserData,
-  getAuthMeThunkCreator
+  getAuthMeThunkCreator,
+  loginUserThunkCreator
 };

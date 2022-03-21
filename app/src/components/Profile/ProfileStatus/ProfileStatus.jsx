@@ -38,7 +38,7 @@ class ProfileStatus extends React.Component {
   }
 
   componentDidUpdate ( prevProps, prevState ) {
-    console.log( 'componentDidUpdate', prevProps, prevState );
+    // console.log( 'componentDidUpdate', prevProps, prevState );
     if ( this.state.editMode ){
       this.input.current.focus();
     }

@@ -6,7 +6,6 @@ const initialState = {
     { id: 0, message: 'I\'m from Kyiv, It my post', likesCount: 12, },
     { id: 1, message: 'Its my first post', likesCount: 10, },
   ],
-  newPostText: '',
   profile: null,
   status: 'empty status',
 };
@@ -14,21 +13,12 @@ const initialState = {
 const profileReducer = ( state = initialState, action ) => {
   const { type, } = action;
   switch ( type ){
-  case 'UPDATE_NEW_POST_TEXT':{
-    const { payload: { text, }, } = action;
-
-    return {
-      ...state,
-      newPostText: text,
-    };
-  }
   case 'ADD_POST':{
     const { payload: { text, }, } = action;
 
     return {
       ...state,
       posts: [ ...state.posts, { id: 10, message: text, likesCount: 12, }, ],
-      newPostText: '',
     };
   }
   case 'SET_USER_PROFILE':{
@@ -56,12 +46,6 @@ const profileReducer = ( state = initialState, action ) => {
 export default profileReducer;
 
 // ACTION CREATORS
-const updateNewPostText = ( text ) => {
-  return {
-    type: 'UPDATE_NEW_POST_TEXT',
-    payload: { text, },
-  };
-};
 const addPost = ( text ) => {
   return {
     type: 'ADD_POST',
@@ -126,7 +110,6 @@ const setUserStatusThunkCreator = ( status ) => {
 };
 
 export {
-  updateNewPostText,
   addPost,
   getUserProfileThunkCreator,
   getUserStatusThunkCreator,

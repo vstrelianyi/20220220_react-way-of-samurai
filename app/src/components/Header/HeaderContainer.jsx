@@ -6,7 +6,7 @@ import Header from './Header';
 // DAL
 import {
   getAuthMeThunkCreator
-} from '../../redux/auth-reducer';
+} from 'redux/auth-reducer';
 
 // REDUX
 import { connect } from 'react-redux';
