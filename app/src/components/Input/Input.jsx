@@ -10,7 +10,7 @@ const Input = ( props ) => {
   const classes = classNames( [
     styles.Input,
     className,
-    'input',
+    'form-control',
   ] );
 
   const handleInputChange = ( e ) => {
@@ -31,6 +31,7 @@ const Input = ( props ) => {
     <label className={ classes } htmlFor={ id }>
       { label && <span>{ label }</span> }
       <input
+        className="input"
         type={ type }
         id={ id ? id : null }
         value={ value }

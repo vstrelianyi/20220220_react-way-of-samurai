@@ -8,6 +8,15 @@ import Button from 'components/Button/Button';
 import { Field, Form } from 'react-final-form';
 // https://www.npmjs.com/package/react-google-recaptcha
 import ReCAPTCHA from 'react-google-recaptcha';
+import Input from '../Input/Input';
+import FormControl from 'components/Forms/FormControl/FormControl';
+
+// validators
+import {
+  composeValidators,
+  required,
+  maxLengthCreator
+} from '../../../utils/validators/validators';
 
 // https://social-network.samuraijs.com/docs?type=todolist#auth_login_post
 const FormLogin = ( props ) => {
@@ -30,9 +39,6 @@ const FormLogin = ( props ) => {
     // console.log( e );
   };
 
-  // validators
-  const required = value => ( value ? undefined : 'Required' );
-
   const onCaptchaPassed = async () => {
     console.log( 'onCaptchaPassed' );
     // setIsCaptchaPassed( true );
@@ -43,33 +49,15 @@ const FormLogin = ( props ) => {
       onSubmit={ handleOnSubmit }
       validate={ handleOnValidate }
       render={ ( { handleSubmit, } ) => (
-        <form onSubmit={ handleSubmit } className={ classes }>
+        <form onSubmit={ handleSubmit } className={ classes } autoComplete="off" noValidate>
           <Field name="email" validate={ required }>
-            { ( { input, meta, } ) => (
-              <label className="form-control">
-                <span>Email:</span>
-                <input { ...input } type="text" placeholder="email" />
-                { meta.error && meta.touched && <span className="error">{ meta.error }</span> }
-              </label>
-            ) }
+            { props => <FormControl label="Email:" { ...props }><input placeholder="email"/></FormControl> }
           </Field>
           <Field name="password" validate={ required }>
-            { ( { input, meta, } ) => (
-              <label className="form-control">
-                <span>Password:</span>
-                <input { ...input } type="password" placeholder="password" />
-                { meta.error && meta.touched && <span className="error">{ meta.error }</span> }
-              </label>
-            ) }
+            { props => <FormControl label="Password:" { ...props }><input placeholder="password" type="password"/></FormControl> }
           </Field>
-          <Field name="remember-me">
-            { ( { input, meta, } ) => (
-              <label className="form-control">
-                <span>remember me</span>
-                <input { ...input } type="checkbox"/>
-                { meta.error && meta.touched && <span className="error">{ meta.error }</span> }
-              </label>
-            ) }
+          <Field name="remember-me" type="checkbox">
+            { props => <FormControl label="remember me:" { ...props }><input  type="checkbox"/></FormControl> }
           </Field>
           <ReCAPTCHA
             sitekey="6Ld6OPAeAAAAAEHyoG4wzb63HV55s9hBaEwhbhwy"

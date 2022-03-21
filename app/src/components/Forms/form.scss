@@ -1,24 +1,4 @@
 @import '../../styles/_vars';
 
 .form-control{
-	display: flex;
-	flex-direction: column;
-	padding-bottom: 20px;
-	position: relative;
-	align-items: flex-start;
-	input{
-		background-color: $white;
-		padding: 5px 10px;
-		font-size: 20px;
-	}
-	textarea{
-		background-color: $white;
-	}
-	.error{
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		font-size: 14px;
-		color: red;
-	}
 }

@@ -6,6 +6,14 @@ import styles from './FormAddChatMessage.module.scss';
 // COMPONENTS
 import Button from 'components/Button/Button';
 import { Form, Field  } from 'react-final-form';
+import FormControl from 'components/Forms/FormControl/FormControl';
+
+// validators
+import {
+  composeValidators,
+  required,
+  maxLengthCreator
+} from '../../../utils/validators/validators';
 
 const FormAddChatMessage = ( props ) => {
   const { addMessage, } = props;
@@ -14,9 +22,6 @@ const FormAddChatMessage = ( props ) => {
     styles.FormAddChatMessage,
     'form-add-message',
   ] );
-
-  // validators
-  const required = value => ( value ? undefined : 'Required' );
 
   // HANDLERS
   const handleKeyPress = ( e ) => {
@@ -30,22 +35,16 @@ const FormAddChatMessage = ( props ) => {
     addMessage( newMessageText );
   };
 
-  const handleOnValidate = ( e ) => {
-  };
+  // const handleOnValidate = ( e ) => {};
 
   return (
     <Form
       onSubmit={ handleOnSubmit }
-      validate={ handleOnValidate }
+      // validate={ handleOnValidate }
       render={ ( { handleSubmit, } ) => (
-        <form onSubmit={ handleSubmit } className={ classes }>
+        <form onSubmit={ handleSubmit } className={ classes } noValidate>
           <Field validate={ required } name="newMessageText">
-            { ( { input, meta, } ) => (
-              <div className="form-control">
-                <input { ...input } name="newPostText" placeholder="message text..."/>
-                { meta.error && meta.touched && <span className="error">{ meta.error }</span> }
-              </div>
-            ) }
+            { props => <FormControl label="Email:" { ...props }><input placeholder="message text..."/></FormControl> }
           </Field>
           <Button type="submit">Send Message</Button>
         </form>
@@ -55,3 +54,14 @@ const FormAddChatMessage = ( props ) => {
 };
 
 export default FormAddChatMessage;
+
+const oldInput = ( props ) => {
+  const { input, meta, } = props;
+
+  return (
+    <div className="form-control">
+      <input { ...input } placeholder="message text..."/>
+      { meta.error && meta.touched && <span className="error">{ meta.error }</span> }
+    </div>
+  );
+};
