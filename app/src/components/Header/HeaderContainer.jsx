@@ -5,7 +5,8 @@ import Header from './Header';
 
 // DAL
 import {
-  getAuthMeThunkCreator
+  getAuthMeThunkCreator,
+  logoutUserThunkCreator
 } from 'redux/auth-reducer';
 
 // REDUX
@@ -13,7 +14,7 @@ import { connect } from 'react-redux';
 
 class HeaderContainer extends React.Component {
   componentDidMount () {
-    this.props.getAuthMe();
+    // this.props.getAuthMe();
   }
 
   render () {
@@ -29,4 +30,4 @@ const mapStateToProps = ( state ) => {
   };
 };
 
-export default connect( mapStateToProps, { getAuthMe: getAuthMeThunkCreator, } )( HeaderContainer );
+export default connect( mapStateToProps, { getAuthMe: getAuthMeThunkCreator, logoutUser: logoutUserThunkCreator, } )( HeaderContainer );

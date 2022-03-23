@@ -4,9 +4,10 @@ import styles from './Login.module.scss';
 
 // COMPONENTS
 import FormLogin from 'components/Forms/FormLogin/FormLogin';
+import Button from 'components/Button/Button';
 
 const Login = ( props ) => {
-  const { isAuth, loginUser, } = props;
+  const { isAuth, loginUser, logoutUser, captchaURL, } = props;
 
   const classes = classNames( [
     styles.Login,
@@ -15,8 +16,7 @@ const Login = ( props ) => {
 
   return (
     <div className={ classes }>
-      <FormLogin loginUser={ loginUser }/>
-      { isAuth ? 'authorized' : 'not-authtorized' }
+      { !isAuth ? <FormLogin loginUser={ loginUser } captchaURL={ captchaURL }/> : <Button onClick={ logoutUser }>Logout</Button> }
     </div>
   );
 };

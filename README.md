@@ -10,3 +10,9 @@ site key
 
 secret key
 6Ld6OPAeAAAAACi1RfbSuls-V3cvq_GxR5RooIgH
+
+https://social-network.samuraijs.com/
+
+USERS
+chmpain@gmail.com
+~EQ2Rp,,PsEJ)j,{

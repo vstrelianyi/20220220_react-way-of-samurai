@@ -11,7 +11,7 @@ import {
 } from '../../redux/profile-reducer';
 
 // COMPONENTS
-import LoaderSpinner from '../Loaders/LoaderSpinner/LoaderSpinner';
+import LoaderSpinner from 'components/Loaders/LoaderSpinner/LoaderSpinner';
 import Profile from './Profile';
 
 // HOC
@@ -20,12 +20,14 @@ import withAuthRedirect from '../../hoc/withAuthRedirect';
 class ProfileClass extends React.Component {
 
   componentDidMount () {
-    this.props.getUserProfile( 6629 );
-    this.props.getUserStatus( 6629 );
+    const userId = this.props.userId;
+    this.props.getUserProfile( userId );
+    this.props.getUserStatus( userId );
+    // console.log( 'ProfileClass -> componentDidMount:', userId );
   }
 
   render () {
-    if ( !this.props?.profile ){
+    if ( !this.props.profile ){
       return <LoaderSpinner isLoading={ true }/>;
     }
 
@@ -39,6 +41,8 @@ const mapStateToProps = ( state ) => {
     profile: state.profilePage.profile,
     posts: state.profilePage.posts,
     status: state.profilePage.status,
+    email: state.auth.email,
+    userId: state.auth.userId,
   };
 };
 

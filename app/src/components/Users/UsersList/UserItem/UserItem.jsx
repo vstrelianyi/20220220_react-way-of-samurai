@@ -34,7 +34,7 @@ const UserItem = ( props ) => {
             <img src={ userImage } alt="" />
           </picture>
         </Link>
-        <Button onClick={ handleFollowClick } isDisabled={ isButtonsDisabled.some( id => id === user?.id ) }>{ user?.followed ? 'Unfollow' : 'Follow' }</Button>
+        <Button onClick={ handleFollowClick } disabled={ isButtonsDisabled.some( id => id === user?.id ) }>{ user?.followed ? 'Unfollow' : 'Follow' }</Button>
       </div>
 
       <div className="col">

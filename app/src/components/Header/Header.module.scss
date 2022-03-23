@@ -24,12 +24,24 @@
 				color:$green-dark;
 			}
 		}
+
 		//login
 		.login-block{
 			display: flex;
-			flex-direction: column;
 			align-items: flex-end;
 			padding: 10px;
+			.button{
+				margin-left: 10px;
+				padding: 5px 10px;
+				background-color: $green-light;
+				transition: 0.5s background-color;
+				color: $white;
+				border: 1px solid $green-light;
+				&:hover{
+					background-color: $green-dark;
+					border: 1px solid $green-dark;
+				}
+			}
 		}
 	}
 }

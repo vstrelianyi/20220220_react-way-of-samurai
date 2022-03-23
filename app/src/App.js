@@ -20,6 +20,7 @@ import LoginContainer from 'components/Login/LoginContainer';
 import Users from 'components/Users/Users';
 import UserContainer from 'components/Users/User/UserContainer';
 import NoMatch from 'components/NoMatch/NoMatch';
+import Toaster from 'components/Toaster/Toaster';
 
 const App = ( props ) => {
   const { children, } = props;
@@ -57,6 +58,8 @@ const App = ( props ) => {
               <Route path="/login" element={ <LoginContainer/> } />
               <Route path="*" element={ <NoMatch/> } />
             </Routes>
+
+            <Toaster/>
           </main>
         </div>
       </BrowserRouter>

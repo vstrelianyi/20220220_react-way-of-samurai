@@ -5,9 +5,15 @@ const required = ( value ) => {
 };
 
 const maxLengthCreator = ( maxLength ) => ( value ) => {
-  if ( value.length < maxLength ) return undefined;
+  if ( value?.length <= maxLength ) return undefined;
 
   return `Max length is ${ maxLength } chars`;
+};
+
+const minLengthCreator = ( minLength ) => ( value ) => {
+  if ( value?.length >= minLength ) return undefined;
+
+  return `Min length is ${ minLength } chars`;
 };
 
 const composeValidators = ( ...validators ) => value => {
@@ -20,5 +26,6 @@ export {
   composeValidators,
   required,
   maxLengthCreator,
+  minLengthCreator,
   mustBeNumber
 };

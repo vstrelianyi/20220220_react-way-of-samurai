@@ -56,27 +56,6 @@ const usersAPI = {
   },
 };
 
-const authAPI = {
-  me () {
-    return instance.get( 'auth/me' )
-      .then( res => {
-        return res.data.data;
-      } )
-      .catch( error => {
-        console.log( error );
-      } );
-  },
-  login ( data ) {
-    return instance.post( 'auth/login', data )
-      .then( res => {
-        return res.data;
-      } )
-      .catch( error => {
-        console.log( error );
-      } );
-  },
-};
-
 const profileAPI = {
   getProfile ( userId ) {
     return instance.get( `profile/${ userId }` )
@@ -107,8 +86,51 @@ const profileAPI = {
   },
 };
 
+const authAPI = {
+  me () {
+    return instance.get( 'auth/me' )
+      .then( res => {
+        return res.data.data;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+  login ( data ) {
+    return instance.post( 'auth/login', data )
+      .then( res => {
+        return res;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+  logout () {
+    return instance.delete( 'auth/login' )
+      .then( res => {
+        return res;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+};
+
+const securityAPI = {
+  getCaptchaURL () {
+    return instance.get( 'security/get-captcha-url' )
+      .then( res => {
+        return res;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+};
+
 export {
   usersAPI,
   authAPI,
-  profileAPI
+  profileAPI,
+  securityAPI
 };

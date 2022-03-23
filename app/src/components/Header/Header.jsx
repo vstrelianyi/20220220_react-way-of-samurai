@@ -3,12 +3,13 @@ import styles from './Header.module.scss';
 
 // COMPONENTS
 import { Link, NavLink } from 'react-router-dom';
+import Button from 'components/Button/Button';
 
 // IMAGES
 import logo from 'images/logo.png';
 
 const Header = ( props ) => {
-  const { id,	email, login,	isAuth, } = props;
+  const { email, isAuth, logoutUser, } = props;
   const classes = classNames( [
     styles.Header,
     'header',
@@ -19,7 +20,7 @@ const Header = ( props ) => {
       <Link to="/" className="brand"><img src={ logo } alt="" />Samurai Chat</Link>
 
       <div className="login-block">
-        { !isAuth ? <NavLink to={ '/login' }>Login</NavLink> : <span>{ email }</span> }
+        { !isAuth ? <Link className="button" to={ '/login' }>Login</Link> : <><span>{ email }</span><Button onClick={ logoutUser }>Logout</Button></> }
       </div>
     </header>
   );
