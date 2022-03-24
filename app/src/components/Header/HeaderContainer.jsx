@@ -5,7 +5,6 @@ import Header from './Header';
 
 // DAL
 import {
-  getAuthMeThunkCreator,
   logoutUserThunkCreator
 } from 'redux/auth-reducer';
 
@@ -30,4 +29,4 @@ const mapStateToProps = ( state ) => {
   };
 };
 
-export default connect( mapStateToProps, { getAuthMe: getAuthMeThunkCreator, logoutUser: logoutUserThunkCreator, } )( HeaderContainer );
+export default connect( mapStateToProps, { logoutUser: logoutUserThunkCreator, } )( HeaderContainer );

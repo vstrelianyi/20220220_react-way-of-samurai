@@ -44,7 +44,7 @@ class UsersListClass extends React.Component {
         <Pagination pagesCount={ pagesCount } currentPage={ this.props.currentPage } onPageChanged={ this.onPageChanged.bind( this ) }/>
         { this.props.isLoading ?
           <LoaderSpinner isLoading={ this.props.isLoading }/> :
-          <UsersList users={ this.props.users } isButtonsDisabled={ this.props.isButtonsDisabled }  toggleIsFollowed={ this.toggleIsFollowed.bind( this ) }/>
+          <UsersList users={ this.props.users } isButtonsDisabled={ this.props.isButtonsDisabled } toggleIsFollowed={ this.toggleIsFollowed.bind( this ) }/>
         }
         <Button onClick={ this.onGetUsersButtonClick.bind( this ) }>Get Users</Button>
       </>

@@ -44,6 +44,7 @@ const UserItem = ( props ) => {
           <DataField label="status:" value={ user?.status }/>
         </div>
         <div className="right">
+          <DataField label="id:" value={ user?.id }/>
           <DataField label="country:" value={ user?.location?.country }/>
           <DataField label="city:" value={ user?.location?.city }/>
         </div>

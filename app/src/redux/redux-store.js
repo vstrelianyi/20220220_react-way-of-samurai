@@ -5,6 +5,7 @@ import profileReducer from './profile-reducer';
 import chatReducer from './chat-reducer';
 import usersReducer from './users-reducer';
 import authReducer from './auth-reducer';
+import appReducer from './app-reducer';
 
 const reducers = combineReducers(
   {
@@ -12,6 +13,7 @@ const reducers = combineReducers(
     chatPage: chatReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    app: appReducer,
   }
 );
 

@@ -90,7 +90,7 @@ const authAPI = {
   me () {
     return instance.get( 'auth/me' )
       .then( res => {
-        return res.data.data;
+        return res.data;
       } )
       .catch( error => {
         console.log( error );

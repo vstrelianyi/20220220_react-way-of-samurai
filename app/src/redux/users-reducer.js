@@ -9,8 +9,8 @@ import sonya from '../images/users/sonya.webp';
 
 const initialState = {
   users: [
-    { id: 0, name: 'Shao Kahn', status: '', location: { city: 'Kyiv', country: 'Ukraine', }, followed: true, image: shao, description: '', },
-    { id: 1, name: 'Sonya Blade', status: '', location: { city: 'Kyiv', country: 'Ukraine', }, followed: false, image: sonya, description: '', },
+    // { id: 0, name: 'Shao Kahn', status: '', location: { city: 'Kyiv', country: 'Ukraine', }, followed: true, image: shao, description: '', },
+    // { id: 1, name: 'Sonya Blade', status: '', location: { city: 'Kyiv', country: 'Ukraine', }, followed: false, image: sonya, description: '', },
   ],
   pageSize: 5,
   totalUsersCount: 10,

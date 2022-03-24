@@ -52,3 +52,19 @@
 		}
 	}
 }
+
+.sizeBig{
+	$width: 100px;
+	$height: 100px;
+
+	width: $width;
+	height: $height;
+
+	:global{
+		div {
+			width: $width;
+			height: $height;
+			border-width: 8px;
+		}
+	}
+}

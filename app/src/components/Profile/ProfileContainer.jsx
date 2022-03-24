@@ -21,8 +21,13 @@ class ProfileClass extends React.Component {
 
   componentDidMount () {
     const userId = this.props.userId;
-    this.props.getUserProfile( userId );
-    this.props.getUserStatus( userId );
+    if ( userId ){
+      this.props.getUserProfile( userId );
+      this.props.getUserStatus( userId );
+    }
+    else {
+      console.log( 'no user' );
+    }
     // console.log( 'ProfileClass -> componentDidMount:', userId );
   }
 

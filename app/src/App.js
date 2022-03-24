@@ -21,50 +21,81 @@ import Users from 'components/Users/Users';
 import UserContainer from 'components/Users/User/UserContainer';
 import NoMatch from 'components/NoMatch/NoMatch';
 import Toaster from 'components/Toaster/Toaster';
+import React from 'react';
 
-const App = ( props ) => {
-  const { children, } = props;
+// DAL
+// import {
+//   getAuthMeThunkCreator
+// } from 'redux/auth-reducer';
+import {
+  initializeAppThunkCreator
+} from 'redux/app-reducer';
 
-  const classes = classNames( [
-    styles.App,
-    'app',
-  ] );
-  // const dispatch = store.dispatch.bind( store );
+// REDUX
+import { connect } from 'react-redux';
+import LoaderSpinner from 'components/Loaders/LoaderSpinner/LoaderSpinner';
 
-  return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <div className={ classes }>
-          <Helmet>
-            <meta charSet="utf-8" />
-            <title>Samurai chat</title>
-            <link rel="canonical" href="http://mysite.com/example" />
-          </Helmet>
-          <HeaderContainer/>
-          <Nav/>
-          <main className="main">
-            <Routes>
-              <Route path="/" element={ <h1>Home</h1> } />
-              <Route path="/profile" element={ <ProfileContainer/> } />
-              <Route path="/chat" element={ <ChatContainer/> } />
-              <Route path="/news" element={ <h1>news</h1> } />
-              <Route path="/music" element={ <h1>music</h1> } />
-              { /* <Route path="/users" element={ <Users/> } >
-                <Route path=":userId" element={ <SingleUser/> } />
-              </Route> */ }
-              <Route path="/users" element={ <Users/> } />
-              <Route path="/users/:userId" element={ <UserContainer/> } />
-              <Route path="/settings" element={ <h1>settings</h1> } />
-              <Route path="/login" element={ <LoginContainer/> } />
-              <Route path="*" element={ <NoMatch/> } />
-            </Routes>
+class AppContainer extends React.Component {
+  componentDidMount () {
+    this.props.initializeApp();
+  }
 
-            <Toaster/>
-          </main>
+  render () {
+    const classes = classNames( [
+      styles.App,
+      'app',
+    ] );
+
+    if ( !this.props.isInitialized ){
+      return (
+        <div className="splash-screen">
+          <LoaderSpinner isLoading={ true } size="big"/>
         </div>
-      </BrowserRouter>
-    </HelmetProvider>
-  );
+      );
+    }
+
+    return (
+      <HelmetProvider>
+        <BrowserRouter>
+          <div className={ classes }>
+            <Helmet>
+              <meta charSet="utf-8" />
+              <title>Samurai chat</title>
+              <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
+            <HeaderContainer/>
+            <Nav/>
+            <main className="main">
+              <Routes>
+                <Route path="/" element={ <h1>Home</h1> } />
+                <Route path="/profile" element={ <ProfileContainer/> } />
+                <Route path="/chat" element={ <ChatContainer/> } />
+                <Route path="/news" element={ <h1>news</h1> } />
+                <Route path="/music" element={ <h1>music</h1> } />
+                { /* <Route path="/users" element={ <Users/> } >
+									<Route path=":userId" element={ <SingleUser/> } />
+								</Route> */ }
+                <Route path="/users" element={ <Users/> } />
+                <Route path="/users/:userId" element={ <UserContainer/> } />
+                <Route path="/settings" element={ <h1>settings</h1> } />
+                <Route path="/login" element={ <LoginContainer/> } />
+                <Route path="*" element={ <NoMatch/> } />
+              </Routes>
+
+              <Toaster/>
+            </main>
+          </div>
+        </BrowserRouter>
+      </HelmetProvider>
+    );
+  }
+
+}
+
+const mapStateToProps = ( state ) => {
+  return {
+    isInitialized: state.app.isInitialized,
+  };
 };
 
-export default App;
+export default connect( mapStateToProps, { initializeApp: initializeAppThunkCreator, } )( AppContainer );

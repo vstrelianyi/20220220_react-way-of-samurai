@@ -86,9 +86,9 @@ const setCaptchaUrl = ( captchaURL ) => {
 // THUNKS ( for async api calls )
 const getAuthMeThunkCreator = () => {
   return ( dispatch ) => {
-    authAPI.me()
+    return authAPI.me()
       .then( data => {
-        const { id, email, login, } = data;
+        const { data: { id, email, login, }, resultCode, messages, } = data;
         if ( id ){
           dispatch( setAuthUserData( id, email, login, true ) );
         }
