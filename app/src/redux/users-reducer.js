@@ -57,7 +57,7 @@ const usersReducer = ( state = initialState, action ) => {
     return {
       ...state,
       users: [
-        ...state.users,
+        // ...state.users,
         ...users,
       ],
     };
@@ -164,17 +164,17 @@ const toggleIsButtonsDisabled = ( isLoading, userId ) => {
 };
 
 // THUNKS
-const getUsersThunkCreator = ( currentPage, pageSize, isLoading ) => {
+const getUsersThunkCreator = ( page, pageSize, isLoading ) => {
   return ( dispatch ) => {
     dispatch( toggleIsLoading( isLoading ) );
 
-    usersAPI.getUsers( currentPage, pageSize )
+    usersAPI.getUsers( page, pageSize )
       .then( data => {
         const { items, totalCount, } = data;
         dispatch( setTotalUsersCount( totalCount ) );
         dispatch( setUsers( items ) );
         dispatch( toggleIsLoading( false ) );
-        dispatch( setCurrentPage( currentPage ) );
+        dispatch( setCurrentPage( page ) );
       } );
   };
 };

@@ -17,7 +17,7 @@ import Nav from 'components/Nav/Nav';
 import ProfileContainer from 'components/Profile/ProfileContainer';
 import ChatContainer from 'components/Chat/ChatContainer';
 import LoginContainer from 'components/Login/LoginContainer';
-import Users from 'components/Users/Users';
+import UsersContainer from 'components/Users/UsersContainer';
 import UserContainer from 'components/Users/User/UserContainer';
 import NoMatch from 'components/NoMatch/NoMatch';
 import Toaster from 'components/Toaster/Toaster';
@@ -75,7 +75,7 @@ class AppContainer extends React.Component {
                 { /* <Route path="/users" element={ <Users/> } >
 									<Route path=":userId" element={ <SingleUser/> } />
 								</Route> */ }
-                <Route path="/users" element={ <Users/> } />
+                <Route path="/users" element={ <UsersContainer/> } />
                 <Route path="/users/:userId" element={ <UserContainer/> } />
                 <Route path="/settings" element={ <h1>settings</h1> } />
                 <Route path="/login" element={ <LoginContainer/> } />
