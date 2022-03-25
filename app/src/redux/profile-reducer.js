@@ -21,6 +21,14 @@ const profileReducer = ( state = initialState, action ) => {
       posts: [ ...state.posts, { id: 10, message: text, likesCount: 12, }, ],
     };
   }
+  case 'DELETE_POST': {
+    const { payload: { postId, }, } = action;
+
+    return {
+      ...state,
+      posts: state.posts.filter( post => post.id !== postId ),
+    };
+  }
   case 'SET_USER_PROFILE':{
     const { payload: { profile, }, } = action;
 
@@ -50,6 +58,12 @@ const addPost = ( text ) => {
   return {
     type: 'ADD_POST',
     payload: { text, },
+  };
+};
+const deletePost = ( postId ) => {
+  return {
+    type: 'DELETE_POST',
+    payload: { postId, },
   };
 };
 const setUserProfile = ( profile ) => {
@@ -111,6 +125,7 @@ const setUserStatusThunkCreator = ( status ) => {
 
 export {
   addPost,
+  deletePost,
   getUserProfileThunkCreator,
   getUserStatusThunkCreator,
   setUserStatusThunkCreator

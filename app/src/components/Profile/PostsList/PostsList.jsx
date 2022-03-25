@@ -12,6 +12,7 @@ const PostsList = ( props ) => {
     'my-posts',
     'posts-list',
   ] );
+  console.log( 'render' );
 
   return (
     <div className={ classes }>
