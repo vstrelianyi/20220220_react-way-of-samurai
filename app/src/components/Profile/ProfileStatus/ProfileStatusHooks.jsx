@@ -23,8 +23,8 @@ const ProfileStatusHooks = ( props ) => {
 
   const deactivateEditMode = () => {
     setEditMode( false );
-    setStatus( input.current.value );
-    setUserStatus( input.current.value );
+    // setStatus( input.current.value );
+    setUserStatus( status );
   };
 
   const handleInputChange = ( e ) => {
@@ -35,17 +35,21 @@ const ProfileStatusHooks = ( props ) => {
   const handleKeyPress = ( e ) => {
     if ( e.key === 'Enter' ){
       setEditMode( false );
-      setStatus( input.current.value );
-      setUserStatus( input.current.value );
+      setUserStatus( status );
     }
   };
 
   // HOOKS
   useEffect( () => {
+    // console.log( 'useEffect: editMode' );
     if ( editMode ){
       input.current.focus();
     }
   }, [ editMode, ] );
+
+  useEffect( () => {
+    // console.log( 'useEffect: status' );
+  }, [ status, ] );
 
   return (
     <div className={ classes }>
