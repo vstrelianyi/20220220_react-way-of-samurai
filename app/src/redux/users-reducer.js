@@ -4,8 +4,8 @@
 import { usersAPI } from '../api/api';
 
 // IMAGES
-import shao from '../images/users/shao.webp';
-import sonya from '../images/users/sonya.webp';
+// import shao from '../images/users/shao.webp';
+// import sonya from '../images/users/sonya.webp';
 
 const initialState = {
   users: [
@@ -20,10 +20,11 @@ const initialState = {
   userProfile: null,
 };
 
+// REDUCERS
 const usersReducer = ( state = initialState, action ) => {
   const { type, } = action;
   switch ( type ){
-  case 'FOLLOW_USER':{
+  case 'users/FOLLOW_USER':{
     const { payload: { userId, }, } = action;
 
     return {
@@ -37,7 +38,7 @@ const usersReducer = ( state = initialState, action ) => {
       } ),
     };
   }
-  case 'UNFOLLOW_USER':{
+  case 'users/UNFOLLOW_USER':{
     const { payload: { userId, }, } = action;
 
     return {
@@ -51,7 +52,7 @@ const usersReducer = ( state = initialState, action ) => {
       } ),
     };
   }
-  case 'SET_USERS':{
+  case 'users/SET_USERS':{
     const { payload: { users, }, } = action;
 
     return {
@@ -62,7 +63,7 @@ const usersReducer = ( state = initialState, action ) => {
       ],
     };
   }
-  case 'SET_USER_PROFILE':{
+  case 'users/SET_USER_PROFILE':{
     const { payload: { profile, }, } = action;
 
     return {
@@ -70,7 +71,7 @@ const usersReducer = ( state = initialState, action ) => {
       userProfile: profile,
     };
   }
-  case 'SET_CURRENT_PAGE':{
+  case 'users/SET_CURRENT_PAGE':{
     const { payload: { currentPage, }, } = action;
 
     return {
@@ -78,7 +79,7 @@ const usersReducer = ( state = initialState, action ) => {
       currentPage: currentPage,
     };
   }
-  case 'SET_TOTAL_USERS_COUNT':{
+  case 'users/SET_TOTAL_USERS_COUNT':{
     const { payload: { totalUsers, }, } = action;
 
     return {
@@ -86,7 +87,7 @@ const usersReducer = ( state = initialState, action ) => {
       totalUsersCount: totalUsers,
     };
   }
-  case 'TOGGLE_IS_LOADING':{
+  case 'users/TOGGLE_IS_LOADING':{
     const { payload: { isLoading, }, } = action;
 
     return {
@@ -94,7 +95,7 @@ const usersReducer = ( state = initialState, action ) => {
       isLoading: isLoading,
     };
   }
-  case 'TOGGLE_IS_BUTTON_DISABLED':{
+  case 'users/TOGGLE_IS_BUTTON_DISABLED':{
     const { payload: { isLoading, userId, }, } = action;
 
     return {
@@ -116,49 +117,49 @@ export default usersReducer;
 // ACTION CREATORS
 const followUser = ( userId ) => {
   return {
-    type: 'FOLLOW_USER',
+    type: 'users/FOLLOW_USER',
     payload: { userId, },
   };
 };
 const unFollowUser = ( userId ) => {
   return {
-    type: 'UNFOLLOW_USER',
+    type: 'users/UNFOLLOW_USER',
     payload: { userId, },
   };
 };
 const setUsers = ( users ) => {
   return {
-    type: 'SET_USERS',
+    type: 'users/SET_USERS',
     payload: { users, },
   };
 };
 const setUserProfile = ( profile ) => {
   return {
-    type: 'SET_USER_PROFILE',
+    type: 'users/SET_USER_PROFILE',
     payload: { profile, },
   };
 };
 const setCurrentPage = ( currentPage ) => {
   return {
-    type: 'SET_CURRENT_PAGE',
+    type: 'users/SET_CURRENT_PAGE',
     payload: { currentPage, },
   };
 };
 const setTotalUsersCount = ( totalUsers  ) => {
   return {
-    type: 'SET_TOTAL_USERS_COUNT',
+    type: 'users/SET_TOTAL_USERS_COUNT',
     payload: { totalUsers, },
   };
 };
 const toggleIsLoading = ( isLoading  ) => {
   return {
-    type: 'TOGGLE_IS_LOADING',
+    type: 'users/TOGGLE_IS_LOADING',
     payload: { isLoading, },
   };
 };
 const toggleIsButtonsDisabled = ( isLoading, userId ) => {
   return {
-    type: 'TOGGLE_IS_BUTTON_DISABLED',
+    type: 'users/TOGGLE_IS_BUTTON_DISABLED',
     payload: { isLoading, userId, },
   };
 };
@@ -180,43 +181,53 @@ const getUsersThunkCreator = ( page, pageSize, isLoading ) => {
 };
 
 const getUserThunkCreator = ( userId ) => {
-  return ( dispatch ) => {
+  return async ( dispatch ) => {
     dispatch( setUserProfile( null ) );
-    usersAPI.getUser( userId )
-      .then( data => {
-        const profile = data;
-        dispatch( setUserProfile( profile ) );
-      } )
-      .catch( error => {
-        console.log( error );
-        dispatch( setUserProfile( undefined ) );
-      } );
+    try {
+      const response = await usersAPI.getUser( userId );
+      const { profile, } = response;
+      dispatch( setUserProfile( profile ) );
+    }
+    catch ( error ){
+      console.log( error );
+      dispatch( setUserProfile( undefined ) );
+    }
   };
 };
 
 const followUserThunkCreator = ( userId ) => {
-  return ( dispatch ) => {
+  return async ( dispatch ) => {
     dispatch( toggleIsButtonsDisabled( true, userId ) );
-    usersAPI.follow( userId )
-      .then( resultCode => {
-        if ( resultCode === 0 ){
-          dispatch( followUser( userId ) );
-          dispatch( toggleIsButtonsDisabled( false, userId ) );
-        }
-      } );
+    try {
+      const response = await usersAPI.follow( userId );
+      const { resultCode, } = response;
+      if ( resultCode === 0 ){
+        dispatch( followUser( userId ) );
+        dispatch( toggleIsButtonsDisabled( false, userId ) );
+      }
+    }
+    catch ( error ){
+      console.log( error );
+      dispatch( setUserProfile( undefined ) );
+    }
   };
 };
 
 const unFollowUserThunkCreator = ( userId ) => {
-  return ( dispatch ) => {
+  return async ( dispatch ) => {
     dispatch( toggleIsButtonsDisabled( true, userId ) );
-    usersAPI.unfollow( userId )
-      .then( resultCode => {
-        if ( resultCode === 0 ){
-          dispatch( unFollowUser( userId ) );
-          dispatch( toggleIsButtonsDisabled( false, userId ) );
-        }
-      } );
+    try {
+      const response = await usersAPI.unfollow( userId );
+      const { resultCode, } = response;
+      if ( resultCode === 0 ){
+        dispatch( unFollowUser( userId ) );
+        dispatch( toggleIsButtonsDisabled( false, userId ) );
+      }
+    }
+    catch ( error ){
+      console.log( error );
+      dispatch( setUserProfile( undefined ) );
+    }
   };
 };
 

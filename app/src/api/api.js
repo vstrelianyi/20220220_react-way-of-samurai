@@ -13,9 +13,7 @@ const instance = axios.create(
 const usersAPI = {
   getUsers ( currentPage, pageSize ) {
     return instance.get( `users?page=${ currentPage }&count=${ pageSize }` )
-      .then( res => {
-        return res.data;
-      } )
+      .then( res => res.data )
       .catch( error => {
         console.log( error );
       } );
@@ -23,9 +21,7 @@ const usersAPI = {
 
   getUser ( userId ) {
     return instance.get( `profile/${ userId }` )
-      .then( res => {
-        return res.data;
-      } )
+      .then( res => res.data )
       .catch( error => {
         console.log( error );
       } );
@@ -33,11 +29,7 @@ const usersAPI = {
 
   follow ( userId ) {
     return instance.post( `follow/${ userId }` )
-      .then( res => {
-        const { resultCode, } = res.data;
-
-        return resultCode;
-      } )
+      .then( res => res.data )
       .catch( error => {
         console.log( 'API.follow', error );
       } );
@@ -45,11 +37,7 @@ const usersAPI = {
 
   unfollow ( userId ) {
     return instance.delete( `follow/${ userId }` )
-      .then( res => {
-        const { resultCode, } = res.data;
-
-        return resultCode;
-      } )
+      .then( res => res.data )
       .catch( error => {
         console.log( 'API.unfollow', error );
       } );
@@ -59,27 +47,21 @@ const usersAPI = {
 const profileAPI = {
   getProfile ( userId ) {
     return instance.get( `profile/${ userId }` )
-      .then( res => {
-        return res.data;
-      } )
+      .then( res => res.data )
       .catch( error => {
         console.log( error );
       } );
   },
   getStatus ( userId ) {
     return instance.get( `profile/status/${ userId }` )
-      .then( res => {
-        return res.data;
-      } )
+      .then( res => res.data )
       .catch( error => {
         console.log( error );
       } );
   },
   updateStatus ( status ) {
     return instance.put( 'profile/status', { status: status, } )
-      .then( res => {
-        return res.data;
-      } )
+      .then( res => res.data )
       .catch( error => {
         console.log( error );
       } );
@@ -89,9 +71,7 @@ const profileAPI = {
 const authAPI = {
   me () {
     return instance.get( 'auth/me' )
-      .then( res => {
-        return res.data;
-      } )
+      .then( res => res.data )
       .catch( error => {
         console.log( error );
       } );

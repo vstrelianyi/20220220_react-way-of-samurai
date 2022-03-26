@@ -7,6 +7,7 @@ const initialState = {
   isInitialized: false,
 };
 
+// REDUCERS
 const appReducer = ( state = initialState, action ) => {
   const { type, } = action;
   switch ( type ){

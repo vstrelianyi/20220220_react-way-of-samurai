@@ -10,6 +10,7 @@ const initialState = {
   ],
 };
 
+// REDUCERS
 const chatReducer = ( state = initialState, action ) => {
   const { type, } = action;
 

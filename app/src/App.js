@@ -24,9 +24,6 @@ import Toaster from 'components/Toaster/Toaster';
 import React from 'react';
 
 // DAL
-// import {
-//   getAuthMeThunkCreator
-// } from 'redux/auth-reducer';
 import {
   initializeAppThunkCreator
 } from 'redux/app-reducer';

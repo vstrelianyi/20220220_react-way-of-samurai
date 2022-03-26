@@ -10,10 +10,11 @@ const initialState = {
   status: 'empty status',
 };
 
+// REDUCERS
 const profileReducer = ( state = initialState, action ) => {
   const { type, } = action;
   switch ( type ){
-  case 'ADD_POST':{
+  case 'profile/ADD_POST':{
     const { payload: { text, }, } = action;
 
     return {
@@ -21,7 +22,7 @@ const profileReducer = ( state = initialState, action ) => {
       posts: [ ...state.posts, { id: 10, message: text, likesCount: 12, }, ],
     };
   }
-  case 'DELETE_POST': {
+  case 'profile/DELETE_POST': {
     const { payload: { postId, }, } = action;
 
     return {
@@ -29,7 +30,7 @@ const profileReducer = ( state = initialState, action ) => {
       posts: state.posts.filter( post => post.id !== postId ),
     };
   }
-  case 'SET_USER_PROFILE':{
+  case 'profile/SET_USER_PROFILE':{
     const { payload: { profile, }, } = action;
 
     return {
@@ -37,7 +38,7 @@ const profileReducer = ( state = initialState, action ) => {
       profile,
     };
   }
-  case 'SET_USER_STATUS':{
+  case 'profile/SET_USER_STATUS':{
     const { payload: { status, }, } = action;
 
     return {
@@ -56,70 +57,72 @@ export default profileReducer;
 // ACTION CREATORS
 const addPost = ( text ) => {
   return {
-    type: 'ADD_POST',
+    type: 'profile/ADD_POST',
     payload: { text, },
   };
 };
 const deletePost = ( postId ) => {
   return {
-    type: 'DELETE_POST',
+    type: 'profile/DELETE_POST',
     payload: { postId, },
   };
 };
 const setUserProfile = ( profile ) => {
   return {
-    type: 'SET_USER_PROFILE',
+    type: 'profile/SET_USER_PROFILE',
     payload: { profile, },
   };
 };
 const setUserStatus = ( status ) => {
   return {
-    type: 'SET_USER_STATUS',
+    type: 'profile/SET_USER_STATUS',
     payload: { status, },
   };
 };
 
 // THUNKS
 const getUserProfileThunkCreator = ( userId ) => {
-  return ( dispatch ) => {
+  return async ( dispatch ) => {
     dispatch( setUserProfile( null ) );
-    usersAPI.getUser( userId )
-      .then( data => {
-        const profile = data;
-        dispatch( setUserProfile( profile ) );
-      } )
-      .catch( error => {
-        console.log( error );
-        dispatch( setUserProfile( undefined ) );
-      } );
+    try {
+      const response = await usersAPI.getUser( userId );
+      const profile = response;
+      dispatch( setUserProfile( profile ) );
+    }
+    catch ( error ){
+      console.log( error );
+      dispatch( setUserProfile( undefined ) );
+    }
   };
 };
 
 const getUserStatusThunkCreator = ( userId ) => {
-  return ( dispatch ) => {
-    profileAPI.getStatus( userId )
-      .then( data => {
-        const status = data;
-        dispatch( setUserStatus( status ) );
-      } )
-      .catch( error => {
-        console.log( error );
-      } );
+  return async ( dispatch ) => {
+    try {
+      const response = await profileAPI.getStatus( userId );
+      const status = response;
+      dispatch( setUserStatus( status ) );
+    }
+    catch ( error ){
+      console.log( error );
+      dispatch( setUserProfile( undefined ) );
+    }
   };
 };
 
 const setUserStatusThunkCreator = ( status ) => {
-  return ( dispatch ) => {
-    profileAPI.updateStatus( status )
-      .then( data => {
-        const { resultCode, } = data;
-        if ( resultCode === 0 ){
-          dispatch( setUserStatus( status ) );
-        }
-      } )
-      .catch( error => {
-        console.log( error );
-      } );
+  return async ( dispatch ) => {
+    try {
+      const response = await profileAPI.updateStatus( status );
+      const { resultCode, } = response;
+      if ( resultCode === 0 ){
+        dispatch( setUserStatus( status ) );
+      }
+    }
+    catch ( error ){
+      console.log( error );
+      dispatch( setUserProfile( undefined ) );
+    }
   };
 };
 
