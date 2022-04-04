@@ -28,7 +28,7 @@ const Users = ( props ) => {
 
   return (
     <div className={ classes }>
-      <Pagination pagesCount={ pagesCount } currentPage={ currentPage } onPageChanged={ onPageChanged }/>
+      <Pagination itemsCount={ pagesCount } currentPage={ currentPage } onPageChanged={ onPageChanged }/>
       { isLoading ?
         <LoaderSpinner isLoading={ isLoading }/> :
         <UsersList users={ users } isButtonsDisabled={ isButtonsDisabled } toggleIsFollowed={ toggleIsFollowed }/>
