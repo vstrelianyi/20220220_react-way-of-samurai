@@ -10,7 +10,7 @@ const Pagination = ( props ) => {
     'pagination',
   ] );
 
-  const batchSize = 5;
+  const batchSize = 10;
   const batchCount = Math.ceil( itemsCount / batchSize );
   const [ batchIndex, setBatchIndex, ] = useState( 1 );
   const leftBoundary = ( batchIndex - 1 ) * batchSize + 1;
