@@ -19,7 +19,3 @@ chmpain@gmail.com
 
 userId: 6629
 page:3085
-
-
-old lib
-  "react-helmet-async": "^1.2.3",
