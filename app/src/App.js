@@ -58,7 +58,7 @@ class AppContainer extends React.Component {
 
     return (
       <HelmetProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={ process.env.PUBLIC_URL }>
           <div className={ classes }>
             <Helmet>
               <meta charSet="utf-8" />
