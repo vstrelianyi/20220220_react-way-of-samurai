@@ -39,7 +39,7 @@ const FormAddPost = ( props ) => {
   // const handleOnValidate = ( e ) => {};
 
   // validators
-  const maxLength10 =  maxLengthCreator( 10 );
+  const maxLength10 =  maxLengthCreator( 100 );
 
   return (
     <Form
