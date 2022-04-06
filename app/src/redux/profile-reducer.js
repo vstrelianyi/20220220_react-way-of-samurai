@@ -54,6 +54,14 @@ const profileReducer = ( state = initialState, action ) => {
       profile: { ...state.profile, photos: photos, },
     };
   }
+  case 'profile/UPDATE_USER_PROFILE':{
+    const { payload: { formData, }, } = action;
+
+    return {
+      ...state,
+      profile: { ...state.profile, },
+    };
+  }
   default:{
     return state;
   }
@@ -91,6 +99,12 @@ const setUserPhoto = ( photos ) => {
   return {
     type: 'profile/SET_USER_PHOTO',
     payload: { photos, },
+  };
+};
+const updateUserProfile = ( profile ) => {
+  return {
+    type: 'profile/UPDATE_USER_PROFILE',
+    payload: { profile, },
   };
 };
 
@@ -156,11 +170,29 @@ const uploadPhotoThunkCreator = ( photoFile ) => {
   };
 };
 
+const updateProfileThunkCreator = ( formData ) => {
+  return async ( dispatch ) => {
+    try {
+      const response = await profileAPI.updateProfile( formData );
+      const { resultCode, data, } = response;
+      console.log( data );
+      if ( resultCode === 0 ){
+        // dispatch( updateUserProfile ( photos ) );
+      }
+    }
+    catch ( error ){
+      console.log( error );
+      // dispatch( updateUserProfile( undefined ) );
+    }
+  };
+};
+
 export {
   addPost,
   deletePost,
   getUserProfileThunkCreator,
   getUserStatusThunkCreator,
   setUserStatusThunkCreator,
-  uploadPhotoThunkCreator
+  uploadPhotoThunkCreator,
+  updateProfileThunkCreator
 };

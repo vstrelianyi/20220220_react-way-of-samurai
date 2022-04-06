@@ -75,9 +75,14 @@ const profileAPI = {
         'Content-Type': 'multipart/form-data',
       },
     } )
-      .then( res => {
-        return res.data;
-      } )
+      .then( res => res.data )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
+  updateProfile ( formData ) {
+    return instance.put( 'profile', formData )
+      .then( res => res.data )
       .catch( error => {
         console.log( error );
       } );

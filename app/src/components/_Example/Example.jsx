@@ -1,5 +1,8 @@
+// STYLES
 import classNames from 'classnames/bind';
 import styles from './Example.module.scss';
+
+// COMPONENTS
 
 const Example = ( props ) => {
   const { children, } = props;

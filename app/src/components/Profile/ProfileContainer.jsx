@@ -7,9 +7,10 @@ import {
   getUserProfileThunkCreator,
   getUserStatusThunkCreator,
   setUserStatusThunkCreator,
+  addPost,
   uploadPhotoThunkCreator,
-  addPost
-} from '../../redux/profile-reducer';
+  updateProfileThunkCreator
+} from 'redux/profile-reducer';
 
 // COMPONENTS
 import LoaderSpinner from 'components/Loaders/LoaderSpinner/LoaderSpinner';
@@ -57,6 +58,13 @@ const mapStateToProps = ( state ) => {
 };
 
 export default compose(
-  connect( mapStateToProps, { getUserProfile: getUserProfileThunkCreator, setUserStatus: setUserStatusThunkCreator, getUserStatus: getUserStatusThunkCreator, addPost, uploadPhoto: uploadPhotoThunkCreator, } ),
+  connect( mapStateToProps, {
+    getUserProfile: getUserProfileThunkCreator,
+    setUserStatus: setUserStatusThunkCreator,
+    getUserStatus: getUserStatusThunkCreator,
+    addPost,
+    uploadPhoto: uploadPhotoThunkCreator,
+    updateProfile: updateProfileThunkCreator,
+  } ),
   withAuthRedirect
 )( ProfileClass );

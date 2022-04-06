@@ -34,7 +34,6 @@ const FormLogin = ( props ) => {
   // const minLength =  minLengthCreator( 4 );
 
   //HANDLERS
-
   const handleOnSubmit = async ( values ) => {
     await loginUser( values );
     await sleep( 500 );
