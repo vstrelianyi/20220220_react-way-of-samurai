@@ -19,3 +19,7 @@ chmpain@gmail.com
 
 userId: 6629
 page:3085
+
+
+project deployed on
+https://vstrelianyi.github.io/20220220_react-way-of-samurai/

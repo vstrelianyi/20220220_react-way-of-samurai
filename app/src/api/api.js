@@ -66,6 +66,22 @@ const profileAPI = {
         console.log( error );
       } );
   },
+  uploadPhoto ( photoFile ) {
+    const formData = new FormData();
+    formData.append( 'image', photoFile );
+
+    return instance.put( 'profile/photo', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    } )
+      .then( res => {
+        return res.data;
+      } )
+      .catch( error => {
+        console.log( error );
+      } );
+  },
 };
 
 const authAPI = {

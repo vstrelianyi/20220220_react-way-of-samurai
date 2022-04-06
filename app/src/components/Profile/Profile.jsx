@@ -11,7 +11,7 @@ import FormAddPost from 'components/Forms/FormAddPost/FormAddPost';
 // import { useParams } from 'react-router-dom';
 
 const Profile = ( props ) => {
-  const { profile, email, status, setUserStatus, posts, addPost, } = props;
+  const { profile, email, status, setUserStatus, posts, addPost, uploadPhoto, } = props;
 
   const classes = classNames( [
     styles.Profile,
@@ -21,7 +21,7 @@ const Profile = ( props ) => {
   return (
     <div className={ classes }>
       <ProfileStatusHooks status={ status } setUserStatus={ setUserStatus }/>
-      <ProfileInfo profile={ profile } email={ email }/>
+      <ProfileInfo profile={ profile } email={ email } uploadPhoto={ uploadPhoto }/>
       <FormAddPost addPost={ addPost }/>
       <PostsList posts={ posts }/>
     </div>

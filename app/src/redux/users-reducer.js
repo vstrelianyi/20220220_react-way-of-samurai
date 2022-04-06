@@ -184,8 +184,8 @@ const getUserThunkCreator = ( userId ) => {
   return async ( dispatch ) => {
     dispatch( setUserProfile( null ) );
     try {
-      const response = await usersAPI.getUser( userId );
-      const { profile, } = response;
+      const profile = await usersAPI.getUser( userId );
+      console.log( profile );
       dispatch( setUserProfile( profile ) );
     }
     catch ( error ){
