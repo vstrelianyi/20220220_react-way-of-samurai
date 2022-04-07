@@ -37,10 +37,16 @@ const ProfileInfo = ( props ) => {
 
   return (
     <div className={ classes }>
-      <input className="mb-20" type="file" onChange={ handleFileSelected }/>
       <Button className="mb-20" onClick={ handleEditModeClick }>{ isEditMode ? 'View Mode' : 'Edit Mode' }</Button>
       { isEditMode ? (
-        <FormProfileData updateProfile={ updateProfile }/>
+        <>
+          <picture className="profile-image">
+            <source srcSet={ userImage } type="image/webp" />
+            <img src={ userImage } alt="" />
+          </picture>
+          <input className="mb-20" type="file" onChange={ handleFileSelected }/>
+          <FormProfileData updateProfile={ updateProfile } profile= { profile } userImage={ userImage }/>
+        </>
       ) :
         <ProfileData profile= { profile } userImage={ userImage } email={ email }/>
       }
