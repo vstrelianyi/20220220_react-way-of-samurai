@@ -1,4 +1,5 @@
 // DAL
+import LoginContainer from 'components/Login/LoginContainer';
 import { usersAPI, profileAPI } from '../api/api';
 
 const initialState = {
@@ -55,11 +56,11 @@ const profileReducer = ( state = initialState, action ) => {
     };
   }
   case 'profile/UPDATE_USER_PROFILE':{
-    const { payload: { formData, }, } = action;
+    const { payload: { valuesObj, }, } = action;
 
     return {
       ...state,
-      profile: { ...state.profile, },
+      profile: { ...state.profile, ...valuesObj, },
     };
   }
   default:{
@@ -101,10 +102,10 @@ const setUserPhoto = ( photos ) => {
     payload: { photos, },
   };
 };
-const updateUserProfile = ( profile ) => {
+const updateUserProfile = ( valuesObj ) => {
   return {
     type: 'profile/UPDATE_USER_PROFILE',
-    payload: { profile, },
+    payload: { valuesObj, },
   };
 };
 
@@ -170,14 +171,14 @@ const uploadPhotoThunkCreator = ( photoFile ) => {
   };
 };
 
-const updateProfileThunkCreator = ( formData ) => {
+const updateProfileThunkCreator = ( valuesObj ) => {
   return async ( dispatch ) => {
     try {
-      const response = await profileAPI.updateProfile( formData );
+      console.log( valuesObj );
+      const response = await profileAPI.updateProfile( valuesObj );
       const { resultCode, data, } = response;
-      console.log( data );
       if ( resultCode === 0 ){
-        // dispatch( updateUserProfile ( photos ) );
+        dispatch( updateUserProfile ( valuesObj ) );
       }
     }
     catch ( error ){

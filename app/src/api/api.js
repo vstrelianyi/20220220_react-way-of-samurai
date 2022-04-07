@@ -80,8 +80,8 @@ const profileAPI = {
         console.log( error );
       } );
   },
-  updateProfile ( formData ) {
-    return instance.put( 'profile', formData )
+  updateProfile ( valuesObj ) {
+    return instance.put( 'profile', valuesObj )
       .then( res => res.data )
       .catch( error => {
         console.log( error );

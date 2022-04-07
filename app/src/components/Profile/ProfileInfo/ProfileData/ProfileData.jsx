@@ -12,22 +12,23 @@ const ProfileData = ( props ) => {
     styles.ProfileData,
     'profile-data',
   ] );
-  const { userId, fullName, lookingForAJobDescription, contacts, } = profile;
+  const { userId, fullName, lookingForAJobDescription, aboutMe, contacts, } = profile;
 
-  console.log( profile );
+  console.log( contacts );
 
   return (
     <div className={ classes }>
 
-      <picture>
+      <picture className="profile-image">
         <source srcSet={ userImage } type="image/webp" />
         <img src={ userImage } alt="" />
       </picture>
 
       <DataField label="id: " value={ userId }/>
-      <DataField label="name: " value={ fullName }/>
+      <DataField label="Full Name: " value={ fullName }/>
       <DataField label="email: " value={ email }/>
-      <DataField label="job description: " value={ lookingForAJobDescription }/>
+      <DataField label="Job Description: " value={ lookingForAJobDescription }/>
+      <DataField label="About Me: " value={ aboutMe }/>
 
       { Object.keys( contacts ).map( key => <DataField key={ key } label={ `${ key } :` } value={ contacts[key] }/> ) }
     </div>
